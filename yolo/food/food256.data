@@ -1,0 +1,5 @@
+classes = 256
+train  = food/data/train.txt
+valid  = food/data/test.txt
+names = food/food256.names
+backup = food/backup
