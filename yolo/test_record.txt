@@ -1,0 +1,2671 @@
+Microsoft Windows [Version 10.0.18363.1679]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Users\sy>cd C:\Users\sy\darknet-master\build\darknet\x64
+
+C:\Users\sy\darknet-master\build\darknet\x64>darknet.exe detector map food/food256.data cfg/yolov3-tiny-food.cfg food/backup/yolov3-tiny-food_final.weights
+ CUDA-version: 10000 (11030), cuDNN: 7.6.5, CUDNN_HALF=1, GPU count: 1
+ CUDNN_HALF=1
+ OpenCV version: 3.4.0
+ 0 : compute_capability = 750, cudnn_half = 1, GPU: NVIDIA GeForce GTX 1660 SUPER
+net.optimized_memory = 0
+mini_batch = 1, batch = 8, time_steps = 1, train = 0
+   layer   filters  size/strd(dil)      input                output
+   0 Create CUDA-stream - 0
+ Create cudnn-handle 0
+conv     16       3 x 3/ 1    416 x 416 x   3 ->  416 x 416 x  16 0.150 BF
+   1 max                2x 2/ 2    416 x 416 x  16 ->  208 x 208 x  16 0.003 BF
+   2 conv     32       3 x 3/ 1    208 x 208 x  16 ->  208 x 208 x  32 0.399 BF
+   3 max                2x 2/ 2    208 x 208 x  32 ->  104 x 104 x  32 0.001 BF
+   4 conv     64       3 x 3/ 1    104 x 104 x  32 ->  104 x 104 x  64 0.399 BF
+   5 max                2x 2/ 2    104 x 104 x  64 ->   52 x  52 x  64 0.001 BF
+   6 conv    128       3 x 3/ 1     52 x  52 x  64 ->   52 x  52 x 128 0.399 BF
+   7 max                2x 2/ 2     52 x  52 x 128 ->   26 x  26 x 128 0.000 BF
+   8 conv    256       3 x 3/ 1     26 x  26 x 128 ->   26 x  26 x 256 0.399 BF
+   9 max                2x 2/ 2     26 x  26 x 256 ->   13 x  13 x 256 0.000 BF
+  10 conv    512       3 x 3/ 1     13 x  13 x 256 ->   13 x  13 x 512 0.399 BF
+  11 max                2x 2/ 1     13 x  13 x 512 ->   13 x  13 x 512 0.000 BF
+  12 conv   1024       3 x 3/ 1     13 x  13 x 512 ->   13 x  13 x1024 1.595 BF
+  13 conv    256       1 x 1/ 1     13 x  13 x1024 ->   13 x  13 x 256 0.089 BF
+  14 conv    512       3 x 3/ 1     13 x  13 x 256 ->   13 x  13 x 512 0.399 BF
+  15 conv    783       1 x 1/ 1     13 x  13 x 512 ->   13 x  13 x 783 0.136 BF
+  16 yolo
+[yolo] params: iou loss: mse (2), iou_norm: 0.75, obj_norm: 1.00, cls_norm: 1.00, delta_norm: 1.00, scale_x_y: 1.00
+  17 route  13                                     ->   13 x  13 x 256
+  18 conv    128       1 x 1/ 1     13 x  13 x 256 ->   13 x  13 x 128 0.011 BF
+  19 upsample                 2x    13 x  13 x 128 ->   26 x  26 x 128
+  20 route  19 8                                   ->   26 x  26 x 384
+  21 conv    256       3 x 3/ 1     26 x  26 x 384 ->   26 x  26 x 256 1.196 BF
+  22 conv    783       1 x 1/ 1     26 x  26 x 256 ->   26 x  26 x 783 0.271 BF
+  23 yolo
+[yolo] params: iou loss: mse (2), iou_norm: 0.75, obj_norm: 1.00, cls_norm: 1.00, delta_norm: 1.00, scale_x_y: 1.00
+Total BFLOPS 5.845
+avg_outputs = 378714
+ Allocate additional workspace_size = 52.43 MB
+Loading weights from food/backup/yolov3-tiny-food_final.weights...
+ seen 64, trained: 32768 K-images (512 Kilo-batches_64)
+Done! Loaded 24 layers from weights-file
+
+ calculation mAP (mean average precision)...
+ Detection layer: 16 - type = 28
+ Detection layer: 23 - type = 28
+3140
+ detections_count = 7898, unique_truth_count = 3139
+class_id = 0, name = rice, ap = 29.95%           (TP = 15, FP = 51)
+class_id = 1, name = eelsonrice, ap = 92.31%     (TP = 12, FP = 1)
+class_id = 2, name = pilaf, ap = 80.63%          (TP = 7, FP = 0)
+class_id = 3, name = chicken-'n'-eggonrice, ap = 50.96%          (TP = 4, FP = 2)
+class_id = 4, name = porkcutletonrice, ap = 58.38%       (TP = 7, FP = 5)
+class_id = 5, name = beefcurry, ap = 67.11%      (TP = 14, FP = 7)
+class_id = 6, name = sushi, ap = 55.00%          (TP = 3, FP = 0)
+class_id = 7, name = chickenrice, ap = 55.00%            (TP = 5, FP = 3)
+class_id = 8, name = friedrice, ap = 69.06%      (TP = 10, FP = 4)
+class_id = 9, name = tempurabowl, ap = 69.97%            (TP = 6, FP = 3)
+class_id = 10, name = bibimbap, ap = 74.26%      (TP = 7, FP = 2)
+class_id = 11, name = toast, ap = 56.97%         (TP = 10, FP = 4)
+class_id = 12, name = croissant, ap = 38.43%     (TP = 3, FP = 3)
+class_id = 13, name = rollbread, ap = 45.45%     (TP = 5, FP = 1)
+class_id = 14, name = raisinbread, ap = 53.30%           (TP = 3, FP = 1)
+class_id = 15, name = chipbutty, ap = 24.23%     (TP = 4, FP = 3)
+class_id = 16, name = hamburger, ap = 61.82%     (TP = 14, FP = 6)
+class_id = 17, name = pizza, ap = 62.77%         (TP = 5, FP = 1)
+class_id = 18, name = sandwiches, ap = 43.02%            (TP = 4, FP = 3)
+class_id = 19, name = udonnoodle, ap = 63.13%            (TP = 11, FP = 7)
+class_id = 20, name = tempuraudon, ap = 78.65%           (TP = 8, FP = 4)
+class_id = 21, name = sobanoodle, ap = 75.31%            (TP = 10, FP = 3)
+class_id = 22, name = ramennoodle, ap = 78.36%           (TP = 25, FP = 7)
+class_id = 23, name = beefnoodle, ap = 32.14%            (TP = 3, FP = 3)
+class_id = 24, name = tensinnoodle, ap = 68.02%          (TP = 6, FP = 0)
+class_id = 25, name = friednoodle, ap = 60.32%           (TP = 8, FP = 2)
+class_id = 26, name = spaghetti, ap = 65.07%     (TP = 9, FP = 5)
+class_id = 27, name = Japanese-stylepancake, ap = 75.33%         (TP = 8, FP = 3)
+class_id = 28, name = takoyaki, ap = 58.97%      (TP = 7, FP = 0)
+class_id = 29, name = gratin, ap = 51.16%        (TP = 5, FP = 4)
+class_id = 30, name = sauteedvegetables, ap = 4.63%      (TP = 0, FP = 1)
+class_id = 31, name = croquette, ap = 48.33%     (TP = 5, FP = 3)
+class_id = 32, name = grilledeggplant, ap = 8.17%        (TP = 0, FP = 2)
+class_id = 33, name = sauteedspinach, ap = 54.33%        (TP = 4, FP = 1)
+class_id = 34, name = vegetabletempura, ap = 44.71%      (TP = 4, FP = 2)
+class_id = 35, name = misosoup, ap = 35.88%      (TP = 28, FP = 77)
+class_id = 36, name = potage, ap = 78.01%        (TP = 6, FP = 0)
+class_id = 37, name = sausage, ap = 19.92%       (TP = 1, FP = 3)
+class_id = 38, name = oden, ap = 5.90%           (TP = 1, FP = 3)
+class_id = 39, name = omelet, ap = 5.45%         (TP = 1, FP = 6)
+class_id = 40, name = ganmodoki, ap = 17.53%     (TP = 2, FP = 2)
+class_id = 41, name = jiaozi, ap = 44.40%        (TP = 6, FP = 2)
+class_id = 42, name = stew, ap = 60.83%          (TP = 5, FP = 2)
+class_id = 43, name = teriyakigrilledfish, ap = 43.86%           (TP = 4, FP = 1)
+class_id = 44, name = friedfish, ap = 24.07%     (TP = 2, FP = 4)
+class_id = 45, name = grilledsalmon, ap = 35.08%         (TP = 4, FP = 6)
+class_id = 46, name = salmonmeuniere, ap = 13.67%        (TP = 1, FP = 5)
+class_id = 47, name = sashimi, ap = 41.02%       (TP = 3, FP = 2)
+class_id = 48, name = grilledpacificsaury, ap = 45.84%           (TP = 5, FP = 3)
+class_id = 49, name = sukiyaki, ap = 28.00%      (TP = 3, FP = 5)
+class_id = 50, name = sweetandsourpork, ap = 56.11%      (TP = 4, FP = 0)
+class_id = 51, name = lightlyroastedfish, ap = 21.23%            (TP = 1, FP = 1)
+class_id = 52, name = steamedegghotchpotch, ap = 56.56%          (TP = 5, FP = 4)
+class_id = 53, name = tempura, ap = 52.60%       (TP = 4, FP = 1)
+class_id = 54, name = friedchicken, ap = 26.44%          (TP = 4, FP = 8)
+class_id = 55, name = sirloincutlet, ap = 35.37%         (TP = 5, FP = 4)
+class_id = 56, name = nanbanzuke, ap = 28.42%            (TP = 1, FP = 1)
+class_id = 57, name = boiledfish, ap = 57.23%            (TP = 2, FP = 0)
+class_id = 58, name = seasonedbeefwithpotatoes, ap = 74.44%      (TP = 7, FP = 1)
+class_id = 59, name = hambargsteak, ap = 19.73%          (TP = 3, FP = 6)
+class_id = 60, name = steak, ap = 34.79%         (TP = 3, FP = 1)
+class_id = 61, name = driedfish, ap = 87.60%     (TP = 10, FP = 1)
+class_id = 62, name = gingerporksaute, ap = 29.10%       (TP = 1, FP = 4)
+class_id = 63, name = spicychili-flavoredtofu, ap = 68.00%       (TP = 5, FP = 1)
+class_id = 64, name = yakitori, ap = 34.77%      (TP = 3, FP = 1)
+class_id = 65, name = cabbageroll, ap = 54.93%           (TP = 3, FP = 0)
+class_id = 66, name = omelet, ap = 49.08%        (TP = 4, FP = 3)
+class_id = 67, name = eggsunny-sideup, ap = 35.97%       (TP = 6, FP = 8)
+class_id = 68, name = natto, ap = 52.23%         (TP = 7, FP = 11)
+class_id = 69, name = coldtofu, ap = 56.11%      (TP = 7, FP = 2)
+class_id = 70, name = eggroll, ap = 49.62%       (TP = 3, FP = 2)
+class_id = 71, name = chillednoodle, ap = 90.91%         (TP = 8, FP = 0)
+class_id = 72, name = stir-friedbeefandpeppers, ap = 69.09%      (TP = 5, FP = 1)
+class_id = 73, name = simmeredpork, ap = 83.85%          (TP = 4, FP = 0)
+class_id = 74, name = boiledchickenandvegetables, ap = 26.00%            (TP = 0, FP = 0)
+class_id = 75, name = sashimibowl, ap = 25.03%           (TP = 4, FP = 4)
+class_id = 76, name = sushibowl, ap = 38.89%     (TP = 4, FP = 0)
+class_id = 77, name = fish-shapedpancakewithbeanjam, ap = 70.00%         (TP = 5, FP = 0)
+class_id = 78, name = shrimpwithchillsource, ap = 72.56%         (TP = 5, FP = 0)
+class_id = 79, name = roastchicken, ap = 50.61%          (TP = 1, FP = 2)
+class_id = 80, name = steamedmeatdumpling, ap = 19.21%           (TP = 2, FP = 4)
+class_id = 81, name = omeletwithfriedrice, ap = 97.55%           (TP = 8, FP = 0)
+class_id = 82, name = cutletcurry, ap = 72.93%           (TP = 7, FP = 2)
+class_id = 83, name = spaghettimeatsauce, ap = 71.64%            (TP = 6, FP = 3)
+class_id = 84, name = friedshrimp, ap = 51.63%           (TP = 4, FP = 3)
+class_id = 85, name = potatosalad, ap = 54.98%           (TP = 3, FP = 2)
+class_id = 86, name = greensalad, ap = 8.97%     (TP = 3, FP = 26)
+class_id = 87, name = macaronisalad, ap = 35.00%         (TP = 4, FP = 5)
+class_id = 88, name = Japanesetofuandvegetablechowder, ap = 16.30%       (TP = 2, FP = 10)
+class_id = 89, name = porkmisosoup, ap = 17.33%          (TP = 1, FP = 3)
+class_id = 90, name = chinesesoup, ap = 16.52%           (TP = 3, FP = 4)
+class_id = 91, name = beefbowl, ap = 29.97%      (TP = 7, FP = 15)
+class_id = 92, name = kinpira-stylesauteedburdock, ap = 66.19%           (TP = 7, FP = 4)
+class_id = 93, name = riceball, ap = 37.32%      (TP = 4, FP = 4)
+class_id = 94, name = pizzatoast, ap = 78.89%            (TP = 8, FP = 1)
+class_id = 95, name = dippingnoodles, ap = 66.55%        (TP = 6, FP = 2)
+class_id = 96, name = hotdog, ap = 52.67%        (TP = 1, FP = 0)
+class_id = 97, name = frenchfries, ap = 31.16%           (TP = 3, FP = 9)
+class_id = 98, name = mixedrice, ap = 55.59%     (TP = 4, FP = 1)
+class_id = 99, name = goyachanpuru, ap = 71.21%          (TP = 4, FP = 2)
+class_id = 100, name = greencurry, ap = 35.00%           (TP = 2, FP = 0)
+class_id = 101, name = okinawasoba, ap = 65.16%          (TP = 6, FP = 2)
+class_id = 102, name = mangopudding, ap = 51.62%         (TP = 3, FP = 1)
+class_id = 103, name = almondjelly, ap = 66.55%          (TP = 5, FP = 1)
+class_id = 104, name = jjigae, ap = 86.06%       (TP = 7, FP = 1)
+class_id = 105, name = dakgalbi, ap = 85.96%     (TP = 7, FP = 1)
+class_id = 106, name = drycurry, ap = 70.42%     (TP = 7, FP = 3)
+class_id = 107, name = kamameshi, ap = 86.92%            (TP = 7, FP = 0)
+class_id = 108, name = ricevermicelli, ap = 81.82%       (TP = 7, FP = 0)
+class_id = 109, name = paella, ap = 64.14%       (TP = 4, FP = 1)
+class_id = 110, name = tanmen, ap = 33.97%       (TP = 2, FP = 5)
+class_id = 111, name = kushikatu, ap = 70.00%            (TP = 4, FP = 0)
+class_id = 112, name = yellowcurry, ap = 15.48%          (TP = 0, FP = 1)
+class_id = 113, name = pancake, ap = 82.73%      (TP = 8, FP = 2)
+class_id = 114, name = champon, ap = 60.78%      (TP = 7, FP = 4)
+class_id = 115, name = crape, ap = 11.82%        (TP = 0, FP = 0)
+class_id = 116, name = tiramisu, ap = 90.00%     (TP = 8, FP = 0)
+class_id = 117, name = waffle, ap = 33.33%       (TP = 3, FP = 1)
+class_id = 118, name = rarecheesecake, ap = 64.57%       (TP = 1, FP = 0)
+class_id = 119, name = shortcake, ap = 94.43%            (TP = 8, FP = 0)
+class_id = 120, name = chopsuey, ap = 40.00%     (TP = 4, FP = 1)
+class_id = 121, name = twicecookedpork, ap = 51.56%      (TP = 5, FP = 8)
+class_id = 122, name = mushroomrisotto, ap = 24.02%      (TP = 0, FP = 1)
+class_id = 123, name = samul, ap = 71.13%        (TP = 5, FP = 2)
+class_id = 124, name = zoni, ap = 47.70%         (TP = 4, FP = 3)
+class_id = 125, name = frenchtoast, ap = 47.47%          (TP = 2, FP = 0)
+class_id = 126, name = finewhitenoodles, ap = 65.29%     (TP = 3, FP = 0)
+class_id = 127, name = minestrone, ap = 71.97%           (TP = 6, FP = 2)
+class_id = 128, name = potaufeu, ap = 52.68%     (TP = 5, FP = 2)
+class_id = 129, name = chickennugget, ap = 41.39%        (TP = 3, FP = 2)
+class_id = 130, name = namero, ap = 62.60%       (TP = 5, FP = 1)
+class_id = 131, name = frenchbread, ap = 76.09%          (TP = 4, FP = 0)
+class_id = 132, name = ricegruel, ap = 78.15%            (TP = 8, FP = 1)
+class_id = 133, name = broiledeelbowl, ap = 65.14%       (TP = 5, FP = 5)
+class_id = 134, name = clearsoup, ap = 34.79%            (TP = 4, FP = 3)
+class_id = 135, name = yudofu, ap = 81.08%       (TP = 7, FP = 1)
+class_id = 136, name = mozuku, ap = 85.00%       (TP = 7, FP = 1)
+class_id = 137, name = inarizushi, ap = 53.14%           (TP = 5, FP = 2)
+class_id = 138, name = porkloincutlet, ap = 47.11%       (TP = 5, FP = 5)
+class_id = 139, name = porkfilletcutlet, ap = 61.65%     (TP = 4, FP = 2)
+class_id = 140, name = chickencutlet, ap = 26.99%        (TP = 1, FP = 1)
+class_id = 141, name = hamcutlet, ap = 38.45%            (TP = 3, FP = 1)
+class_id = 142, name = mincedmeatcutlet, ap = 58.44%     (TP = 6, FP = 3)
+class_id = 143, name = thinlyslicedrawhorsemeat, ap = 56.10%     (TP = 7, FP = 5)
+class_id = 144, name = bagel, ap = 72.38%        (TP = 6, FP = 1)
+class_id = 145, name = scone, ap = 42.08%        (TP = 4, FP = 3)
+class_id = 146, name = tortilla, ap = 17.73%     (TP = 0, FP = 0)
+class_id = 147, name = tacos, ap = 44.24%        (TP = 4, FP = 2)
+class_id = 148, name = nachos, ap = 36.98%       (TP = 2, FP = 1)
+class_id = 149, name = meatloaf, ap = 0.91%      (TP = 0, FP = 0)
+class_id = 150, name = scrambledegg, ap = 62.97%         (TP = 2, FP = 1)
+class_id = 151, name = ricegratin, ap = 77.17%           (TP = 7, FP = 1)
+class_id = 152, name = lasagna, ap = 33.33%      (TP = 1, FP = 2)
+class_id = 153, name = Caesarsalad, ap = 76.98%          (TP = 6, FP = 2)
+class_id = 154, name = oatmeal, ap = 41.99%      (TP = 3, FP = 1)
+class_id = 155, name = friedporkdumplingsservedinsoup, ap = 78.78%       (TP = 8, FP = 3)
+class_id = 156, name = oshiruko, ap = 88.01%     (TP = 8, FP = 3)
+class_id = 157, name = muffin, ap = 41.56%       (TP = 2, FP = 2)
+class_id = 158, name = popcorn, ap = 88.81%      (TP = 9, FP = 2)
+class_id = 159, name = creampuff, ap = 55.06%            (TP = 5, FP = 2)
+class_id = 160, name = doughnut, ap = 29.66%     (TP = 3, FP = 3)
+class_id = 161, name = applepie, ap = 25.24%     (TP = 2, FP = 3)
+class_id = 162, name = parfait, ap = 54.26%      (TP = 4, FP = 3)
+class_id = 163, name = friedporkinscoop, ap = 64.55%     (TP = 5, FP = 2)
+class_id = 164, name = lambkebabs, ap = 59.91%           (TP = 8, FP = 4)
+class_id = 165, name = dishconsistingofstir-friedpotato,eggplantandgreenpepper, ap = 72.92%      (TP = 6, FP = 1)
+class_id = 166, name = roastduck, ap = 58.33%            (TP = 4, FP = 1)
+class_id = 167, name = hotpot, ap = 15.58%       (TP = 0, FP = 2)
+class_id = 168, name = porkbelly, ap = 25.76%            (TP = 3, FP = 3)
+class_id = 169, name = xiaolongbao, ap = 75.97%          (TP = 6, FP = 1)
+class_id = 170, name = mooncake, ap = 68.74%     (TP = 4, FP = 1)
+class_id = 171, name = custardtart, ap = 100.00%         (TP = 9, FP = 1)
+class_id = 172, name = beefnoodlesoup, ap = 64.86%       (TP = 7, FP = 4)
+class_id = 173, name = porkcutlet, ap = 48.89%           (TP = 3, FP = 1)
+class_id = 174, name = mincedporkrice, ap = 91.89%       (TP = 10, FP = 4)
+class_id = 175, name = fishballsoup, ap = 81.82%         (TP = 7, FP = 0)
+class_id = 176, name = oysteromelette, ap = 74.17%       (TP = 6, FP = 1)
+class_id = 177, name = glutinousoilrice, ap = 75.00%     (TP = 10, FP = 2)
+class_id = 178, name = trunippudding, ap = 82.50%        (TP = 7, FP = 0)
+class_id = 179, name = stinkytofu, ap = 60.17%           (TP = 6, FP = 3)
+class_id = 180, name = lemonfigjelly, ap = 82.73%        (TP = 7, FP = 1)
+class_id = 181, name = khaosoi, ap = 50.05%      (TP = 5, FP = 4)
+class_id = 182, name = Sourprawnsoup, ap = 47.50%        (TP = 2, FP = 0)
+class_id = 183, name = Thaipapayasalad, ap = 79.49%      (TP = 8, FP = 0)
+class_id = 184, name = boned,slicedHainan-stylechickenwithmarinatedrice, ap = 60.23%     (TP = 3, FP = 1)
+class_id = 185, name = hotandsour,fishandvegetableragout, ap = 59.61%            (TP = 5, FP = 2)
+class_id = 186, name = stir-friedmixedvegetables, ap = 25.78%            (TP = 1, FP = 3)
+class_id = 187, name = beefinoystersauce, ap = 27.27%            (TP = 2, FP = 1)
+class_id = 188, name = porksatay, ap = 67.10%            (TP = 6, FP = 3)
+class_id = 189, name = spicychickensalad, ap = 27.50%            (TP = 2, FP = 1)
+class_id = 190, name = noodleswithfishcurry, ap = 16.67%         (TP = 1, FP = 0)
+class_id = 191, name = PorkStickyNoodles, ap = 69.80%            (TP = 7, FP = 3)
+class_id = 192, name = Porkwithlemon, ap = 27.28%        (TP = 1, FP = 0)
+class_id = 193, name = stewedporkleg, ap = 23.40%        (TP = 2, FP = 1)
+class_id = 194, name = charcoal-boiledporkneck, ap = 52.48%      (TP = 5, FP = 2)
+class_id = 195, name = friedmusselpancakes, ap = 64.50%          (TP = 3, FP = 0)
+class_id = 196, name = DeepFriedChickenWing, ap = 43.90%         (TP = 1, FP = 0)
+class_id = 197, name = Barbecuedredporkinsaucewithrice, ap = 64.41%      (TP = 5, FP = 3)
+class_id = 198, name = Ricewithroastduck, ap = 65.17%            (TP = 6, FP = 2)
+class_id = 199, name = Ricecrispypork, ap = 6.48%        (TP = 0, FP = 3)
+class_id = 200, name = Wontonsoup, ap = 50.21%           (TP = 6, FP = 6)
+class_id = 201, name = ChickenRiceCurryWithCoconut, ap = 61.67%          (TP = 1, FP = 0)
+class_id = 202, name = CrispyNoodles, ap = 60.51%        (TP = 5, FP = 0)
+class_id = 203, name = EggNoodleInChickenYellowCurry, ap = 36.19%        (TP = 1, FP = 5)
+class_id = 204, name = coconutmilksoup, ap = 45.51%      (TP = 4, FP = 3)
+class_id = 205, name = pho, ap = 58.80%          (TP = 7, FP = 4)
+class_id = 206, name = Huebeefricevermicellisoup, ap = 66.79%            (TP = 5, FP = 2)
+class_id = 207, name = Vermicellinoodleswithsnails, ap = 72.53%          (TP = 5, FP = 0)
+class_id = 208, name = Friedspringrolls, ap = 46.72%     (TP = 5, FP = 3)
+class_id = 209, name = Steamedriceroll, ap = 72.68%      (TP = 5, FP = 2)
+class_id = 210, name = Shrimppatties, ap = 34.44%        (TP = 3, FP = 1)
+class_id = 211, name = ballshapedbunwithpork, ap = 54.11%        (TP = 6, FP = 1)
+class_id = 212, name = Coconutmilk-flavoredcrepeswithshrimpandbeef, ap = 19.45%          (TP = 2, FP = 4)
+class_id = 213, name = Smallsteamedsavoryricepancake, ap = 99.09%        (TP = 8, FP = 0)
+class_id = 214, name = GlutinousRiceBalls, ap = 83.06%           (TP = 6, FP = 0)
+class_id = 215, name = locomoco, ap = 61.27%     (TP = 5, FP = 1)
+class_id = 216, name = haupia, ap = 57.55%       (TP = 3, FP = 1)
+class_id = 217, name = malasada, ap = 73.13%     (TP = 5, FP = 3)
+class_id = 218, name = laulau, ap = 74.51%       (TP = 7, FP = 0)
+class_id = 219, name = spammusubi, ap = 78.18%           (TP = 6, FP = 1)
+class_id = 220, name = oxtailsoup, ap = 20.90%           (TP = 2, FP = 3)
+class_id = 221, name = adobo, ap = 61.05%        (TP = 5, FP = 3)
+class_id = 222, name = lumpia, ap = 42.49%       (TP = 2, FP = 3)
+class_id = 223, name = brownie, ap = 57.58%      (TP = 4, FP = 1)
+class_id = 224, name = churro, ap = 56.48%       (TP = 4, FP = 1)
+class_id = 225, name = jambalaya, ap = 72.44%            (TP = 7, FP = 3)
+class_id = 226, name = nasigoreng, ap = 50.61%           (TP = 2, FP = 2)
+class_id = 227, name = ayamgoreng, ap = 35.25%           (TP = 3, FP = 4)
+class_id = 228, name = ayambakar, ap = 56.78%            (TP = 4, FP = 1)
+class_id = 229, name = buburayam, ap = 66.71%            (TP = 5, FP = 1)
+class_id = 230, name = gulai, ap = 29.75%        (TP = 4, FP = 3)
+class_id = 231, name = laksa, ap = 25.49%        (TP = 2, FP = 4)
+class_id = 232, name = mieayam, ap = 44.12%      (TP = 3, FP = 3)
+class_id = 233, name = miegoreng, ap = 41.82%            (TP = 3, FP = 1)
+class_id = 234, name = nasicampur, ap = 18.36%           (TP = 2, FP = 9)
+class_id = 235, name = nasipadang, ap = 50.32%           (TP = 3, FP = 0)
+class_id = 236, name = nasiuduk, ap = 52.28%     (TP = 3, FP = 1)
+class_id = 237, name = babiguling, ap = 59.02%           (TP = 7, FP = 3)
+class_id = 238, name = kayatoast, ap = 47.17%            (TP = 5, FP = 5)
+class_id = 239, name = bakkutteh, ap = 63.44%            (TP = 7, FP = 3)
+class_id = 240, name = currypuff, ap = 45.89%            (TP = 3, FP = 4)
+class_id = 241, name = chowmein, ap = 52.92%     (TP = 6, FP = 2)
+class_id = 242, name = zhajiangmian, ap = 63.24%         (TP = 6, FP = 4)
+class_id = 243, name = kungpaochicken, ap = 88.97%       (TP = 10, FP = 1)
+class_id = 244, name = crullers, ap = 74.20%     (TP = 4, FP = 0)
+class_id = 245, name = eggplantwithgarlicsauce, ap = 82.90%      (TP = 8, FP = 2)
+class_id = 246, name = threecupchicken, ap = 69.46%      (TP = 6, FP = 4)
+class_id = 247, name = beancurdfamilystyle, ap = 44.22%          (TP = 4, FP = 3)
+class_id = 248, name = salt&pepperfriedshrimpwithshell, ap = 54.17%      (TP = 7, FP = 2)
+class_id = 249, name = bakedsalmon, ap = 27.08%          (TP = 1, FP = 0)
+class_id = 250, name = braisedporkmeatballwithnapacabbage, ap = 73.48%           (TP = 8, FP = 0)
+class_id = 251, name = wintermelonsoup, ap = 74.44%      (TP = 7, FP = 1)
+class_id = 252, name = steamedspareribs, ap = 84.10%     (TP = 7, FP = 0)
+class_id = 253, name = chinesepumpkinpie, ap = 70.00%            (TP = 3, FP = 0)
+class_id = 254, name = eighttreasurerice, ap = 57.70%            (TP = 3, FP = 2)
+class_id = 255, name = hot&soursoup, ap = 45.83%         (TP = 4, FP = 2)
+
+ for conf_thresh = 0.25, precision = 0.63, recall = 0.40, F1-score = 0.49
+ for conf_thresh = 0.25, TP = 1246, FP = 724, FN = 1893, average IoU = 49.35 %
+
+ IoU threshold = 50 %, used Area-Under-Curve for each unique Recall
+ mean average precision (mAP@0.50) = 0.535937, or 53.59 %
+Total Detection Time: 61 Seconds
+
+Set -points flag:
+ `-points 101` for MS COCO
+ `-points 11` for PascalVOC 2007 (uncomment `difficult` in voc.data)
+ `-points 0` (AUC) for ImageNet, PascalVOC 2010-2012, your custom dataset
+
+C:\Users\sy\darknet-master\build\darknet\x64>darknet.exe detector test food/food256.data cfg/yolov3-tiny-food.cfg food/backup/yolov3-tiny-food_final.weights -map
+ CUDA-version: 10000 (11030), cuDNN: 7.6.5, CUDNN_HALF=1, GPU count: 1
+ CUDNN_HALF=1
+ OpenCV version: 3.4.0
+ 0 : compute_capability = 750, cudnn_half = 1, GPU: NVIDIA GeForce GTX 1660 SUPER
+net.optimized_memory = 0
+mini_batch = 1, batch = 8, time_steps = 1, train = 0
+   layer   filters  size/strd(dil)      input                output
+   0 Create CUDA-stream - 0
+ Create cudnn-handle 0
+conv     16       3 x 3/ 1    416 x 416 x   3 ->  416 x 416 x  16 0.150 BF
+   1 max                2x 2/ 2    416 x 416 x  16 ->  208 x 208 x  16 0.003 BF
+   2 conv     32       3 x 3/ 1    208 x 208 x  16 ->  208 x 208 x  32 0.399 BF
+   3 max                2x 2/ 2    208 x 208 x  32 ->  104 x 104 x  32 0.001 BF
+   4 conv     64       3 x 3/ 1    104 x 104 x  32 ->  104 x 104 x  64 0.399 BF
+   5 max                2x 2/ 2    104 x 104 x  64 ->   52 x  52 x  64 0.001 BF
+   6 conv    128       3 x 3/ 1     52 x  52 x  64 ->   52 x  52 x 128 0.399 BF
+   7 max                2x 2/ 2     52 x  52 x 128 ->   26 x  26 x 128 0.000 BF
+   8 conv    256       3 x 3/ 1     26 x  26 x 128 ->   26 x  26 x 256 0.399 BF
+   9 max                2x 2/ 2     26 x  26 x 256 ->   13 x  13 x 256 0.000 BF
+  10 conv    512       3 x 3/ 1     13 x  13 x 256 ->   13 x  13 x 512 0.399 BF
+  11 max                2x 2/ 1     13 x  13 x 512 ->   13 x  13 x 512 0.000 BF
+  12 conv   1024       3 x 3/ 1     13 x  13 x 512 ->   13 x  13 x1024 1.595 BF
+  13 conv    256       1 x 1/ 1     13 x  13 x1024 ->   13 x  13 x 256 0.089 BF
+  14 conv    512       3 x 3/ 1     13 x  13 x 256 ->   13 x  13 x 512 0.399 BF
+  15 conv    783       1 x 1/ 1     13 x  13 x 512 ->   13 x  13 x 783 0.136 BF
+  16 yolo
+[yolo] params: iou loss: mse (2), iou_norm: 0.75, obj_norm: 1.00, cls_norm: 1.00, delta_norm: 1.00, scale_x_y: 1.00
+  17 route  13                                     ->   13 x  13 x 256
+  18 conv    128       1 x 1/ 1     13 x  13 x 256 ->   13 x  13 x 128 0.011 BF
+  19 upsample                 2x    13 x  13 x 128 ->   26 x  26 x 128
+  20 route  19 8                                   ->   26 x  26 x 384
+  21 conv    256       3 x 3/ 1     26 x  26 x 384 ->   26 x  26 x 256 1.196 BF
+  22 conv    783       1 x 1/ 1     26 x  26 x 256 ->   26 x  26 x 783 0.271 BF
+  23 yolo
+[yolo] params: iou loss: mse (2), iou_norm: 0.75, obj_norm: 1.00, cls_norm: 1.00, delta_norm: 1.00, scale_x_y: 1.00
+Total BFLOPS 5.845
+avg_outputs = 378714
+ Allocate additional workspace_size = 52.43 MB
+Loading weights from food/backup/yolov3-tiny-food_final.weights...
+ seen 64, trained: 32768 K-images (512 Kilo-batches_64)
+Done! Loaded 24 layers from weights-file
+Enter Image Path: ^Z
+
+C:\Users\sy\darknet-master\build\darknet\x64>darknet.exe detector train food/food256.data cfg/yolov3-tiny-food.cfg food/backup/yolov3-tiny-food_final.weights -map
+ CUDA-version: 10000 (11030), cuDNN: 7.6.5, CUDNN_HALF=1, GPU count: 1
+ CUDNN_HALF=1
+ OpenCV version: 3.4.0
+ Prepare additional network for mAP calculation...
+ 0 : compute_capability = 750, cudnn_half = 1, GPU: NVIDIA GeForce GTX 1660 SUPER
+net.optimized_memory = 0
+mini_batch = 1, batch = 8, time_steps = 1, train = 0
+   layer   filters  size/strd(dil)      input                output
+   0 Create CUDA-stream - 0
+ Create cudnn-handle 0
+conv     16       3 x 3/ 1    416 x 416 x   3 ->  416 x 416 x  16 0.150 BF
+   1 max                2x 2/ 2    416 x 416 x  16 ->  208 x 208 x  16 0.003 BF
+   2 conv     32       3 x 3/ 1    208 x 208 x  16 ->  208 x 208 x  32 0.399 BF
+   3 max                2x 2/ 2    208 x 208 x  32 ->  104 x 104 x  32 0.001 BF
+   4 conv     64       3 x 3/ 1    104 x 104 x  32 ->  104 x 104 x  64 0.399 BF
+   5 max                2x 2/ 2    104 x 104 x  64 ->   52 x  52 x  64 0.001 BF
+   6 conv    128       3 x 3/ 1     52 x  52 x  64 ->   52 x  52 x 128 0.399 BF
+   7 max                2x 2/ 2     52 x  52 x 128 ->   26 x  26 x 128 0.000 BF
+   8 conv    256       3 x 3/ 1     26 x  26 x 128 ->   26 x  26 x 256 0.399 BF
+   9 max                2x 2/ 2     26 x  26 x 256 ->   13 x  13 x 256 0.000 BF
+  10 conv    512       3 x 3/ 1     13 x  13 x 256 ->   13 x  13 x 512 0.399 BF
+  11 max                2x 2/ 1     13 x  13 x 512 ->   13 x  13 x 512 0.000 BF
+  12 conv   1024       3 x 3/ 1     13 x  13 x 512 ->   13 x  13 x1024 1.595 BF
+  13 conv    256       1 x 1/ 1     13 x  13 x1024 ->   13 x  13 x 256 0.089 BF
+  14 conv    512       3 x 3/ 1     13 x  13 x 256 ->   13 x  13 x 512 0.399 BF
+  15 conv    783       1 x 1/ 1     13 x  13 x 512 ->   13 x  13 x 783 0.136 BF
+  16 yolo
+[yolo] params: iou loss: mse (2), iou_norm: 0.75, obj_norm: 1.00, cls_norm: 1.00, delta_norm: 1.00, scale_x_y: 1.00
+  17 route  13                                     ->   13 x  13 x 256
+  18 conv    128       1 x 1/ 1     13 x  13 x 256 ->   13 x  13 x 128 0.011 BF
+  19 upsample                 2x    13 x  13 x 128 ->   26 x  26 x 128
+  20 route  19 8                                   ->   26 x  26 x 384
+  21 conv    256       3 x 3/ 1     26 x  26 x 384 ->   26 x  26 x 256 1.196 BF
+  22 conv    783       1 x 1/ 1     26 x  26 x 256 ->   26 x  26 x 783 0.271 BF
+  23 yolo
+[yolo] params: iou loss: mse (2), iou_norm: 0.75, obj_norm: 1.00, cls_norm: 1.00, delta_norm: 1.00, scale_x_y: 1.00
+Total BFLOPS 5.845
+avg_outputs = 378714
+ Allocate additional workspace_size = 52.43 MB
+yolov3-tiny-food
+ 0 : compute_capability = 750, cudnn_half = 1, GPU: NVIDIA GeForce GTX 1660 SUPER
+net.optimized_memory = 0
+mini_batch = 8, batch = 64, time_steps = 1, train = 1
+   layer   filters  size/strd(dil)      input                output
+   0 conv     16       3 x 3/ 1    416 x 416 x   3 ->  416 x 416 x  16 0.150 BF
+   1 max                2x 2/ 2    416 x 416 x  16 ->  208 x 208 x  16 0.003 BF
+   2 conv     32       3 x 3/ 1    208 x 208 x  16 ->  208 x 208 x  32 0.399 BF
+   3 max                2x 2/ 2    208 x 208 x  32 ->  104 x 104 x  32 0.001 BF
+   4 conv     64       3 x 3/ 1    104 x 104 x  32 ->  104 x 104 x  64 0.399 BF
+   5 max                2x 2/ 2    104 x 104 x  64 ->   52 x  52 x  64 0.001 BF
+   6 conv    128       3 x 3/ 1     52 x  52 x  64 ->   52 x  52 x 128 0.399 BF
+   7 max                2x 2/ 2     52 x  52 x 128 ->   26 x  26 x 128 0.000 BF
+   8 conv    256       3 x 3/ 1     26 x  26 x 128 ->   26 x  26 x 256 0.399 BF
+   9 max                2x 2/ 2     26 x  26 x 256 ->   13 x  13 x 256 0.000 BF
+  10 conv    512       3 x 3/ 1     13 x  13 x 256 ->   13 x  13 x 512 0.399 BF
+  11 max                2x 2/ 1     13 x  13 x 512 ->   13 x  13 x 512 0.000 BF
+  12 conv   1024       3 x 3/ 1     13 x  13 x 512 ->   13 x  13 x1024 1.595 BF
+  13 conv    256       1 x 1/ 1     13 x  13 x1024 ->   13 x  13 x 256 0.089 BF
+  14 conv    512       3 x 3/ 1     13 x  13 x 256 ->   13 x  13 x 512 0.399 BF
+  15 conv    783       1 x 1/ 1     13 x  13 x 512 ->   13 x  13 x 783 0.136 BF
+  16 yolo
+[yolo] params: iou loss: mse (2), iou_norm: 0.75, obj_norm: 1.00, cls_norm: 1.00, delta_norm: 1.00, scale_x_y: 1.00
+  17 route  13                                     ->   13 x  13 x 256
+  18 conv    128       1 x 1/ 1     13 x  13 x 256 ->   13 x  13 x 128 0.011 BF
+  19 upsample                 2x    13 x  13 x 128 ->   26 x  26 x 128
+  20 route  19 8                                   ->   26 x  26 x 384
+  21 conv    256       3 x 3/ 1     26 x  26 x 384 ->   26 x  26 x 256 1.196 BF
+  22 conv    783       1 x 1/ 1     26 x  26 x 256 ->   26 x  26 x 783 0.271 BF
+  23 yolo
+[yolo] params: iou loss: mse (2), iou_norm: 0.75, obj_norm: 1.00, cls_norm: 1.00, delta_norm: 1.00, scale_x_y: 1.00
+Total BFLOPS 5.845
+avg_outputs = 378714
+ Allocate additional workspace_size = 89.65 MB
+Loading weights from food/backup/yolov3-tiny-food_final.weights...
+ seen 64, trained: 32768 K-images (512 Kilo-batches_64)
+Done! Loaded 24 layers from weights-file
+Learning Rate: 0.001, Momentum: 0.9, Decay: 0.0005
+ Detection layer: 16 - type = 28
+ Detection layer: 23 - type = 28
+ If error occurs - run training with flag: -dont_show
+Saving weights to food/backup/yolov3-tiny-food_final.weights
+ Create 6 permanent cpu-threads
+If you want to train from the beginning, then use flag in the end of training command: -clear
+
+C:\Users\sy\darknet-master\build\darknet\x64>darknet.exe detector map food/food256.data cfg/yolov3-tiny-food.cfg food/backup/yolov3-tiny-food_final.weights -iou_thresh 0.75
+ CUDA-version: 10000 (11030), cuDNN: 7.6.5, CUDNN_HALF=1, GPU count: 1
+ CUDNN_HALF=1
+ OpenCV version: 3.4.0
+ 0 : compute_capability = 750, cudnn_half = 1, GPU: NVIDIA GeForce GTX 1660 SUPER
+net.optimized_memory = 0
+mini_batch = 1, batch = 8, time_steps = 1, train = 0
+   layer   filters  size/strd(dil)      input                output
+   0 Create CUDA-stream - 0
+ Create cudnn-handle 0
+conv     16       3 x 3/ 1    416 x 416 x   3 ->  416 x 416 x  16 0.150 BF
+   1 max                2x 2/ 2    416 x 416 x  16 ->  208 x 208 x  16 0.003 BF
+   2 conv     32       3 x 3/ 1    208 x 208 x  16 ->  208 x 208 x  32 0.399 BF
+   3 max                2x 2/ 2    208 x 208 x  32 ->  104 x 104 x  32 0.001 BF
+   4 conv     64       3 x 3/ 1    104 x 104 x  32 ->  104 x 104 x  64 0.399 BF
+   5 max                2x 2/ 2    104 x 104 x  64 ->   52 x  52 x  64 0.001 BF
+   6 conv    128       3 x 3/ 1     52 x  52 x  64 ->   52 x  52 x 128 0.399 BF
+   7 max                2x 2/ 2     52 x  52 x 128 ->   26 x  26 x 128 0.000 BF
+   8 conv    256       3 x 3/ 1     26 x  26 x 128 ->   26 x  26 x 256 0.399 BF
+   9 max                2x 2/ 2     26 x  26 x 256 ->   13 x  13 x 256 0.000 BF
+  10 conv    512       3 x 3/ 1     13 x  13 x 256 ->   13 x  13 x 512 0.399 BF
+  11 max                2x 2/ 1     13 x  13 x 512 ->   13 x  13 x 512 0.000 BF
+  12 conv   1024       3 x 3/ 1     13 x  13 x 512 ->   13 x  13 x1024 1.595 BF
+  13 conv    256       1 x 1/ 1     13 x  13 x1024 ->   13 x  13 x 256 0.089 BF
+  14 conv    512       3 x 3/ 1     13 x  13 x 256 ->   13 x  13 x 512 0.399 BF
+  15 conv    783       1 x 1/ 1     13 x  13 x 512 ->   13 x  13 x 783 0.136 BF
+  16 yolo
+[yolo] params: iou loss: mse (2), iou_norm: 0.75, obj_norm: 1.00, cls_norm: 1.00, delta_norm: 1.00, scale_x_y: 1.00
+  17 route  13                                     ->   13 x  13 x 256
+  18 conv    128       1 x 1/ 1     13 x  13 x 256 ->   13 x  13 x 128 0.011 BF
+  19 upsample                 2x    13 x  13 x 128 ->   26 x  26 x 128
+  20 route  19 8                                   ->   26 x  26 x 384
+  21 conv    256       3 x 3/ 1     26 x  26 x 384 ->   26 x  26 x 256 1.196 BF
+  22 conv    783       1 x 1/ 1     26 x  26 x 256 ->   26 x  26 x 783 0.271 BF
+  23 yolo
+[yolo] params: iou loss: mse (2), iou_norm: 0.75, obj_norm: 1.00, cls_norm: 1.00, delta_norm: 1.00, scale_x_y: 1.00
+Total BFLOPS 5.845
+avg_outputs = 378714
+ Allocate additional workspace_size = 52.43 MB
+Loading weights from food/backup/yolov3-tiny-food_final.weights...
+ seen 64, trained: 32768 K-images (512 Kilo-batches_64)
+Done! Loaded 24 layers from weights-file
+
+ calculation mAP (mean average precision)...
+ Detection layer: 16 - type = 28
+ Detection layer: 23 - type = 28
+3140
+ detections_count = 7898, unique_truth_count = 3139
+class_id = 0, name = rice, ap = 18.77%           (TP = 12, FP = 54)
+class_id = 1, name = eelsonrice, ap = 71.79%     (TP = 10, FP = 3)
+class_id = 2, name = pilaf, ap = 26.98%          (TP = 4, FP = 3)
+class_id = 3, name = chicken-'n'-eggonrice, ap = 39.90%          (TP = 4, FP = 2)
+class_id = 4, name = porkcutletonrice, ap = 38.05%       (TP = 6, FP = 6)
+class_id = 5, name = beefcurry, ap = 40.13%      (TP = 10, FP = 11)
+class_id = 6, name = sushi, ap = 28.36%          (TP = 3, FP = 0)
+class_id = 7, name = chickenrice, ap = 1.11%     (TP = 0, FP = 8)
+class_id = 8, name = friedrice, ap = 48.94%      (TP = 9, FP = 5)
+class_id = 9, name = tempurabowl, ap = 47.77%            (TP = 6, FP = 3)
+class_id = 10, name = bibimbap, ap = 16.16%      (TP = 4, FP = 5)
+class_id = 11, name = toast, ap = 24.21%         (TP = 8, FP = 6)
+class_id = 12, name = croissant, ap = 20.83%     (TP = 3, FP = 3)
+class_id = 13, name = rollbread, ap = 12.73%     (TP = 2, FP = 4)
+class_id = 14, name = raisinbread, ap = 9.96%            (TP = 1, FP = 3)
+class_id = 15, name = chipbutty, ap = 24.23%     (TP = 4, FP = 3)
+class_id = 16, name = hamburger, ap = 45.32%     (TP = 13, FP = 7)
+class_id = 17, name = pizza, ap = 22.14%         (TP = 2, FP = 4)
+class_id = 18, name = sandwiches, ap = 26.85%            (TP = 4, FP = 3)
+class_id = 19, name = udonnoodle, ap = 60.05%            (TP = 11, FP = 7)
+class_id = 20, name = tempuraudon, ap = 19.64%           (TP = 4, FP = 8)
+class_id = 21, name = sobanoodle, ap = 41.52%            (TP = 8, FP = 5)
+class_id = 22, name = ramennoodle, ap = 54.73%           (TP = 20, FP = 12)
+class_id = 23, name = beefnoodle, ap = 10.71%            (TP = 1, FP = 5)
+class_id = 24, name = tensinnoodle, ap = 62.04%          (TP = 6, FP = 0)
+class_id = 25, name = friednoodle, ap = 14.57%           (TP = 4, FP = 6)
+class_id = 26, name = spaghetti, ap = 23.16%     (TP = 6, FP = 8)
+class_id = 27, name = Japanese-stylepancake, ap = 8.81%          (TP = 3, FP = 8)
+class_id = 28, name = takoyaki, ap = 14.29%      (TP = 3, FP = 4)
+class_id = 29, name = gratin, ap = 15.15%        (TP = 3, FP = 6)
+class_id = 30, name = sauteedvegetables, ap = 2.78%      (TP = 0, FP = 1)
+class_id = 31, name = croquette, ap = 36.26%     (TP = 5, FP = 3)
+class_id = 32, name = grilledeggplant, ap = 0.83%        (TP = 0, FP = 2)
+class_id = 33, name = sauteedspinach, ap = 27.50%        (TP = 3, FP = 2)
+class_id = 34, name = vegetabletempura, ap = 35.95%      (TP = 4, FP = 2)
+class_id = 35, name = misosoup, ap = 25.33%      (TP = 26, FP = 79)
+class_id = 36, name = potage, ap = 53.38%        (TP = 5, FP = 1)
+class_id = 37, name = sausage, ap = 11.67%       (TP = 1, FP = 3)
+class_id = 38, name = oden, ap = 5.90%           (TP = 1, FP = 3)
+class_id = 39, name = omelet, ap = 2.42%         (TP = 0, FP = 7)
+class_id = 40, name = ganmodoki, ap = 1.30%      (TP = 0, FP = 4)
+class_id = 41, name = jiaozi, ap = 1.96%         (TP = 1, FP = 7)
+class_id = 42, name = stew, ap = 60.83%          (TP = 5, FP = 2)
+class_id = 43, name = teriyakigrilledfish, ap = 9.09%            (TP = 1, FP = 4)
+class_id = 44, name = friedfish, ap = 9.72%      (TP = 1, FP = 5)
+class_id = 45, name = grilledsalmon, ap = 2.01%          (TP = 1, FP = 9)
+class_id = 46, name = salmonmeuniere, ap = 1.43%         (TP = 0, FP = 6)
+class_id = 47, name = sashimi, ap = 16.63%       (TP = 1, FP = 4)
+class_id = 48, name = grilledpacificsaury, ap = 15.34%           (TP = 3, FP = 5)
+class_id = 49, name = sukiyaki, ap = 26.40%      (TP = 3, FP = 5)
+class_id = 50, name = sweetandsourpork, ap = 38.33%      (TP = 3, FP = 1)
+class_id = 51, name = lightlyroastedfish, ap = 4.82%     (TP = 0, FP = 2)
+class_id = 52, name = steamedegghotchpotch, ap = 24.88%          (TP = 3, FP = 6)
+class_id = 53, name = tempura, ap = 4.89%        (TP = 1, FP = 4)
+class_id = 54, name = friedchicken, ap = 4.39%           (TP = 1, FP = 11)
+class_id = 55, name = sirloincutlet, ap = 25.73%         (TP = 4, FP = 5)
+class_id = 56, name = nanbanzuke, ap = 4.55%     (TP = 1, FP = 1)
+class_id = 57, name = boiledfish, ap = 14.00%            (TP = 1, FP = 1)
+class_id = 58, name = seasonedbeefwithpotatoes, ap = 32.62%      (TP = 5, FP = 3)
+class_id = 59, name = hambargsteak, ap = 12.99%          (TP = 2, FP = 7)
+class_id = 60, name = steak, ap = 32.73%         (TP = 3, FP = 1)
+class_id = 61, name = driedfish, ap = 46.97%     (TP = 6, FP = 5)
+class_id = 62, name = gingerporksaute, ap = 3.46%        (TP = 0, FP = 5)
+class_id = 63, name = spicychili-flavoredtofu, ap = 35.03%       (TP = 3, FP = 3)
+class_id = 64, name = yakitori, ap = 16.36%      (TP = 2, FP = 2)
+class_id = 65, name = cabbageroll, ap = 9.61%            (TP = 0, FP = 3)
+class_id = 66, name = omelet, ap = 13.88%        (TP = 2, FP = 5)
+class_id = 67, name = eggsunny-sideup, ap = 15.61%       (TP = 5, FP = 9)
+class_id = 68, name = natto, ap = 42.15%         (TP = 7, FP = 11)
+class_id = 69, name = coldtofu, ap = 6.56%       (TP = 2, FP = 7)
+class_id = 70, name = eggroll, ap = 3.03%        (TP = 1, FP = 4)
+class_id = 71, name = chillednoodle, ap = 59.70%         (TP = 6, FP = 2)
+class_id = 72, name = stir-friedbeefandpeppers, ap = 45.64%      (TP = 4, FP = 2)
+class_id = 73, name = simmeredpork, ap = 28.72%          (TP = 3, FP = 1)
+class_id = 74, name = boiledchickenandvegetables, ap = 5.00%     (TP = 0, FP = 0)
+class_id = 75, name = sashimibowl, ap = 14.01%           (TP = 3, FP = 5)
+class_id = 76, name = sushibowl, ap = 9.09%      (TP = 2, FP = 2)
+class_id = 77, name = fish-shapedpancakewithbeanjam, ap = 15.20%         (TP = 2, FP = 3)
+class_id = 78, name = shrimpwithchillsource, ap = 54.10%         (TP = 4, FP = 1)
+class_id = 79, name = roastchicken, ap = 10.91%          (TP = 1, FP = 2)
+class_id = 80, name = steamedmeatdumpling, ap = 8.33%            (TP = 1, FP = 5)
+class_id = 81, name = omeletwithfriedrice, ap = 51.35%           (TP = 6, FP = 2)
+class_id = 82, name = cutletcurry, ap = 35.85%           (TP = 5, FP = 4)
+class_id = 83, name = spaghettimeatsauce, ap = 45.00%            (TP = 5, FP = 4)
+class_id = 84, name = friedshrimp, ap = 29.58%           (TP = 4, FP = 3)
+class_id = 85, name = potatosalad, ap = 39.74%           (TP = 2, FP = 3)
+class_id = 86, name = greensalad, ap = 4.02%     (TP = 1, FP = 28)
+class_id = 87, name = macaronisalad, ap = 18.67%         (TP = 3, FP = 6)
+class_id = 88, name = Japanesetofuandvegetablechowder, ap = 10.30%       (TP = 2, FP = 10)
+class_id = 89, name = porkmisosoup, ap = 7.44%           (TP = 0, FP = 4)
+class_id = 90, name = chinesesoup, ap = 13.04%           (TP = 3, FP = 4)
+class_id = 91, name = beefbowl, ap = 25.29%      (TP = 6, FP = 16)
+class_id = 92, name = kinpira-stylesauteedburdock, ap = 1.40%            (TP = 0, FP = 11)
+class_id = 93, name = riceball, ap = 14.33%      (TP = 2, FP = 6)
+class_id = 94, name = pizzatoast, ap = 78.89%            (TP = 8, FP = 1)
+class_id = 95, name = dippingnoodles, ap = 16.92%        (TP = 3, FP = 5)
+class_id = 96, name = hotdog, ap = 34.00%        (TP = 1, FP = 0)
+class_id = 97, name = frenchfries, ap = 15.35%           (TP = 3, FP = 9)
+class_id = 98, name = mixedrice, ap = 31.49%     (TP = 3, FP = 2)
+class_id = 99, name = goyachanpuru, ap = 53.79%          (TP = 4, FP = 2)
+class_id = 100, name = greencurry, ap = 24.29%           (TP = 2, FP = 0)
+class_id = 101, name = okinawasoba, ap = 16.29%          (TP = 3, FP = 5)
+class_id = 102, name = mangopudding, ap = 27.27%         (TP = 3, FP = 1)
+class_id = 103, name = almondjelly, ap = 12.00%          (TP = 2, FP = 4)
+class_id = 104, name = jjigae, ap = 20.00%       (TP = 2, FP = 6)
+class_id = 105, name = dakgalbi, ap = 67.78%     (TP = 6, FP = 2)
+class_id = 106, name = drycurry, ap = 34.17%     (TP = 4, FP = 6)
+class_id = 107, name = kamameshi, ap = 59.67%            (TP = 6, FP = 1)
+class_id = 108, name = ricevermicelli, ap = 24.04%       (TP = 3, FP = 4)
+class_id = 109, name = paella, ap = 39.17%       (TP = 3, FP = 2)
+class_id = 110, name = tanmen, ap = 13.42%       (TP = 1, FP = 6)
+class_id = 111, name = kushikatu, ap = 16.02%            (TP = 2, FP = 2)
+class_id = 112, name = yellowcurry, ap = 0.71%           (TP = 0, FP = 1)
+class_id = 113, name = pancake, ap = 20.42%      (TP = 3, FP = 7)
+class_id = 114, name = champon, ap = 38.64%      (TP = 6, FP = 5)
+class_id = 115, name = crape, ap = 2.02%         (TP = 0, FP = 0)
+class_id = 116, name = tiramisu, ap = 70.00%     (TP = 7, FP = 1)
+class_id = 117, name = waffle, ap = 27.27%       (TP = 3, FP = 1)
+class_id = 118, name = rarecheesecake, ap = 11.36%       (TP = 0, FP = 1)
+class_id = 119, name = shortcake, ap = 18.00%            (TP = 3, FP = 5)
+class_id = 120, name = chopsuey, ap = 20.00%     (TP = 2, FP = 3)
+class_id = 121, name = twicecookedpork, ap = 39.56%      (TP = 4, FP = 9)
+class_id = 122, name = mushroomrisotto, ap = 4.80%       (TP = 0, FP = 1)
+class_id = 123, name = samul, ap = 21.67%        (TP = 3, FP = 4)
+class_id = 124, name = zoni, ap = 26.70%         (TP = 3, FP = 4)
+class_id = 125, name = frenchtoast, ap = 19.90%          (TP = 1, FP = 1)
+class_id = 126, name = finewhitenoodles, ap = 23.50%     (TP = 2, FP = 1)
+class_id = 127, name = minestrone, ap = 49.58%           (TP = 5, FP = 3)
+class_id = 128, name = potaufeu, ap = 9.72%      (TP = 2, FP = 5)
+class_id = 129, name = chickennugget, ap = 10.00%        (TP = 2, FP = 3)
+class_id = 130, name = namero, ap = 33.33%       (TP = 4, FP = 2)
+class_id = 131, name = frenchbread, ap = 76.09%          (TP = 4, FP = 0)
+class_id = 132, name = ricegruel, ap = 28.18%            (TP = 4, FP = 5)
+class_id = 133, name = broiledeelbowl, ap = 28.26%       (TP = 3, FP = 7)
+class_id = 134, name = clearsoup, ap = 18.18%            (TP = 2, FP = 5)
+class_id = 135, name = yudofu, ap = 43.89%       (TP = 5, FP = 3)
+class_id = 136, name = mozuku, ap = 46.17%       (TP = 4, FP = 4)
+class_id = 137, name = inarizushi, ap = 26.77%           (TP = 3, FP = 4)
+class_id = 138, name = porkloincutlet, ap = 23.52%       (TP = 3, FP = 7)
+class_id = 139, name = porkfilletcutlet, ap = 27.89%     (TP = 2, FP = 4)
+class_id = 140, name = chickencutlet, ap = 15.00%        (TP = 1, FP = 1)
+class_id = 141, name = hamcutlet, ap = 24.67%            (TP = 3, FP = 1)
+class_id = 142, name = mincedmeatcutlet, ap = 13.89%     (TP = 2, FP = 7)
+class_id = 143, name = thinlyslicedrawhorsemeat, ap = 16.86%     (TP = 2, FP = 10)
+class_id = 144, name = bagel, ap = 22.08%        (TP = 3, FP = 4)
+class_id = 145, name = scone, ap = 4.17%         (TP = 1, FP = 6)
+class_id = 146, name = tortilla, ap = 2.50%      (TP = 0, FP = 0)
+class_id = 147, name = tacos, ap = 20.91%        (TP = 2, FP = 4)
+class_id = 148, name = nachos, ap = 28.89%       (TP = 2, FP = 1)
+class_id = 149, name = meatloaf, ap = 0.00%      (TP = 0, FP = 0)
+class_id = 150, name = scrambledegg, ap = 36.67%         (TP = 2, FP = 1)
+class_id = 151, name = ricegratin, ap = 18.18%           (TP = 2, FP = 6)
+class_id = 152, name = lasagna, ap = 4.55%       (TP = 1, FP = 2)
+class_id = 153, name = Caesarsalad, ap = 37.11%          (TP = 4, FP = 4)
+class_id = 154, name = oatmeal, ap = 19.81%      (TP = 2, FP = 2)
+class_id = 155, name = friedporkdumplingsservedinsoup, ap = 29.76%       (TP = 4, FP = 7)
+class_id = 156, name = oshiruko, ap = 24.00%     (TP = 4, FP = 7)
+class_id = 157, name = muffin, ap = 27.22%       (TP = 2, FP = 2)
+class_id = 158, name = popcorn, ap = 12.12%      (TP = 3, FP = 8)
+class_id = 159, name = creampuff, ap = 12.12%            (TP = 1, FP = 6)
+class_id = 160, name = doughnut, ap = 8.18%      (TP = 2, FP = 4)
+class_id = 161, name = applepie, ap = 2.50%      (TP = 1, FP = 4)
+class_id = 162, name = parfait, ap = 16.00%      (TP = 1, FP = 6)
+class_id = 163, name = friedporkinscoop, ap = 47.42%     (TP = 4, FP = 3)
+class_id = 164, name = lambkebabs, ap = 23.23%           (TP = 5, FP = 7)
+class_id = 165, name = dishconsistingofstir-friedpotato,eggplantandgreenpepper, ap = 29.51%      (TP = 4, FP = 3)
+class_id = 166, name = roastduck, ap = 26.89%            (TP = 3, FP = 2)
+class_id = 167, name = hotpot, ap = 8.20%        (TP = 0, FP = 2)
+class_id = 168, name = porkbelly, ap = 9.09%     (TP = 1, FP = 5)
+class_id = 169, name = xiaolongbao, ap = 41.67%          (TP = 5, FP = 2)
+class_id = 170, name = mooncake, ap = 15.00%     (TP = 2, FP = 3)
+class_id = 171, name = custardtart, ap = 35.71%          (TP = 4, FP = 6)
+class_id = 172, name = beefnoodlesoup, ap = 38.06%       (TP = 5, FP = 6)
+class_id = 173, name = porkcutlet, ap = 41.13%           (TP = 3, FP = 1)
+class_id = 174, name = mincedporkrice, ap = 69.11%       (TP = 8, FP = 6)
+class_id = 175, name = fishballsoup, ap = 42.58%         (TP = 4, FP = 3)
+class_id = 176, name = oysteromelette, ap = 67.50%       (TP = 6, FP = 1)
+class_id = 177, name = glutinousoilrice, ap = 46.53%     (TP = 7, FP = 5)
+class_id = 178, name = trunippudding, ap = 18.29%        (TP = 3, FP = 4)
+class_id = 179, name = stinkytofu, ap = 60.17%           (TP = 6, FP = 3)
+class_id = 180, name = lemonfigjelly, ap = 34.47%        (TP = 3, FP = 5)
+class_id = 181, name = khaosoi, ap = 34.21%      (TP = 4, FP = 5)
+class_id = 182, name = Sourprawnsoup, ap = 2.50%         (TP = 0, FP = 2)
+class_id = 183, name = Thaipapayasalad, ap = 46.53%      (TP = 6, FP = 2)
+class_id = 184, name = boned,slicedHainan-stylechickenwithmarinatedrice, ap = 11.11%     (TP = 2, FP = 2)
+class_id = 185, name = hotandsour,fishandvegetableragout, ap = 47.82%            (TP = 5, FP = 2)
+class_id = 186, name = stir-friedmixedvegetables, ap = 7.14%     (TP = 1, FP = 3)
+class_id = 187, name = beefinoystersauce, ap = 11.52%            (TP = 1, FP = 2)
+class_id = 188, name = porksatay, ap = 37.01%            (TP = 4, FP = 5)
+class_id = 189, name = spicychickensalad, ap = 15.00%            (TP = 1, FP = 2)
+class_id = 190, name = noodleswithfishcurry, ap = 16.67%         (TP = 1, FP = 0)
+class_id = 191, name = PorkStickyNoodles, ap = 31.44%            (TP = 4, FP = 6)
+class_id = 192, name = Porkwithlemon, ap = 0.00%         (TP = 0, FP = 1)
+class_id = 193, name = stewedporkleg, ap = 20.61%        (TP = 2, FP = 1)
+class_id = 194, name = charcoal-boiledporkneck, ap = 16.90%      (TP = 3, FP = 4)
+class_id = 195, name = friedmusselpancakes, ap = 26.00%          (TP = 1, FP = 2)
+class_id = 196, name = DeepFriedChickenWing, ap = 17.48%         (TP = 1, FP = 0)
+class_id = 197, name = Barbecuedredporkinsaucewithrice, ap = 31.44%      (TP = 5, FP = 3)
+class_id = 198, name = Ricewithroastduck, ap = 9.09%     (TP = 2, FP = 6)
+class_id = 199, name = Ricecrispypork, ap = 4.75%        (TP = 0, FP = 3)
+class_id = 200, name = Wontonsoup, ap = 14.93%           (TP = 3, FP = 9)
+class_id = 201, name = ChickenRiceCurryWithCoconut, ap = 36.94%          (TP = 1, FP = 0)
+class_id = 202, name = CrispyNoodles, ap = 42.50%        (TP = 4, FP = 1)
+class_id = 203, name = EggNoodleInChickenYellowCurry, ap = 5.31%         (TP = 0, FP = 6)
+class_id = 204, name = coconutmilksoup, ap = 21.97%      (TP = 3, FP = 4)
+class_id = 205, name = pho, ap = 47.92%          (TP = 6, FP = 5)
+class_id = 206, name = Huebeefricevermicellisoup, ap = 48.66%            (TP = 5, FP = 2)
+class_id = 207, name = Vermicellinoodleswithsnails, ap = 72.53%          (TP = 5, FP = 0)
+class_id = 208, name = Friedspringrolls, ap = 16.67%     (TP = 3, FP = 5)
+class_id = 209, name = Steamedriceroll, ap = 27.27%      (TP = 3, FP = 4)
+class_id = 210, name = Shrimppatties, ap = 30.00%        (TP = 3, FP = 1)
+class_id = 211, name = ballshapedbunwithpork, ap = 14.88%        (TP = 3, FP = 4)
+class_id = 212, name = Coconutmilk-flavoredcrepeswithshrimpandbeef, ap = 2.27%           (TP = 1, FP = 5)
+class_id = 213, name = Smallsteamedsavoryricepancake, ap = 49.74%        (TP = 5, FP = 3)
+class_id = 214, name = GlutinousRiceBalls, ap = 30.77%           (TP = 3, FP = 3)
+class_id = 215, name = locomoco, ap = 38.99%     (TP = 4, FP = 2)
+class_id = 216, name = haupia, ap = 20.66%       (TP = 2, FP = 2)
+class_id = 217, name = malasada, ap = 23.64%     (TP = 2, FP = 6)
+class_id = 218, name = laulau, ap = 5.13%        (TP = 1, FP = 6)
+class_id = 219, name = spammusubi, ap = 24.04%           (TP = 3, FP = 4)
+class_id = 220, name = oxtailsoup, ap = 6.08%            (TP = 1, FP = 4)
+class_id = 221, name = adobo, ap = 41.07%        (TP = 4, FP = 4)
+class_id = 222, name = lumpia, ap = 22.73%       (TP = 2, FP = 3)
+class_id = 223, name = brownie, ap = 4.17%       (TP = 1, FP = 4)
+class_id = 224, name = churro, ap = 0.83%        (TP = 0, FP = 5)
+class_id = 225, name = jambalaya, ap = 43.49%            (TP = 4, FP = 6)
+class_id = 226, name = nasigoreng, ap = 12.99%           (TP = 2, FP = 2)
+class_id = 227, name = ayamgoreng, ap = 10.16%           (TP = 1, FP = 6)
+class_id = 228, name = ayambakar, ap = 0.00%     (TP = 0, FP = 5)
+class_id = 229, name = buburayam, ap = 43.12%            (TP = 4, FP = 2)
+class_id = 230, name = gulai, ap = 6.67%         (TP = 2, FP = 5)
+class_id = 231, name = laksa, ap = 13.74%        (TP = 1, FP = 5)
+class_id = 232, name = mieayam, ap = 27.92%      (TP = 2, FP = 4)
+class_id = 233, name = miegoreng, ap = 7.60%     (TP = 1, FP = 3)
+class_id = 234, name = nasicampur, ap = 5.13%            (TP = 0, FP = 11)
+class_id = 235, name = nasipadang, ap = 28.33%           (TP = 2, FP = 1)
+class_id = 236, name = nasiuduk, ap = 10.49%     (TP = 1, FP = 3)
+class_id = 237, name = babiguling, ap = 59.02%           (TP = 7, FP = 3)
+class_id = 238, name = kayatoast, ap = 10.39%            (TP = 1, FP = 9)
+class_id = 239, name = bakkutteh, ap = 33.30%            (TP = 4, FP = 6)
+class_id = 240, name = currypuff, ap = 31.55%            (TP = 3, FP = 4)
+class_id = 241, name = chowmein, ap = 50.00%     (TP = 6, FP = 2)
+class_id = 242, name = zhajiangmian, ap = 20.45%         (TP = 3, FP = 7)
+class_id = 243, name = kungpaochicken, ap = 54.04%       (TP = 7, FP = 4)
+class_id = 244, name = crullers, ap = 33.75%     (TP = 3, FP = 1)
+class_id = 245, name = eggplantwithgarlicsauce, ap = 60.28%      (TP = 6, FP = 4)
+class_id = 246, name = threecupchicken, ap = 33.01%      (TP = 3, FP = 7)
+class_id = 247, name = beancurdfamilystyle, ap = 44.22%          (TP = 4, FP = 3)
+class_id = 248, name = salt&pepperfriedshrimpwithshell, ap = 54.17%      (TP = 7, FP = 2)
+class_id = 249, name = bakedsalmon, ap = 5.00%           (TP = 0, FP = 1)
+class_id = 250, name = braisedporkmeatballwithnapacabbage, ap = 40.28%           (TP = 5, FP = 3)
+class_id = 251, name = wintermelonsoup, ap = 15.28%      (TP = 2, FP = 6)
+class_id = 252, name = steamedspareribs, ap = 51.24%     (TP = 6, FP = 1)
+class_id = 253, name = chinesepumpkinpie, ap = 50.00%            (TP = 3, FP = 0)
+class_id = 254, name = eighttreasurerice, ap = 24.93%            (TP = 2, FP = 3)
+class_id = 255, name = hot&soursoup, ap = 24.46%         (TP = 3, FP = 3)
+
+ for conf_thresh = 0.25, precision = 0.41, recall = 0.26, F1-score = 0.32
+ for conf_thresh = 0.25, TP = 815, FP = 1155, FN = 2324, average IoU = 34.47 %
+
+ IoU threshold = 75 %, used Area-Under-Curve for each unique Recall
+ mean average precision (mAP@0.75) = 0.254660, or 25.47 %
+Total Detection Time: 63 Seconds
+
+Set -points flag:
+ `-points 101` for MS COCO
+ `-points 11` for PascalVOC 2007 (uncomment `difficult` in voc.data)
+ `-points 0` (AUC) for ImageNet, PascalVOC 2010-2012, your custom dataset
+
+C:\Users\sy\darknet-master\build\darknet\x64>darknet.exe detector map food/food256.data cfg/yolov3-tiny-food.cfg food/backup/yolov3-tiny-food_final.weights
+ CUDA-version: 10000 (11030), cuDNN: 7.6.5, CUDNN_HALF=1, GPU count: 1
+ CUDNN_HALF=1
+ OpenCV version: 3.4.0
+ 0 : compute_capability = 750, cudnn_half = 1, GPU: NVIDIA GeForce GTX 1660 SUPER
+net.optimized_memory = 0
+mini_batch = 1, batch = 8, time_steps = 1, train = 0
+   layer   filters  size/strd(dil)      input                output
+   0 Create CUDA-stream - 0
+ Create cudnn-handle 0
+conv     16       3 x 3/ 1    416 x 416 x   3 ->  416 x 416 x  16 0.150 BF
+   1 max                2x 2/ 2    416 x 416 x  16 ->  208 x 208 x  16 0.003 BF
+   2 conv     32       3 x 3/ 1    208 x 208 x  16 ->  208 x 208 x  32 0.399 BF
+   3 max                2x 2/ 2    208 x 208 x  32 ->  104 x 104 x  32 0.001 BF
+   4 conv     64       3 x 3/ 1    104 x 104 x  32 ->  104 x 104 x  64 0.399 BF
+   5 max                2x 2/ 2    104 x 104 x  64 ->   52 x  52 x  64 0.001 BF
+   6 conv    128       3 x 3/ 1     52 x  52 x  64 ->   52 x  52 x 128 0.399 BF
+   7 max                2x 2/ 2     52 x  52 x 128 ->   26 x  26 x 128 0.000 BF
+   8 conv    256       3 x 3/ 1     26 x  26 x 128 ->   26 x  26 x 256 0.399 BF
+   9 max                2x 2/ 2     26 x  26 x 256 ->   13 x  13 x 256 0.000 BF
+  10 conv    512       3 x 3/ 1     13 x  13 x 256 ->   13 x  13 x 512 0.399 BF
+  11 max                2x 2/ 1     13 x  13 x 512 ->   13 x  13 x 512 0.000 BF
+  12 conv   1024       3 x 3/ 1     13 x  13 x 512 ->   13 x  13 x1024 1.595 BF
+  13 conv    256       1 x 1/ 1     13 x  13 x1024 ->   13 x  13 x 256 0.089 BF
+  14 conv    512       3 x 3/ 1     13 x  13 x 256 ->   13 x  13 x 512 0.399 BF
+  15 conv    783       1 x 1/ 1     13 x  13 x 512 ->   13 x  13 x 783 0.136 BF
+  16 yolo
+[yolo] params: iou loss: mse (2), iou_norm: 0.75, obj_norm: 1.00, cls_norm: 1.00, delta_norm: 1.00, scale_x_y: 1.00
+  17 route  13                                     ->   13 x  13 x 256
+  18 conv    128       1 x 1/ 1     13 x  13 x 256 ->   13 x  13 x 128 0.011 BF
+  19 upsample                 2x    13 x  13 x 128 ->   26 x  26 x 128
+  20 route  19 8                                   ->   26 x  26 x 384
+  21 conv    256       3 x 3/ 1     26 x  26 x 384 ->   26 x  26 x 256 1.196 BF
+  22 conv    783       1 x 1/ 1     26 x  26 x 256 ->   26 x  26 x 783 0.271 BF
+  23 yolo
+[yolo] params: iou loss: mse (2), iou_norm: 0.75, obj_norm: 1.00, cls_norm: 1.00, delta_norm: 1.00, scale_x_y: 1.00
+Total BFLOPS 5.845
+avg_outputs = 378714
+ Allocate additional workspace_size = 52.43 MB
+Loading weights from food/backup/yolov3-tiny-food_final.weights...
+ seen 64, trained: 32768 K-images (512 Kilo-batches_64)
+Done! Loaded 24 layers from weights-file
+
+ calculation mAP (mean average precision)...
+ Detection layer: 16 - type = 28
+ Detection layer: 23 - type = 28
+3140
+ detections_count = 7898, unique_truth_count = 3139
+class_id = 0, name = rice, ap = 29.95%           (TP = 15, FP = 51)
+class_id = 1, name = eelsonrice, ap = 92.31%     (TP = 12, FP = 1)
+class_id = 2, name = pilaf, ap = 80.63%          (TP = 7, FP = 0)
+class_id = 3, name = chicken-'n'-eggonrice, ap = 50.96%          (TP = 4, FP = 2)
+class_id = 4, name = porkcutletonrice, ap = 58.38%       (TP = 7, FP = 5)
+class_id = 5, name = beefcurry, ap = 67.11%      (TP = 14, FP = 7)
+class_id = 6, name = sushi, ap = 55.00%          (TP = 3, FP = 0)
+class_id = 7, name = chickenrice, ap = 55.00%            (TP = 5, FP = 3)
+class_id = 8, name = friedrice, ap = 69.06%      (TP = 10, FP = 4)
+class_id = 9, name = tempurabowl, ap = 69.97%            (TP = 6, FP = 3)
+class_id = 10, name = bibimbap, ap = 74.26%      (TP = 7, FP = 2)
+class_id = 11, name = toast, ap = 56.97%         (TP = 10, FP = 4)
+class_id = 12, name = croissant, ap = 38.43%     (TP = 3, FP = 3)
+class_id = 13, name = rollbread, ap = 45.45%     (TP = 5, FP = 1)
+class_id = 14, name = raisinbread, ap = 53.30%           (TP = 3, FP = 1)
+class_id = 15, name = chipbutty, ap = 24.23%     (TP = 4, FP = 3)
+class_id = 16, name = hamburger, ap = 61.82%     (TP = 14, FP = 6)
+class_id = 17, name = pizza, ap = 62.77%         (TP = 5, FP = 1)
+class_id = 18, name = sandwiches, ap = 43.02%            (TP = 4, FP = 3)
+class_id = 19, name = udonnoodle, ap = 63.13%            (TP = 11, FP = 7)
+class_id = 20, name = tempuraudon, ap = 78.65%           (TP = 8, FP = 4)
+class_id = 21, name = sobanoodle, ap = 75.31%            (TP = 10, FP = 3)
+class_id = 22, name = ramennoodle, ap = 78.36%           (TP = 25, FP = 7)
+class_id = 23, name = beefnoodle, ap = 32.14%            (TP = 3, FP = 3)
+class_id = 24, name = tensinnoodle, ap = 68.02%          (TP = 6, FP = 0)
+class_id = 25, name = friednoodle, ap = 60.32%           (TP = 8, FP = 2)
+class_id = 26, name = spaghetti, ap = 65.07%     (TP = 9, FP = 5)
+class_id = 27, name = Japanese-stylepancake, ap = 75.33%         (TP = 8, FP = 3)
+class_id = 28, name = takoyaki, ap = 58.97%      (TP = 7, FP = 0)
+class_id = 29, name = gratin, ap = 51.16%        (TP = 5, FP = 4)
+class_id = 30, name = sauteedvegetables, ap = 4.63%      (TP = 0, FP = 1)
+class_id = 31, name = croquette, ap = 48.33%     (TP = 5, FP = 3)
+class_id = 32, name = grilledeggplant, ap = 8.17%        (TP = 0, FP = 2)
+class_id = 33, name = sauteedspinach, ap = 54.33%        (TP = 4, FP = 1)
+class_id = 34, name = vegetabletempura, ap = 44.71%      (TP = 4, FP = 2)
+class_id = 35, name = misosoup, ap = 35.88%      (TP = 28, FP = 77)
+class_id = 36, name = potage, ap = 78.01%        (TP = 6, FP = 0)
+class_id = 37, name = sausage, ap = 19.92%       (TP = 1, FP = 3)
+class_id = 38, name = oden, ap = 5.90%           (TP = 1, FP = 3)
+class_id = 39, name = omelet, ap = 5.45%         (TP = 1, FP = 6)
+class_id = 40, name = ganmodoki, ap = 17.53%     (TP = 2, FP = 2)
+class_id = 41, name = jiaozi, ap = 44.40%        (TP = 6, FP = 2)
+class_id = 42, name = stew, ap = 60.83%          (TP = 5, FP = 2)
+class_id = 43, name = teriyakigrilledfish, ap = 43.86%           (TP = 4, FP = 1)
+class_id = 44, name = friedfish, ap = 24.07%     (TP = 2, FP = 4)
+class_id = 45, name = grilledsalmon, ap = 35.08%         (TP = 4, FP = 6)
+class_id = 46, name = salmonmeuniere, ap = 13.67%        (TP = 1, FP = 5)
+class_id = 47, name = sashimi, ap = 41.02%       (TP = 3, FP = 2)
+class_id = 48, name = grilledpacificsaury, ap = 45.84%           (TP = 5, FP = 3)
+class_id = 49, name = sukiyaki, ap = 28.00%      (TP = 3, FP = 5)
+class_id = 50, name = sweetandsourpork, ap = 56.11%      (TP = 4, FP = 0)
+class_id = 51, name = lightlyroastedfish, ap = 21.23%            (TP = 1, FP = 1)
+class_id = 52, name = steamedegghotchpotch, ap = 56.56%          (TP = 5, FP = 4)
+class_id = 53, name = tempura, ap = 52.60%       (TP = 4, FP = 1)
+class_id = 54, name = friedchicken, ap = 26.44%          (TP = 4, FP = 8)
+class_id = 55, name = sirloincutlet, ap = 35.37%         (TP = 5, FP = 4)
+class_id = 56, name = nanbanzuke, ap = 28.42%            (TP = 1, FP = 1)
+class_id = 57, name = boiledfish, ap = 57.23%            (TP = 2, FP = 0)
+class_id = 58, name = seasonedbeefwithpotatoes, ap = 74.44%      (TP = 7, FP = 1)
+class_id = 59, name = hambargsteak, ap = 19.73%          (TP = 3, FP = 6)
+class_id = 60, name = steak, ap = 34.79%         (TP = 3, FP = 1)
+class_id = 61, name = driedfish, ap = 87.60%     (TP = 10, FP = 1)
+class_id = 62, name = gingerporksaute, ap = 29.10%       (TP = 1, FP = 4)
+class_id = 63, name = spicychili-flavoredtofu, ap = 68.00%       (TP = 5, FP = 1)
+class_id = 64, name = yakitori, ap = 34.77%      (TP = 3, FP = 1)
+class_id = 65, name = cabbageroll, ap = 54.93%           (TP = 3, FP = 0)
+class_id = 66, name = omelet, ap = 49.08%        (TP = 4, FP = 3)
+class_id = 67, name = eggsunny-sideup, ap = 35.97%       (TP = 6, FP = 8)
+class_id = 68, name = natto, ap = 52.23%         (TP = 7, FP = 11)
+class_id = 69, name = coldtofu, ap = 56.11%      (TP = 7, FP = 2)
+class_id = 70, name = eggroll, ap = 49.62%       (TP = 3, FP = 2)
+class_id = 71, name = chillednoodle, ap = 90.91%         (TP = 8, FP = 0)
+class_id = 72, name = stir-friedbeefandpeppers, ap = 69.09%      (TP = 5, FP = 1)
+class_id = 73, name = simmeredpork, ap = 83.85%          (TP = 4, FP = 0)
+class_id = 74, name = boiledchickenandvegetables, ap = 26.00%            (TP = 0, FP = 0)
+class_id = 75, name = sashimibowl, ap = 25.03%           (TP = 4, FP = 4)
+class_id = 76, name = sushibowl, ap = 38.89%     (TP = 4, FP = 0)
+class_id = 77, name = fish-shapedpancakewithbeanjam, ap = 70.00%         (TP = 5, FP = 0)
+class_id = 78, name = shrimpwithchillsource, ap = 72.56%         (TP = 5, FP = 0)
+class_id = 79, name = roastchicken, ap = 50.61%          (TP = 1, FP = 2)
+class_id = 80, name = steamedmeatdumpling, ap = 19.21%           (TP = 2, FP = 4)
+class_id = 81, name = omeletwithfriedrice, ap = 97.55%           (TP = 8, FP = 0)
+class_id = 82, name = cutletcurry, ap = 72.93%           (TP = 7, FP = 2)
+class_id = 83, name = spaghettimeatsauce, ap = 71.64%            (TP = 6, FP = 3)
+class_id = 84, name = friedshrimp, ap = 51.63%           (TP = 4, FP = 3)
+class_id = 85, name = potatosalad, ap = 54.98%           (TP = 3, FP = 2)
+class_id = 86, name = greensalad, ap = 8.97%     (TP = 3, FP = 26)
+class_id = 87, name = macaronisalad, ap = 35.00%         (TP = 4, FP = 5)
+class_id = 88, name = Japanesetofuandvegetablechowder, ap = 16.30%       (TP = 2, FP = 10)
+class_id = 89, name = porkmisosoup, ap = 17.33%          (TP = 1, FP = 3)
+class_id = 90, name = chinesesoup, ap = 16.52%           (TP = 3, FP = 4)
+class_id = 91, name = beefbowl, ap = 29.97%      (TP = 7, FP = 15)
+class_id = 92, name = kinpira-stylesauteedburdock, ap = 66.19%           (TP = 7, FP = 4)
+class_id = 93, name = riceball, ap = 37.32%      (TP = 4, FP = 4)
+class_id = 94, name = pizzatoast, ap = 78.89%            (TP = 8, FP = 1)
+class_id = 95, name = dippingnoodles, ap = 66.55%        (TP = 6, FP = 2)
+class_id = 96, name = hotdog, ap = 52.67%        (TP = 1, FP = 0)
+class_id = 97, name = frenchfries, ap = 31.16%           (TP = 3, FP = 9)
+class_id = 98, name = mixedrice, ap = 55.59%     (TP = 4, FP = 1)
+class_id = 99, name = goyachanpuru, ap = 71.21%          (TP = 4, FP = 2)
+class_id = 100, name = greencurry, ap = 35.00%           (TP = 2, FP = 0)
+class_id = 101, name = okinawasoba, ap = 65.16%          (TP = 6, FP = 2)
+class_id = 102, name = mangopudding, ap = 51.62%         (TP = 3, FP = 1)
+class_id = 103, name = almondjelly, ap = 66.55%          (TP = 5, FP = 1)
+class_id = 104, name = jjigae, ap = 86.06%       (TP = 7, FP = 1)
+class_id = 105, name = dakgalbi, ap = 85.96%     (TP = 7, FP = 1)
+class_id = 106, name = drycurry, ap = 70.42%     (TP = 7, FP = 3)
+class_id = 107, name = kamameshi, ap = 86.92%            (TP = 7, FP = 0)
+class_id = 108, name = ricevermicelli, ap = 81.82%       (TP = 7, FP = 0)
+class_id = 109, name = paella, ap = 64.14%       (TP = 4, FP = 1)
+class_id = 110, name = tanmen, ap = 33.97%       (TP = 2, FP = 5)
+class_id = 111, name = kushikatu, ap = 70.00%            (TP = 4, FP = 0)
+class_id = 112, name = yellowcurry, ap = 15.48%          (TP = 0, FP = 1)
+class_id = 113, name = pancake, ap = 82.73%      (TP = 8, FP = 2)
+class_id = 114, name = champon, ap = 60.78%      (TP = 7, FP = 4)
+class_id = 115, name = crape, ap = 11.82%        (TP = 0, FP = 0)
+class_id = 116, name = tiramisu, ap = 90.00%     (TP = 8, FP = 0)
+class_id = 117, name = waffle, ap = 33.33%       (TP = 3, FP = 1)
+class_id = 118, name = rarecheesecake, ap = 64.57%       (TP = 1, FP = 0)
+class_id = 119, name = shortcake, ap = 94.43%            (TP = 8, FP = 0)
+class_id = 120, name = chopsuey, ap = 40.00%     (TP = 4, FP = 1)
+class_id = 121, name = twicecookedpork, ap = 51.56%      (TP = 5, FP = 8)
+class_id = 122, name = mushroomrisotto, ap = 24.02%      (TP = 0, FP = 1)
+class_id = 123, name = samul, ap = 71.13%        (TP = 5, FP = 2)
+class_id = 124, name = zoni, ap = 47.70%         (TP = 4, FP = 3)
+class_id = 125, name = frenchtoast, ap = 47.47%          (TP = 2, FP = 0)
+class_id = 126, name = finewhitenoodles, ap = 65.29%     (TP = 3, FP = 0)
+class_id = 127, name = minestrone, ap = 71.97%           (TP = 6, FP = 2)
+class_id = 128, name = potaufeu, ap = 52.68%     (TP = 5, FP = 2)
+class_id = 129, name = chickennugget, ap = 41.39%        (TP = 3, FP = 2)
+class_id = 130, name = namero, ap = 62.60%       (TP = 5, FP = 1)
+class_id = 131, name = frenchbread, ap = 76.09%          (TP = 4, FP = 0)
+class_id = 132, name = ricegruel, ap = 78.15%            (TP = 8, FP = 1)
+class_id = 133, name = broiledeelbowl, ap = 65.14%       (TP = 5, FP = 5)
+class_id = 134, name = clearsoup, ap = 34.79%            (TP = 4, FP = 3)
+class_id = 135, name = yudofu, ap = 81.08%       (TP = 7, FP = 1)
+class_id = 136, name = mozuku, ap = 85.00%       (TP = 7, FP = 1)
+class_id = 137, name = inarizushi, ap = 53.14%           (TP = 5, FP = 2)
+class_id = 138, name = porkloincutlet, ap = 47.11%       (TP = 5, FP = 5)
+class_id = 139, name = porkfilletcutlet, ap = 61.65%     (TP = 4, FP = 2)
+class_id = 140, name = chickencutlet, ap = 26.99%        (TP = 1, FP = 1)
+class_id = 141, name = hamcutlet, ap = 38.45%            (TP = 3, FP = 1)
+class_id = 142, name = mincedmeatcutlet, ap = 58.44%     (TP = 6, FP = 3)
+class_id = 143, name = thinlyslicedrawhorsemeat, ap = 56.10%     (TP = 7, FP = 5)
+class_id = 144, name = bagel, ap = 72.38%        (TP = 6, FP = 1)
+class_id = 145, name = scone, ap = 42.08%        (TP = 4, FP = 3)
+class_id = 146, name = tortilla, ap = 17.73%     (TP = 0, FP = 0)
+class_id = 147, name = tacos, ap = 44.24%        (TP = 4, FP = 2)
+class_id = 148, name = nachos, ap = 36.98%       (TP = 2, FP = 1)
+class_id = 149, name = meatloaf, ap = 0.91%      (TP = 0, FP = 0)
+class_id = 150, name = scrambledegg, ap = 62.97%         (TP = 2, FP = 1)
+class_id = 151, name = ricegratin, ap = 77.17%           (TP = 7, FP = 1)
+class_id = 152, name = lasagna, ap = 33.33%      (TP = 1, FP = 2)
+class_id = 153, name = Caesarsalad, ap = 76.98%          (TP = 6, FP = 2)
+class_id = 154, name = oatmeal, ap = 41.99%      (TP = 3, FP = 1)
+class_id = 155, name = friedporkdumplingsservedinsoup, ap = 78.78%       (TP = 8, FP = 3)
+class_id = 156, name = oshiruko, ap = 88.01%     (TP = 8, FP = 3)
+class_id = 157, name = muffin, ap = 41.56%       (TP = 2, FP = 2)
+class_id = 158, name = popcorn, ap = 88.81%      (TP = 9, FP = 2)
+class_id = 159, name = creampuff, ap = 55.06%            (TP = 5, FP = 2)
+class_id = 160, name = doughnut, ap = 29.66%     (TP = 3, FP = 3)
+class_id = 161, name = applepie, ap = 25.24%     (TP = 2, FP = 3)
+class_id = 162, name = parfait, ap = 54.26%      (TP = 4, FP = 3)
+class_id = 163, name = friedporkinscoop, ap = 64.55%     (TP = 5, FP = 2)
+class_id = 164, name = lambkebabs, ap = 59.91%           (TP = 8, FP = 4)
+class_id = 165, name = dishconsistingofstir-friedpotato,eggplantandgreenpepper, ap = 72.92%      (TP = 6, FP = 1)
+class_id = 166, name = roastduck, ap = 58.33%            (TP = 4, FP = 1)
+class_id = 167, name = hotpot, ap = 15.58%       (TP = 0, FP = 2)
+class_id = 168, name = porkbelly, ap = 25.76%            (TP = 3, FP = 3)
+class_id = 169, name = xiaolongbao, ap = 75.97%          (TP = 6, FP = 1)
+class_id = 170, name = mooncake, ap = 68.74%     (TP = 4, FP = 1)
+class_id = 171, name = custardtart, ap = 100.00%         (TP = 9, FP = 1)
+class_id = 172, name = beefnoodlesoup, ap = 64.86%       (TP = 7, FP = 4)
+class_id = 173, name = porkcutlet, ap = 48.89%           (TP = 3, FP = 1)
+class_id = 174, name = mincedporkrice, ap = 91.89%       (TP = 10, FP = 4)
+class_id = 175, name = fishballsoup, ap = 81.82%         (TP = 7, FP = 0)
+class_id = 176, name = oysteromelette, ap = 74.17%       (TP = 6, FP = 1)
+class_id = 177, name = glutinousoilrice, ap = 75.00%     (TP = 10, FP = 2)
+class_id = 178, name = trunippudding, ap = 82.50%        (TP = 7, FP = 0)
+class_id = 179, name = stinkytofu, ap = 60.17%           (TP = 6, FP = 3)
+class_id = 180, name = lemonfigjelly, ap = 82.73%        (TP = 7, FP = 1)
+class_id = 181, name = khaosoi, ap = 50.05%      (TP = 5, FP = 4)
+class_id = 182, name = Sourprawnsoup, ap = 47.50%        (TP = 2, FP = 0)
+class_id = 183, name = Thaipapayasalad, ap = 79.49%      (TP = 8, FP = 0)
+class_id = 184, name = boned,slicedHainan-stylechickenwithmarinatedrice, ap = 60.23%     (TP = 3, FP = 1)
+class_id = 185, name = hotandsour,fishandvegetableragout, ap = 59.61%            (TP = 5, FP = 2)
+class_id = 186, name = stir-friedmixedvegetables, ap = 25.78%            (TP = 1, FP = 3)
+class_id = 187, name = beefinoystersauce, ap = 27.27%            (TP = 2, FP = 1)
+class_id = 188, name = porksatay, ap = 67.10%            (TP = 6, FP = 3)
+class_id = 189, name = spicychickensalad, ap = 27.50%            (TP = 2, FP = 1)
+class_id = 190, name = noodleswithfishcurry, ap = 16.67%         (TP = 1, FP = 0)
+class_id = 191, name = PorkStickyNoodles, ap = 69.80%            (TP = 7, FP = 3)
+class_id = 192, name = Porkwithlemon, ap = 27.28%        (TP = 1, FP = 0)
+class_id = 193, name = stewedporkleg, ap = 23.40%        (TP = 2, FP = 1)
+class_id = 194, name = charcoal-boiledporkneck, ap = 52.48%      (TP = 5, FP = 2)
+class_id = 195, name = friedmusselpancakes, ap = 64.50%          (TP = 3, FP = 0)
+class_id = 196, name = DeepFriedChickenWing, ap = 43.90%         (TP = 1, FP = 0)
+class_id = 197, name = Barbecuedredporkinsaucewithrice, ap = 64.41%      (TP = 5, FP = 3)
+class_id = 198, name = Ricewithroastduck, ap = 65.17%            (TP = 6, FP = 2)
+class_id = 199, name = Ricecrispypork, ap = 6.48%        (TP = 0, FP = 3)
+class_id = 200, name = Wontonsoup, ap = 50.21%           (TP = 6, FP = 6)
+class_id = 201, name = ChickenRiceCurryWithCoconut, ap = 61.67%          (TP = 1, FP = 0)
+class_id = 202, name = CrispyNoodles, ap = 60.51%        (TP = 5, FP = 0)
+class_id = 203, name = EggNoodleInChickenYellowCurry, ap = 36.19%        (TP = 1, FP = 5)
+class_id = 204, name = coconutmilksoup, ap = 45.51%      (TP = 4, FP = 3)
+class_id = 205, name = pho, ap = 58.80%          (TP = 7, FP = 4)
+class_id = 206, name = Huebeefricevermicellisoup, ap = 66.79%            (TP = 5, FP = 2)
+class_id = 207, name = Vermicellinoodleswithsnails, ap = 72.53%          (TP = 5, FP = 0)
+class_id = 208, name = Friedspringrolls, ap = 46.72%     (TP = 5, FP = 3)
+class_id = 209, name = Steamedriceroll, ap = 72.68%      (TP = 5, FP = 2)
+class_id = 210, name = Shrimppatties, ap = 34.44%        (TP = 3, FP = 1)
+class_id = 211, name = ballshapedbunwithpork, ap = 54.11%        (TP = 6, FP = 1)
+class_id = 212, name = Coconutmilk-flavoredcrepeswithshrimpandbeef, ap = 19.45%          (TP = 2, FP = 4)
+class_id = 213, name = Smallsteamedsavoryricepancake, ap = 99.09%        (TP = 8, FP = 0)
+class_id = 214, name = GlutinousRiceBalls, ap = 83.06%           (TP = 6, FP = 0)
+class_id = 215, name = locomoco, ap = 61.27%     (TP = 5, FP = 1)
+class_id = 216, name = haupia, ap = 57.55%       (TP = 3, FP = 1)
+class_id = 217, name = malasada, ap = 73.13%     (TP = 5, FP = 3)
+class_id = 218, name = laulau, ap = 74.51%       (TP = 7, FP = 0)
+class_id = 219, name = spammusubi, ap = 78.18%           (TP = 6, FP = 1)
+class_id = 220, name = oxtailsoup, ap = 20.90%           (TP = 2, FP = 3)
+class_id = 221, name = adobo, ap = 61.05%        (TP = 5, FP = 3)
+class_id = 222, name = lumpia, ap = 42.49%       (TP = 2, FP = 3)
+class_id = 223, name = brownie, ap = 57.58%      (TP = 4, FP = 1)
+class_id = 224, name = churro, ap = 56.48%       (TP = 4, FP = 1)
+class_id = 225, name = jambalaya, ap = 72.44%            (TP = 7, FP = 3)
+class_id = 226, name = nasigoreng, ap = 50.61%           (TP = 2, FP = 2)
+class_id = 227, name = ayamgoreng, ap = 35.25%           (TP = 3, FP = 4)
+class_id = 228, name = ayambakar, ap = 56.78%            (TP = 4, FP = 1)
+class_id = 229, name = buburayam, ap = 66.71%            (TP = 5, FP = 1)
+class_id = 230, name = gulai, ap = 29.75%        (TP = 4, FP = 3)
+class_id = 231, name = laksa, ap = 25.49%        (TP = 2, FP = 4)
+class_id = 232, name = mieayam, ap = 44.12%      (TP = 3, FP = 3)
+class_id = 233, name = miegoreng, ap = 41.82%            (TP = 3, FP = 1)
+class_id = 234, name = nasicampur, ap = 18.36%           (TP = 2, FP = 9)
+class_id = 235, name = nasipadang, ap = 50.32%           (TP = 3, FP = 0)
+class_id = 236, name = nasiuduk, ap = 52.28%     (TP = 3, FP = 1)
+class_id = 237, name = babiguling, ap = 59.02%           (TP = 7, FP = 3)
+class_id = 238, name = kayatoast, ap = 47.17%            (TP = 5, FP = 5)
+class_id = 239, name = bakkutteh, ap = 63.44%            (TP = 7, FP = 3)
+class_id = 240, name = currypuff, ap = 45.89%            (TP = 3, FP = 4)
+class_id = 241, name = chowmein, ap = 52.92%     (TP = 6, FP = 2)
+class_id = 242, name = zhajiangmian, ap = 63.24%         (TP = 6, FP = 4)
+class_id = 243, name = kungpaochicken, ap = 88.97%       (TP = 10, FP = 1)
+class_id = 244, name = crullers, ap = 74.20%     (TP = 4, FP = 0)
+class_id = 245, name = eggplantwithgarlicsauce, ap = 82.90%      (TP = 8, FP = 2)
+class_id = 246, name = threecupchicken, ap = 69.46%      (TP = 6, FP = 4)
+class_id = 247, name = beancurdfamilystyle, ap = 44.22%          (TP = 4, FP = 3)
+class_id = 248, name = salt&pepperfriedshrimpwithshell, ap = 54.17%      (TP = 7, FP = 2)
+class_id = 249, name = bakedsalmon, ap = 27.08%          (TP = 1, FP = 0)
+class_id = 250, name = braisedporkmeatballwithnapacabbage, ap = 73.48%           (TP = 8, FP = 0)
+class_id = 251, name = wintermelonsoup, ap = 74.44%      (TP = 7, FP = 1)
+class_id = 252, name = steamedspareribs, ap = 84.10%     (TP = 7, FP = 0)
+class_id = 253, name = chinesepumpkinpie, ap = 70.00%            (TP = 3, FP = 0)
+class_id = 254, name = eighttreasurerice, ap = 57.70%            (TP = 3, FP = 2)
+class_id = 255, name = hot&soursoup, ap = 45.83%         (TP = 4, FP = 2)
+
+ for conf_thresh = 0.25, precision = 0.63, recall = 0.40, F1-score = 0.49
+ for conf_thresh = 0.25, TP = 1246, FP = 724, FN = 1893, average IoU = 49.35 %
+
+ IoU threshold = 50 %, used Area-Under-Curve for each unique Recall
+ mean average precision (mAP@0.50) = 0.535937, or 53.59 %
+Total Detection Time: 62 Seconds
+
+Set -points flag:
+ `-points 101` for MS COCO
+ `-points 11` for PascalVOC 2007 (uncomment `difficult` in voc.data)
+ `-points 0` (AUC) for ImageNet, PascalVOC 2010-2012, your custom dataset
+
+C:\Users\sy\darknet-master\build\darknet\x64>darknet.exe detector map food/food256.data cfg/yolov3-tiny-food.cfg food/backup/yolov3-tiny-food_500000.weights
+ CUDA-version: 10000 (11030), cuDNN: 7.6.5, CUDNN_HALF=1, GPU count: 1
+ CUDNN_HALF=1
+ OpenCV version: 3.4.0
+ 0 : compute_capability = 750, cudnn_half = 1, GPU: NVIDIA GeForce GTX 1660 SUPER
+net.optimized_memory = 0
+mini_batch = 1, batch = 8, time_steps = 1, train = 0
+   layer   filters  size/strd(dil)      input                output
+   0 Create CUDA-stream - 0
+ Create cudnn-handle 0
+conv     16       3 x 3/ 1    416 x 416 x   3 ->  416 x 416 x  16 0.150 BF
+   1 max                2x 2/ 2    416 x 416 x  16 ->  208 x 208 x  16 0.003 BF
+   2 conv     32       3 x 3/ 1    208 x 208 x  16 ->  208 x 208 x  32 0.399 BF
+   3 max                2x 2/ 2    208 x 208 x  32 ->  104 x 104 x  32 0.001 BF
+   4 conv     64       3 x 3/ 1    104 x 104 x  32 ->  104 x 104 x  64 0.399 BF
+   5 max                2x 2/ 2    104 x 104 x  64 ->   52 x  52 x  64 0.001 BF
+   6 conv    128       3 x 3/ 1     52 x  52 x  64 ->   52 x  52 x 128 0.399 BF
+   7 max                2x 2/ 2     52 x  52 x 128 ->   26 x  26 x 128 0.000 BF
+   8 conv    256       3 x 3/ 1     26 x  26 x 128 ->   26 x  26 x 256 0.399 BF
+   9 max                2x 2/ 2     26 x  26 x 256 ->   13 x  13 x 256 0.000 BF
+  10 conv    512       3 x 3/ 1     13 x  13 x 256 ->   13 x  13 x 512 0.399 BF
+  11 max                2x 2/ 1     13 x  13 x 512 ->   13 x  13 x 512 0.000 BF
+  12 conv   1024       3 x 3/ 1     13 x  13 x 512 ->   13 x  13 x1024 1.595 BF
+  13 conv    256       1 x 1/ 1     13 x  13 x1024 ->   13 x  13 x 256 0.089 BF
+  14 conv    512       3 x 3/ 1     13 x  13 x 256 ->   13 x  13 x 512 0.399 BF
+  15 conv    783       1 x 1/ 1     13 x  13 x 512 ->   13 x  13 x 783 0.136 BF
+  16 yolo
+[yolo] params: iou loss: mse (2), iou_norm: 0.75, obj_norm: 1.00, cls_norm: 1.00, delta_norm: 1.00, scale_x_y: 1.00
+  17 route  13                                     ->   13 x  13 x 256
+  18 conv    128       1 x 1/ 1     13 x  13 x 256 ->   13 x  13 x 128 0.011 BF
+  19 upsample                 2x    13 x  13 x 128 ->   26 x  26 x 128
+  20 route  19 8                                   ->   26 x  26 x 384
+  21 conv    256       3 x 3/ 1     26 x  26 x 384 ->   26 x  26 x 256 1.196 BF
+  22 conv    783       1 x 1/ 1     26 x  26 x 256 ->   26 x  26 x 783 0.271 BF
+  23 yolo
+[yolo] params: iou loss: mse (2), iou_norm: 0.75, obj_norm: 1.00, cls_norm: 1.00, delta_norm: 1.00, scale_x_y: 1.00
+Total BFLOPS 5.845
+avg_outputs = 378714
+ Allocate additional workspace_size = 52.43 MB
+Loading weights from food/backup/yolov3-tiny-food_500000.weights...
+ seen 64, trained: 32000 K-images (500 Kilo-batches_64)
+Done! Loaded 24 layers from weights-file
+
+ calculation mAP (mean average precision)...
+ Detection layer: 16 - type = 28
+ Detection layer: 23 - type = 28
+3140
+ detections_count = 13340, unique_truth_count = 3139
+class_id = 0, name = rice, ap = 34.28%           (TP = 27, FP = 73)
+class_id = 1, name = eelsonrice, ap = 96.66%     (TP = 12, FP = 4)
+class_id = 2, name = pilaf, ap = 80.06%          (TP = 11, FP = 8)
+class_id = 3, name = chicken-'n'-eggonrice, ap = 48.26%          (TP = 5, FP = 7)
+class_id = 4, name = porkcutletonrice, ap = 74.09%       (TP = 12, FP = 11)
+class_id = 5, name = beefcurry, ap = 76.74%      (TP = 19, FP = 14)
+class_id = 6, name = sushi, ap = 58.69%          (TP = 7, FP = 1)
+class_id = 7, name = chickenrice, ap = 65.63%            (TP = 7, FP = 7)
+class_id = 8, name = friedrice, ap = 74.01%      (TP = 13, FP = 7)
+class_id = 9, name = tempurabowl, ap = 76.51%            (TP = 10, FP = 6)
+class_id = 10, name = bibimbap, ap = 93.10%      (TP = 10, FP = 4)
+class_id = 11, name = toast, ap = 58.53%         (TP = 14, FP = 7)
+class_id = 12, name = croissant, ap = 57.90%     (TP = 7, FP = 7)
+class_id = 13, name = rollbread, ap = 59.91%     (TP = 5, FP = 6)
+class_id = 14, name = raisinbread, ap = 62.50%           (TP = 8, FP = 6)
+class_id = 15, name = chipbutty, ap = 26.70%     (TP = 4, FP = 5)
+class_id = 16, name = hamburger, ap = 65.56%     (TP = 17, FP = 11)
+class_id = 17, name = pizza, ap = 66.98%         (TP = 10, FP = 10)
+class_id = 18, name = sandwiches, ap = 64.39%            (TP = 9, FP = 7)
+class_id = 19, name = udonnoodle, ap = 67.87%            (TP = 11, FP = 10)
+class_id = 20, name = tempuraudon, ap = 82.85%           (TP = 8, FP = 4)
+class_id = 21, name = sobanoodle, ap = 78.35%            (TP = 14, FP = 6)
+class_id = 22, name = ramennoodle, ap = 80.37%           (TP = 25, FP = 18)
+class_id = 23, name = beefnoodle, ap = 40.21%            (TP = 5, FP = 5)
+class_id = 24, name = tensinnoodle, ap = 76.55%          (TP = 9, FP = 2)
+class_id = 25, name = friednoodle, ap = 55.55%           (TP = 6, FP = 7)
+class_id = 26, name = spaghetti, ap = 71.10%     (TP = 11, FP = 9)
+class_id = 27, name = Japanese-stylepancake, ap = 79.70%         (TP = 9, FP = 11)
+class_id = 28, name = takoyaki, ap = 72.75%      (TP = 8, FP = 7)
+class_id = 29, name = gratin, ap = 71.37%        (TP = 9, FP = 8)
+class_id = 30, name = sauteedvegetables, ap = 10.48%     (TP = 2, FP = 5)
+class_id = 31, name = croquette, ap = 61.82%     (TP = 8, FP = 8)
+class_id = 32, name = grilledeggplant, ap = 20.75%       (TP = 1, FP = 1)
+class_id = 33, name = sauteedspinach, ap = 56.00%        (TP = 5, FP = 4)
+class_id = 34, name = vegetabletempura, ap = 48.36%      (TP = 5, FP = 6)
+class_id = 35, name = misosoup, ap = 42.14%      (TP = 32, FP = 97)
+class_id = 36, name = potage, ap = 76.87%        (TP = 6, FP = 1)
+class_id = 37, name = sausage, ap = 23.70%       (TP = 3, FP = 4)
+class_id = 38, name = oden, ap = 9.85%           (TP = 1, FP = 6)
+class_id = 39, name = omelet, ap = 6.63%         (TP = 1, FP = 11)
+class_id = 40, name = ganmodoki, ap = 23.64%     (TP = 3, FP = 3)
+class_id = 41, name = jiaozi, ap = 65.39%        (TP = 10, FP = 5)
+class_id = 42, name = stew, ap = 63.17%          (TP = 7, FP = 4)
+class_id = 43, name = teriyakigrilledfish, ap = 43.97%           (TP = 5, FP = 3)
+class_id = 44, name = friedfish, ap = 31.55%     (TP = 5, FP = 8)
+class_id = 45, name = grilledsalmon, ap = 49.02%         (TP = 6, FP = 6)
+class_id = 46, name = salmonmeuniere, ap = 36.29%        (TP = 3, FP = 5)
+class_id = 47, name = sashimi, ap = 54.28%       (TP = 6, FP = 6)
+class_id = 48, name = grilledpacificsaury, ap = 58.24%           (TP = 10, FP = 11)
+class_id = 49, name = sukiyaki, ap = 37.31%      (TP = 4, FP = 10)
+class_id = 50, name = sweetandsourpork, ap = 62.19%      (TP = 5, FP = 5)
+class_id = 51, name = lightlyroastedfish, ap = 39.68%            (TP = 1, FP = 5)
+class_id = 52, name = steamedegghotchpotch, ap = 58.83%          (TP = 6, FP = 5)
+class_id = 53, name = tempura, ap = 63.14%       (TP = 7, FP = 5)
+class_id = 54, name = friedchicken, ap = 30.69%          (TP = 5, FP = 16)
+class_id = 55, name = sirloincutlet, ap = 40.17%         (TP = 4, FP = 7)
+class_id = 56, name = nanbanzuke, ap = 39.41%            (TP = 2, FP = 5)
+class_id = 57, name = boiledfish, ap = 65.76%            (TP = 4, FP = 3)
+class_id = 58, name = seasonedbeefwithpotatoes, ap = 86.86%      (TP = 10, FP = 3)
+class_id = 59, name = hambargsteak, ap = 23.50%          (TP = 4, FP = 11)
+class_id = 60, name = steak, ap = 43.46%         (TP = 4, FP = 4)
+class_id = 61, name = driedfish, ap = 88.81%     (TP = 10, FP = 4)
+class_id = 62, name = gingerporksaute, ap = 40.59%       (TP = 6, FP = 6)
+class_id = 63, name = spicychili-flavoredtofu, ap = 74.46%       (TP = 9, FP = 6)
+class_id = 64, name = yakitori, ap = 41.64%      (TP = 4, FP = 2)
+class_id = 65, name = cabbageroll, ap = 56.11%           (TP = 5, FP = 8)
+class_id = 66, name = omelet, ap = 56.46%        (TP = 5, FP = 5)
+class_id = 67, name = eggsunny-sideup, ap = 38.03%       (TP = 8, FP = 12)
+class_id = 68, name = natto, ap = 55.92%         (TP = 9, FP = 12)
+class_id = 69, name = coldtofu, ap = 67.36%      (TP = 9, FP = 3)
+class_id = 70, name = eggroll, ap = 62.66%       (TP = 6, FP = 5)
+class_id = 71, name = chillednoodle, ap = 88.81%         (TP = 9, FP = 0)
+class_id = 72, name = stir-friedbeefandpeppers, ap = 71.11%      (TP = 7, FP = 4)
+class_id = 73, name = simmeredpork, ap = 97.16%          (TP = 10, FP = 0)
+class_id = 74, name = boiledchickenandvegetables, ap = 48.41%            (TP = 4, FP = 2)
+class_id = 75, name = sashimibowl, ap = 32.44%           (TP = 5, FP = 6)
+class_id = 76, name = sushibowl, ap = 41.82%     (TP = 4, FP = 4)
+class_id = 77, name = fish-shapedpancakewithbeanjam, ap = 82.94%         (TP = 11, FP = 3)
+class_id = 78, name = shrimpwithchillsource, ap = 72.92%         (TP = 8, FP = 2)
+class_id = 79, name = roastchicken, ap = 66.94%          (TP = 9, FP = 4)
+class_id = 80, name = steamedmeatdumpling, ap = 29.15%           (TP = 3, FP = 5)
+class_id = 81, name = omeletwithfriedrice, ap = 100.00%          (TP = 9, FP = 0)
+class_id = 82, name = cutletcurry, ap = 76.96%           (TP = 13, FP = 6)
+class_id = 83, name = spaghettimeatsauce, ap = 77.95%            (TP = 11, FP = 14)
+class_id = 84, name = friedshrimp, ap = 75.36%           (TP = 11, FP = 8)
+class_id = 85, name = potatosalad, ap = 59.27%           (TP = 7, FP = 6)
+class_id = 86, name = greensalad, ap = 14.45%            (TP = 4, FP = 25)
+class_id = 87, name = macaronisalad, ap = 58.27%         (TP = 6, FP = 8)
+class_id = 88, name = Japanesetofuandvegetablechowder, ap = 21.62%       (TP = 4, FP = 13)
+class_id = 89, name = porkmisosoup, ap = 20.98%          (TP = 2, FP = 13)
+class_id = 90, name = chinesesoup, ap = 20.44%           (TP = 4, FP = 12)
+class_id = 91, name = beefbowl, ap = 36.40%      (TP = 8, FP = 20)
+class_id = 92, name = kinpira-stylesauteedburdock, ap = 79.14%           (TP = 9, FP = 6)
+class_id = 93, name = riceball, ap = 37.99%      (TP = 4, FP = 5)
+class_id = 94, name = pizzatoast, ap = 77.78%            (TP = 8, FP = 4)
+class_id = 95, name = dippingnoodles, ap = 82.75%        (TP = 9, FP = 5)
+class_id = 96, name = hotdog, ap = 58.08%        (TP = 4, FP = 0)
+class_id = 97, name = frenchfries, ap = 42.59%           (TP = 6, FP = 12)
+class_id = 98, name = mixedrice, ap = 54.54%     (TP = 6, FP = 5)
+class_id = 99, name = goyachanpuru, ap = 79.55%          (TP = 8, FP = 4)
+class_id = 100, name = greencurry, ap = 39.08%           (TP = 3, FP = 0)
+class_id = 101, name = okinawasoba, ap = 70.84%          (TP = 7, FP = 9)
+class_id = 102, name = mangopudding, ap = 62.03%         (TP = 6, FP = 3)
+class_id = 103, name = almondjelly, ap = 63.93%          (TP = 6, FP = 8)
+class_id = 104, name = jjigae, ap = 87.60%       (TP = 10, FP = 4)
+class_id = 105, name = dakgalbi, ap = 85.11%     (TP = 9, FP = 3)
+class_id = 106, name = drycurry, ap = 86.35%     (TP = 9, FP = 2)
+class_id = 107, name = kamameshi, ap = 86.00%            (TP = 8, FP = 2)
+class_id = 108, name = ricevermicelli, ap = 84.42%       (TP = 9, FP = 1)
+class_id = 109, name = paella, ap = 73.12%       (TP = 7, FP = 3)
+class_id = 110, name = tanmen, ap = 18.20%       (TP = 3, FP = 13)
+class_id = 111, name = kushikatu, ap = 71.84%            (TP = 6, FP = 6)
+class_id = 112, name = yellowcurry, ap = 29.40%          (TP = 3, FP = 2)
+class_id = 113, name = pancake, ap = 84.81%      (TP = 9, FP = 6)
+class_id = 114, name = champon, ap = 71.26%      (TP = 10, FP = 9)
+class_id = 115, name = crape, ap = 30.90%        (TP = 2, FP = 4)
+class_id = 116, name = tiramisu, ap = 99.09%     (TP = 10, FP = 3)
+class_id = 117, name = waffle, ap = 43.30%       (TP = 3, FP = 3)
+class_id = 118, name = rarecheesecake, ap = 80.37%       (TP = 7, FP = 2)
+class_id = 119, name = shortcake, ap = 96.67%            (TP = 9, FP = 2)
+class_id = 120, name = chopsuey, ap = 46.31%     (TP = 5, FP = 8)
+class_id = 121, name = twicecookedpork, ap = 51.94%      (TP = 6, FP = 16)
+class_id = 122, name = mushroomrisotto, ap = 30.69%      (TP = 3, FP = 5)
+class_id = 123, name = samul, ap = 78.50%        (TP = 7, FP = 10)
+class_id = 124, name = zoni, ap = 55.70%         (TP = 7, FP = 4)
+class_id = 125, name = frenchtoast, ap = 57.96%          (TP = 5, FP = 8)
+class_id = 126, name = finewhitenoodles, ap = 76.55%     (TP = 9, FP = 5)
+class_id = 127, name = minestrone, ap = 82.63%           (TP = 9, FP = 6)
+class_id = 128, name = potaufeu, ap = 56.78%     (TP = 7, FP = 5)
+class_id = 129, name = chickennugget, ap = 63.31%        (TP = 7, FP = 9)
+class_id = 130, name = namero, ap = 64.33%       (TP = 8, FP = 8)
+class_id = 131, name = frenchbread, ap = 82.54%          (TP = 8, FP = 10)
+class_id = 132, name = ricegruel, ap = 76.86%            (TP = 9, FP = 5)
+class_id = 133, name = broiledeelbowl, ap = 67.07%       (TP = 7, FP = 10)
+class_id = 134, name = clearsoup, ap = 29.41%            (TP = 4, FP = 6)
+class_id = 135, name = yudofu, ap = 83.00%       (TP = 8, FP = 4)
+class_id = 136, name = mozuku, ap = 84.00%       (TP = 8, FP = 2)
+class_id = 137, name = inarizushi, ap = 62.01%           (TP = 8, FP = 12)
+class_id = 138, name = porkloincutlet, ap = 48.52%       (TP = 5, FP = 13)
+class_id = 139, name = porkfilletcutlet, ap = 62.99%     (TP = 7, FP = 12)
+class_id = 140, name = chickencutlet, ap = 31.10%        (TP = 4, FP = 5)
+class_id = 141, name = hamcutlet, ap = 50.05%            (TP = 5, FP = 8)
+class_id = 142, name = mincedmeatcutlet, ap = 60.33%     (TP = 6, FP = 7)
+class_id = 143, name = thinlyslicedrawhorsemeat, ap = 61.07%     (TP = 8, FP = 8)
+class_id = 144, name = bagel, ap = 78.90%        (TP = 9, FP = 6)
+class_id = 145, name = scone, ap = 45.16%        (TP = 6, FP = 12)
+class_id = 146, name = tortilla, ap = 20.62%     (TP = 3, FP = 6)
+class_id = 147, name = tacos, ap = 59.44%        (TP = 7, FP = 9)
+class_id = 148, name = nachos, ap = 38.34%       (TP = 4, FP = 4)
+class_id = 149, name = meatloaf, ap = 1.82%      (TP = 0, FP = 0)
+class_id = 150, name = scrambledegg, ap = 78.66%         (TP = 5, FP = 2)
+class_id = 151, name = ricegratin, ap = 81.39%           (TP = 9, FP = 2)
+class_id = 152, name = lasagna, ap = 48.71%      (TP = 6, FP = 6)
+class_id = 153, name = Caesarsalad, ap = 72.62%          (TP = 8, FP = 7)
+class_id = 154, name = oatmeal, ap = 58.35%      (TP = 5, FP = 8)
+class_id = 155, name = friedporkdumplingsservedinsoup, ap = 85.65%       (TP = 10, FP = 9)
+class_id = 156, name = oshiruko, ap = 91.25%     (TP = 10, FP = 7)
+class_id = 157, name = muffin, ap = 64.77%       (TP = 6, FP = 4)
+class_id = 158, name = popcorn, ap = 82.56%      (TP = 10, FP = 11)
+class_id = 159, name = creampuff, ap = 60.04%            (TP = 6, FP = 5)
+class_id = 160, name = doughnut, ap = 43.66%     (TP = 5, FP = 6)
+class_id = 161, name = applepie, ap = 38.56%     (TP = 4, FP = 9)
+class_id = 162, name = parfait, ap = 68.31%      (TP = 7, FP = 6)
+class_id = 163, name = friedporkinscoop, ap = 68.38%     (TP = 7, FP = 12)
+class_id = 164, name = lambkebabs, ap = 73.00%           (TP = 10, FP = 10)
+class_id = 165, name = dishconsistingofstir-friedpotato,eggplantandgreenpepper, ap = 91.71%      (TP = 10, FP = 3)
+class_id = 166, name = roastduck, ap = 60.79%            (TP = 4, FP = 3)
+class_id = 167, name = hotpot, ap = 18.42%       (TP = 1, FP = 5)
+class_id = 168, name = porkbelly, ap = 27.09%            (TP = 4, FP = 8)
+class_id = 169, name = xiaolongbao, ap = 92.01%          (TP = 10, FP = 2)
+class_id = 170, name = mooncake, ap = 81.04%     (TP = 8, FP = 2)
+class_id = 171, name = custardtart, ap = 100.00%         (TP = 8, FP = 4)
+class_id = 172, name = beefnoodlesoup, ap = 63.17%       (TP = 7, FP = 13)
+class_id = 173, name = porkcutlet, ap = 56.32%           (TP = 6, FP = 5)
+class_id = 174, name = mincedporkrice, ap = 92.37%       (TP = 11, FP = 5)
+class_id = 175, name = fishballsoup, ap = 82.58%         (TP = 10, FP = 2)
+class_id = 176, name = oysteromelette, ap = 78.96%       (TP = 7, FP = 4)
+class_id = 177, name = glutinousoilrice, ap = 79.27%     (TP = 7, FP = 5)
+class_id = 178, name = trunippudding, ap = 78.06%        (TP = 8, FP = 9)
+class_id = 179, name = stinkytofu, ap = 66.32%           (TP = 7, FP = 8)
+class_id = 180, name = lemonfigjelly, ap = 80.94%        (TP = 9, FP = 7)
+class_id = 181, name = khaosoi, ap = 63.68%      (TP = 8, FP = 11)
+class_id = 182, name = Sourprawnsoup, ap = 62.53%        (TP = 6, FP = 4)
+class_id = 183, name = Thaipapayasalad, ap = 80.99%      (TP = 10, FP = 5)
+class_id = 184, name = boned,slicedHainan-stylechickenwithmarinatedrice, ap = 65.66%     (TP = 8, FP = 4)
+class_id = 185, name = hotandsour,fishandvegetableragout, ap = 70.75%            (TP = 7, FP = 5)
+class_id = 186, name = stir-friedmixedvegetables, ap = 38.61%            (TP = 5, FP = 9)
+class_id = 187, name = beefinoystersauce, ap = 32.26%            (TP = 3, FP = 8)
+class_id = 188, name = porksatay, ap = 76.48%            (TP = 8, FP = 8)
+class_id = 189, name = spicychickensalad, ap = 40.02%            (TP = 3, FP = 2)
+class_id = 190, name = noodleswithfishcurry, ap = 13.31%         (TP = 1, FP = 4)
+class_id = 191, name = PorkStickyNoodles, ap = 69.47%            (TP = 8, FP = 12)
+class_id = 192, name = Porkwithlemon, ap = 24.63%        (TP = 4, FP = 7)
+class_id = 193, name = stewedporkleg, ap = 31.46%        (TP = 3, FP = 9)
+class_id = 194, name = charcoal-boiledporkneck, ap = 68.07%      (TP = 7, FP = 4)
+class_id = 195, name = friedmusselpancakes, ap = 78.62%          (TP = 7, FP = 1)
+class_id = 196, name = DeepFriedChickenWing, ap = 45.19%         (TP = 8, FP = 8)
+class_id = 197, name = Barbecuedredporkinsaucewithrice, ap = 67.88%      (TP = 10, FP = 5)
+class_id = 198, name = Ricewithroastduck, ap = 67.17%            (TP = 7, FP = 3)
+class_id = 199, name = Ricecrispypork, ap = 7.78%        (TP = 1, FP = 9)
+class_id = 200, name = Wontonsoup, ap = 52.73%           (TP = 8, FP = 11)
+class_id = 201, name = ChickenRiceCurryWithCoconut, ap = 69.35%          (TP = 6, FP = 6)
+class_id = 202, name = CrispyNoodles, ap = 70.74%        (TP = 4, FP = 4)
+class_id = 203, name = EggNoodleInChickenYellowCurry, ap = 42.93%        (TP = 6, FP = 8)
+class_id = 204, name = coconutmilksoup, ap = 53.58%      (TP = 6, FP = 7)
+class_id = 205, name = pho, ap = 54.91%          (TP = 8, FP = 7)
+class_id = 206, name = Huebeefricevermicellisoup, ap = 73.42%            (TP = 7, FP = 2)
+class_id = 207, name = Vermicellinoodleswithsnails, ap = 71.08%          (TP = 6, FP = 5)
+class_id = 208, name = Friedspringrolls, ap = 56.81%     (TP = 7, FP = 13)
+class_id = 209, name = Steamedriceroll, ap = 93.76%      (TP = 10, FP = 5)
+class_id = 210, name = Shrimppatties, ap = 43.33%        (TP = 4, FP = 3)
+class_id = 211, name = ballshapedbunwithpork, ap = 47.62%        (TP = 6, FP = 4)
+class_id = 212, name = Coconutmilk-flavoredcrepeswithshrimpandbeef, ap = 27.09%          (TP = 4, FP = 8)
+class_id = 213, name = Smallsteamedsavoryricepancake, ap = 98.33%        (TP = 10, FP = 2)
+class_id = 214, name = GlutinousRiceBalls, ap = 83.63%           (TP = 10, FP = 4)
+class_id = 215, name = locomoco, ap = 57.87%     (TP = 7, FP = 4)
+class_id = 216, name = haupia, ap = 64.65%       (TP = 7, FP = 5)
+class_id = 217, name = malasada, ap = 73.05%     (TP = 10, FP = 9)
+class_id = 218, name = laulau, ap = 78.26%       (TP = 9, FP = 7)
+class_id = 219, name = spammusubi, ap = 77.13%           (TP = 9, FP = 3)
+class_id = 220, name = oxtailsoup, ap = 28.48%           (TP = 3, FP = 5)
+class_id = 221, name = adobo, ap = 65.71%        (TP = 7, FP = 8)
+class_id = 222, name = lumpia, ap = 63.68%       (TP = 8, FP = 7)
+class_id = 223, name = brownie, ap = 69.11%      (TP = 7, FP = 9)
+class_id = 224, name = churro, ap = 68.33%       (TP = 5, FP = 11)
+class_id = 225, name = jambalaya, ap = 68.75%            (TP = 7, FP = 7)
+class_id = 226, name = nasigoreng, ap = 68.28%           (TP = 7, FP = 5)
+class_id = 227, name = ayamgoreng, ap = 34.84%           (TP = 4, FP = 13)
+class_id = 228, name = ayambakar, ap = 63.09%            (TP = 6, FP = 3)
+class_id = 229, name = buburayam, ap = 68.64%            (TP = 6, FP = 4)
+class_id = 230, name = gulai, ap = 31.21%        (TP = 5, FP = 8)
+class_id = 231, name = laksa, ap = 33.05%        (TP = 4, FP = 9)
+class_id = 232, name = mieayam, ap = 48.36%      (TP = 5, FP = 7)
+class_id = 233, name = miegoreng, ap = 67.68%            (TP = 7, FP = 4)
+class_id = 234, name = nasicampur, ap = 25.20%           (TP = 5, FP = 15)
+class_id = 235, name = nasipadang, ap = 53.56%           (TP = 5, FP = 6)
+class_id = 236, name = nasiuduk, ap = 46.05%     (TP = 7, FP = 9)
+class_id = 237, name = babiguling, ap = 62.95%           (TP = 7, FP = 4)
+class_id = 238, name = kayatoast, ap = 60.74%            (TP = 9, FP = 10)
+class_id = 239, name = bakkutteh, ap = 64.84%            (TP = 8, FP = 8)
+class_id = 240, name = currypuff, ap = 51.36%            (TP = 7, FP = 12)
+class_id = 241, name = chowmein, ap = 59.79%     (TP = 6, FP = 7)
+class_id = 242, name = zhajiangmian, ap = 77.17%         (TP = 10, FP = 9)
+class_id = 243, name = kungpaochicken, ap = 91.74%       (TP = 10, FP = 6)
+class_id = 244, name = crullers, ap = 76.19%     (TP = 8, FP = 7)
+class_id = 245, name = eggplantwithgarlicsauce, ap = 74.65%      (TP = 8, FP = 6)
+class_id = 246, name = threecupchicken, ap = 78.30%      (TP = 11, FP = 9)
+class_id = 247, name = beancurdfamilystyle, ap = 53.53%          (TP = 5, FP = 7)
+class_id = 248, name = salt&pepperfriedshrimpwithshell, ap = 63.50%      (TP = 7, FP = 5)
+class_id = 249, name = bakedsalmon, ap = 33.92%          (TP = 2, FP = 4)
+class_id = 250, name = braisedporkmeatballwithnapacabbage, ap = 76.82%           (TP = 8, FP = 1)
+class_id = 251, name = wintermelonsoup, ap = 89.10%      (TP = 9, FP = 0)
+class_id = 252, name = steamedspareribs, ap = 75.78%     (TP = 10, FP = 4)
+class_id = 253, name = chinesepumpkinpie, ap = 63.88%            (TP = 7, FP = 3)
+class_id = 254, name = eighttreasurerice, ap = 64.03%            (TP = 7, FP = 4)
+class_id = 255, name = hot&soursoup, ap = 52.98%         (TP = 6, FP = 7)
+
+ for conf_thresh = 0.25, precision = 0.50, recall = 0.58, F1-score = 0.54
+ for conf_thresh = 0.25, TP = 1822, FP = 1795, FN = 1317, average IoU = 38.89 %
+
+ IoU threshold = 50 %, used Area-Under-Curve for each unique Recall
+ mean average precision (mAP@0.50) = 0.600997, or 60.10 %
+Total Detection Time: 63 Seconds
+
+Set -points flag:
+ `-points 101` for MS COCO
+ `-points 11` for PascalVOC 2007 (uncomment `difficult` in voc.data)
+ `-points 0` (AUC) for ImageNet, PascalVOC 2010-2012, your custom dataset
+
+C:\Users\sy\darknet-master\build\darknet\x64>darknet.exe detector map food/food256.data cfg/yolov3-tiny-food.cfg food/backup/yolov3-tiny-food_480000.weights
+ CUDA-version: 10000 (11030), cuDNN: 7.6.5, CUDNN_HALF=1, GPU count: 1
+ CUDNN_HALF=1
+ OpenCV version: 3.4.0
+ 0 : compute_capability = 750, cudnn_half = 1, GPU: NVIDIA GeForce GTX 1660 SUPER
+net.optimized_memory = 0
+mini_batch = 1, batch = 8, time_steps = 1, train = 0
+   layer   filters  size/strd(dil)      input                output
+   0 Create CUDA-stream - 0
+ Create cudnn-handle 0
+conv     16       3 x 3/ 1    416 x 416 x   3 ->  416 x 416 x  16 0.150 BF
+   1 max                2x 2/ 2    416 x 416 x  16 ->  208 x 208 x  16 0.003 BF
+   2 conv     32       3 x 3/ 1    208 x 208 x  16 ->  208 x 208 x  32 0.399 BF
+   3 max                2x 2/ 2    208 x 208 x  32 ->  104 x 104 x  32 0.001 BF
+   4 conv     64       3 x 3/ 1    104 x 104 x  32 ->  104 x 104 x  64 0.399 BF
+   5 max                2x 2/ 2    104 x 104 x  64 ->   52 x  52 x  64 0.001 BF
+   6 conv    128       3 x 3/ 1     52 x  52 x  64 ->   52 x  52 x 128 0.399 BF
+   7 max                2x 2/ 2     52 x  52 x 128 ->   26 x  26 x 128 0.000 BF
+   8 conv    256       3 x 3/ 1     26 x  26 x 128 ->   26 x  26 x 256 0.399 BF
+   9 max                2x 2/ 2     26 x  26 x 256 ->   13 x  13 x 256 0.000 BF
+  10 conv    512       3 x 3/ 1     13 x  13 x 256 ->   13 x  13 x 512 0.399 BF
+  11 max                2x 2/ 1     13 x  13 x 512 ->   13 x  13 x 512 0.000 BF
+  12 conv   1024       3 x 3/ 1     13 x  13 x 512 ->   13 x  13 x1024 1.595 BF
+  13 conv    256       1 x 1/ 1     13 x  13 x1024 ->   13 x  13 x 256 0.089 BF
+  14 conv    512       3 x 3/ 1     13 x  13 x 256 ->   13 x  13 x 512 0.399 BF
+  15 conv    783       1 x 1/ 1     13 x  13 x 512 ->   13 x  13 x 783 0.136 BF
+  16 yolo
+[yolo] params: iou loss: mse (2), iou_norm: 0.75, obj_norm: 1.00, cls_norm: 1.00, delta_norm: 1.00, scale_x_y: 1.00
+  17 route  13                                     ->   13 x  13 x 256
+  18 conv    128       1 x 1/ 1     13 x  13 x 256 ->   13 x  13 x 128 0.011 BF
+  19 upsample                 2x    13 x  13 x 128 ->   26 x  26 x 128
+  20 route  19 8                                   ->   26 x  26 x 384
+  21 conv    256       3 x 3/ 1     26 x  26 x 384 ->   26 x  26 x 256 1.196 BF
+  22 conv    783       1 x 1/ 1     26 x  26 x 256 ->   26 x  26 x 783 0.271 BF
+  23 yolo
+[yolo] params: iou loss: mse (2), iou_norm: 0.75, obj_norm: 1.00, cls_norm: 1.00, delta_norm: 1.00, scale_x_y: 1.00
+Total BFLOPS 5.845
+avg_outputs = 378714
+ Allocate additional workspace_size = 52.43 MB
+Loading weights from food/backup/yolov3-tiny-food_480000.weights...
+ seen 64, trained: 30720 K-images (480 Kilo-batches_64)
+Done! Loaded 24 layers from weights-file
+
+ calculation mAP (mean average precision)...
+ Detection layer: 16 - type = 28
+ Detection layer: 23 - type = 28
+3140
+ detections_count = 12383, unique_truth_count = 3139
+class_id = 0, name = rice, ap = 32.98%           (TP = 26, FP = 68)
+class_id = 1, name = eelsonrice, ap = 92.31%     (TP = 12, FP = 3)
+class_id = 2, name = pilaf, ap = 82.26%          (TP = 9, FP = 6)
+class_id = 3, name = chicken-'n'-eggonrice, ap = 47.71%          (TP = 6, FP = 7)
+class_id = 4, name = porkcutletonrice, ap = 68.62%       (TP = 12, FP = 9)
+class_id = 5, name = beefcurry, ap = 76.54%      (TP = 20, FP = 11)
+class_id = 6, name = sushi, ap = 56.61%          (TP = 5, FP = 1)
+class_id = 7, name = chickenrice, ap = 66.13%            (TP = 6, FP = 6)
+class_id = 8, name = friedrice, ap = 71.18%      (TP = 12, FP = 7)
+class_id = 9, name = tempurabowl, ap = 79.67%            (TP = 9, FP = 4)
+class_id = 10, name = bibimbap, ap = 93.10%      (TP = 10, FP = 3)
+class_id = 11, name = toast, ap = 58.70%         (TP = 15, FP = 7)
+class_id = 12, name = croissant, ap = 54.72%     (TP = 7, FP = 5)
+class_id = 13, name = rollbread, ap = 57.24%     (TP = 5, FP = 5)
+class_id = 14, name = raisinbread, ap = 61.71%           (TP = 8, FP = 4)
+class_id = 15, name = chipbutty, ap = 26.61%     (TP = 4, FP = 6)
+class_id = 16, name = hamburger, ap = 65.33%     (TP = 16, FP = 8)
+class_id = 17, name = pizza, ap = 65.99%         (TP = 11, FP = 9)
+class_id = 18, name = sandwiches, ap = 63.47%            (TP = 9, FP = 5)
+class_id = 19, name = udonnoodle, ap = 67.03%            (TP = 11, FP = 11)
+class_id = 20, name = tempuraudon, ap = 83.31%           (TP = 8, FP = 4)
+class_id = 21, name = sobanoodle, ap = 76.80%            (TP = 13, FP = 6)
+class_id = 22, name = ramennoodle, ap = 81.26%           (TP = 26, FP = 19)
+class_id = 23, name = beefnoodle, ap = 36.55%            (TP = 5, FP = 9)
+class_id = 24, name = tensinnoodle, ap = 76.42%          (TP = 9, FP = 3)
+class_id = 25, name = friednoodle, ap = 58.00%           (TP = 8, FP = 4)
+class_id = 26, name = spaghetti, ap = 70.08%     (TP = 11, FP = 7)
+class_id = 27, name = Japanese-stylepancake, ap = 75.20%         (TP = 8, FP = 13)
+class_id = 28, name = takoyaki, ap = 70.94%      (TP = 8, FP = 5)
+class_id = 29, name = gratin, ap = 72.36%        (TP = 9, FP = 8)
+class_id = 30, name = sauteedvegetables, ap = 10.87%     (TP = 2, FP = 4)
+class_id = 31, name = croquette, ap = 62.38%     (TP = 8, FP = 7)
+class_id = 32, name = grilledeggplant, ap = 16.76%       (TP = 1, FP = 2)
+class_id = 33, name = sauteedspinach, ap = 56.00%        (TP = 5, FP = 4)
+class_id = 34, name = vegetabletempura, ap = 46.88%      (TP = 5, FP = 7)
+class_id = 35, name = misosoup, ap = 41.53%      (TP = 31, FP = 94)
+class_id = 36, name = potage, ap = 73.55%        (TP = 6, FP = 0)
+class_id = 37, name = sausage, ap = 20.50%       (TP = 1, FP = 4)
+class_id = 38, name = oden, ap = 14.09%          (TP = 1, FP = 6)
+class_id = 39, name = omelet, ap = 6.78%         (TP = 1, FP = 10)
+class_id = 40, name = ganmodoki, ap = 23.64%     (TP = 3, FP = 2)
+class_id = 41, name = jiaozi, ap = 62.96%        (TP = 8, FP = 7)
+class_id = 42, name = stew, ap = 62.67%          (TP = 6, FP = 3)
+class_id = 43, name = teriyakigrilledfish, ap = 44.04%           (TP = 5, FP = 3)
+class_id = 44, name = friedfish, ap = 28.41%     (TP = 4, FP = 6)
+class_id = 45, name = grilledsalmon, ap = 48.39%         (TP = 6, FP = 6)
+class_id = 46, name = salmonmeuniere, ap = 29.95%        (TP = 3, FP = 5)
+class_id = 47, name = sashimi, ap = 57.14%       (TP = 5, FP = 4)
+class_id = 48, name = grilledpacificsaury, ap = 57.21%           (TP = 11, FP = 8)
+class_id = 49, name = sukiyaki, ap = 36.13%      (TP = 4, FP = 9)
+class_id = 50, name = sweetandsourpork, ap = 59.37%      (TP = 5, FP = 5)
+class_id = 51, name = lightlyroastedfish, ap = 36.17%            (TP = 1, FP = 7)
+class_id = 52, name = steamedegghotchpotch, ap = 58.58%          (TP = 6, FP = 6)
+class_id = 53, name = tempura, ap = 66.25%       (TP = 6, FP = 5)
+class_id = 54, name = friedchicken, ap = 24.91%          (TP = 5, FP = 15)
+class_id = 55, name = sirloincutlet, ap = 39.22%         (TP = 4, FP = 7)
+class_id = 56, name = nanbanzuke, ap = 37.86%            (TP = 2, FP = 5)
+class_id = 57, name = boiledfish, ap = 69.09%            (TP = 4, FP = 2)
+class_id = 58, name = seasonedbeefwithpotatoes, ap = 85.37%      (TP = 10, FP = 3)
+class_id = 59, name = hambargsteak, ap = 22.97%          (TP = 4, FP = 11)
+class_id = 60, name = steak, ap = 43.86%         (TP = 4, FP = 1)
+class_id = 61, name = driedfish, ap = 90.08%     (TP = 10, FP = 4)
+class_id = 62, name = gingerporksaute, ap = 37.12%       (TP = 4, FP = 4)
+class_id = 63, name = spicychili-flavoredtofu, ap = 73.46%       (TP = 8, FP = 6)
+class_id = 64, name = yakitori, ap = 40.68%      (TP = 4, FP = 2)
+class_id = 65, name = cabbageroll, ap = 54.42%           (TP = 5, FP = 3)
+class_id = 66, name = omelet, ap = 59.10%        (TP = 5, FP = 5)
+class_id = 67, name = eggsunny-sideup, ap = 39.98%       (TP = 8, FP = 9)
+class_id = 68, name = natto, ap = 52.69%         (TP = 8, FP = 12)
+class_id = 69, name = coldtofu, ap = 67.22%      (TP = 9, FP = 3)
+class_id = 70, name = eggroll, ap = 62.37%       (TP = 5, FP = 5)
+class_id = 71, name = chillednoodle, ap = 90.08%         (TP = 9, FP = 0)
+class_id = 72, name = stir-friedbeefandpeppers, ap = 72.64%      (TP = 7, FP = 4)
+class_id = 73, name = simmeredpork, ap = 94.84%          (TP = 8, FP = 2)
+class_id = 74, name = boiledchickenandvegetables, ap = 44.07%            (TP = 4, FP = 1)
+class_id = 75, name = sashimibowl, ap = 31.64%           (TP = 5, FP = 6)
+class_id = 76, name = sushibowl, ap = 39.24%     (TP = 4, FP = 3)
+class_id = 77, name = fish-shapedpancakewithbeanjam, ap = 82.50%         (TP = 10, FP = 2)
+class_id = 78, name = shrimpwithchillsource, ap = 72.92%         (TP = 7, FP = 2)
+class_id = 79, name = roastchicken, ap = 61.36%          (TP = 9, FP = 4)
+class_id = 80, name = steamedmeatdumpling, ap = 29.24%           (TP = 3, FP = 5)
+class_id = 81, name = omeletwithfriedrice, ap = 98.33%           (TP = 10, FP = 0)
+class_id = 82, name = cutletcurry, ap = 75.11%           (TP = 11, FP = 5)
+class_id = 83, name = spaghettimeatsauce, ap = 75.79%            (TP = 11, FP = 12)
+class_id = 84, name = friedshrimp, ap = 80.22%           (TP = 11, FP = 6)
+class_id = 85, name = potatosalad, ap = 56.59%           (TP = 7, FP = 4)
+class_id = 86, name = greensalad, ap = 11.67%            (TP = 4, FP = 26)
+class_id = 87, name = macaronisalad, ap = 52.41%         (TP = 6, FP = 6)
+class_id = 88, name = Japanesetofuandvegetablechowder, ap = 22.19%       (TP = 4, FP = 14)
+class_id = 89, name = porkmisosoup, ap = 21.79%          (TP = 1, FP = 10)
+class_id = 90, name = chinesesoup, ap = 21.65%           (TP = 5, FP = 10)
+class_id = 91, name = beefbowl, ap = 32.95%      (TP = 9, FP = 19)
+class_id = 92, name = kinpira-stylesauteedburdock, ap = 74.83%           (TP = 9, FP = 6)
+class_id = 93, name = riceball, ap = 37.79%      (TP = 4, FP = 5)
+class_id = 94, name = pizzatoast, ap = 77.78%            (TP = 8, FP = 4)
+class_id = 95, name = dippingnoodles, ap = 82.89%        (TP = 9, FP = 5)
+class_id = 96, name = hotdog, ap = 57.63%        (TP = 3, FP = 0)
+class_id = 97, name = frenchfries, ap = 36.67%           (TP = 6, FP = 10)
+class_id = 98, name = mixedrice, ap = 51.62%     (TP = 6, FP = 5)
+class_id = 99, name = goyachanpuru, ap = 79.55%          (TP = 9, FP = 3)
+class_id = 100, name = greencurry, ap = 35.17%           (TP = 2, FP = 1)
+class_id = 101, name = okinawasoba, ap = 70.68%          (TP = 7, FP = 7)
+class_id = 102, name = mangopudding, ap = 59.64%         (TP = 6, FP = 3)
+class_id = 103, name = almondjelly, ap = 63.88%          (TP = 6, FP = 8)
+class_id = 104, name = jjigae, ap = 81.49%       (TP = 10, FP = 3)
+class_id = 105, name = dakgalbi, ap = 85.96%     (TP = 9, FP = 3)
+class_id = 106, name = drycurry, ap = 85.70%     (TP = 9, FP = 1)
+class_id = 107, name = kamameshi, ap = 84.18%            (TP = 8, FP = 1)
+class_id = 108, name = ricevermicelli, ap = 84.49%       (TP = 9, FP = 1)
+class_id = 109, name = paella, ap = 77.10%       (TP = 7, FP = 2)
+class_id = 110, name = tanmen, ap = 18.52%       (TP = 3, FP = 11)
+class_id = 111, name = kushikatu, ap = 70.71%            (TP = 6, FP = 4)
+class_id = 112, name = yellowcurry, ap = 29.24%          (TP = 3, FP = 2)
+class_id = 113, name = pancake, ap = 84.81%      (TP = 9, FP = 4)
+class_id = 114, name = champon, ap = 68.75%      (TP = 10, FP = 8)
+class_id = 115, name = crape, ap = 29.58%        (TP = 1, FP = 3)
+class_id = 116, name = tiramisu, ap = 99.09%     (TP = 10, FP = 1)
+class_id = 117, name = waffle, ap = 40.83%       (TP = 4, FP = 3)
+class_id = 118, name = rarecheesecake, ap = 80.14%       (TP = 6, FP = 2)
+class_id = 119, name = shortcake, ap = 95.32%            (TP = 9, FP = 2)
+class_id = 120, name = chopsuey, ap = 46.96%     (TP = 4, FP = 8)
+class_id = 121, name = twicecookedpork, ap = 52.88%      (TP = 6, FP = 14)
+class_id = 122, name = mushroomrisotto, ap = 28.64%      (TP = 3, FP = 6)
+class_id = 123, name = samul, ap = 79.62%        (TP = 8, FP = 6)
+class_id = 124, name = zoni, ap = 56.08%         (TP = 7, FP = 4)
+class_id = 125, name = frenchtoast, ap = 52.60%          (TP = 5, FP = 5)
+class_id = 126, name = finewhitenoodles, ap = 70.99%     (TP = 9, FP = 3)
+class_id = 127, name = minestrone, ap = 83.06%           (TP = 8, FP = 3)
+class_id = 128, name = potaufeu, ap = 54.64%     (TP = 6, FP = 5)
+class_id = 129, name = chickennugget, ap = 60.92%        (TP = 6, FP = 8)
+class_id = 130, name = namero, ap = 65.37%       (TP = 7, FP = 6)
+class_id = 131, name = frenchbread, ap = 83.50%          (TP = 5, FP = 10)
+class_id = 132, name = ricegruel, ap = 75.25%            (TP = 9, FP = 5)
+class_id = 133, name = broiledeelbowl, ap = 64.10%       (TP = 7, FP = 7)
+class_id = 134, name = clearsoup, ap = 34.03%            (TP = 4, FP = 5)
+class_id = 135, name = yudofu, ap = 83.34%       (TP = 8, FP = 4)
+class_id = 136, name = mozuku, ap = 83.18%       (TP = 8, FP = 2)
+class_id = 137, name = inarizushi, ap = 57.85%           (TP = 8, FP = 11)
+class_id = 138, name = porkloincutlet, ap = 49.88%       (TP = 6, FP = 13)
+class_id = 139, name = porkfilletcutlet, ap = 63.14%     (TP = 7, FP = 7)
+class_id = 140, name = chickencutlet, ap = 28.79%        (TP = 4, FP = 4)
+class_id = 141, name = hamcutlet, ap = 48.60%            (TP = 6, FP = 5)
+class_id = 142, name = mincedmeatcutlet, ap = 53.83%     (TP = 6, FP = 8)
+class_id = 143, name = thinlyslicedrawhorsemeat, ap = 62.05%     (TP = 7, FP = 7)
+class_id = 144, name = bagel, ap = 78.94%        (TP = 9, FP = 4)
+class_id = 145, name = scone, ap = 47.58%        (TP = 5, FP = 11)
+class_id = 146, name = tortilla, ap = 20.76%     (TP = 3, FP = 3)
+class_id = 147, name = tacos, ap = 56.44%        (TP = 7, FP = 8)
+class_id = 148, name = nachos, ap = 40.64%       (TP = 4, FP = 3)
+class_id = 149, name = meatloaf, ap = 1.82%      (TP = 0, FP = 0)
+class_id = 150, name = scrambledegg, ap = 76.87%         (TP = 5, FP = 1)
+class_id = 151, name = ricegratin, ap = 78.84%           (TP = 9, FP = 2)
+class_id = 152, name = lasagna, ap = 45.52%      (TP = 6, FP = 5)
+class_id = 153, name = Caesarsalad, ap = 78.60%          (TP = 8, FP = 7)
+class_id = 154, name = oatmeal, ap = 56.53%      (TP = 6, FP = 4)
+class_id = 155, name = friedporkdumplingsservedinsoup, ap = 85.14%       (TP = 10, FP = 4)
+class_id = 156, name = oshiruko, ap = 88.98%     (TP = 9, FP = 7)
+class_id = 157, name = muffin, ap = 63.85%       (TP = 7, FP = 3)
+class_id = 158, name = popcorn, ap = 82.43%      (TP = 10, FP = 9)
+class_id = 159, name = creampuff, ap = 59.77%            (TP = 6, FP = 5)
+class_id = 160, name = doughnut, ap = 40.00%     (TP = 5, FP = 6)
+class_id = 161, name = applepie, ap = 36.39%     (TP = 3, FP = 8)
+class_id = 162, name = parfait, ap = 65.60%      (TP = 6, FP = 5)
+class_id = 163, name = friedporkinscoop, ap = 68.21%     (TP = 7, FP = 8)
+class_id = 164, name = lambkebabs, ap = 67.56%           (TP = 10, FP = 10)
+class_id = 165, name = dishconsistingofstir-friedpotato,eggplantandgreenpepper, ap = 90.28%      (TP = 10, FP = 2)
+class_id = 166, name = roastduck, ap = 64.30%            (TP = 4, FP = 3)
+class_id = 167, name = hotpot, ap = 20.88%       (TP = 3, FP = 6)
+class_id = 168, name = porkbelly, ap = 26.35%            (TP = 4, FP = 8)
+class_id = 169, name = xiaolongbao, ap = 90.25%          (TP = 10, FP = 1)
+class_id = 170, name = mooncake, ap = 78.09%     (TP = 7, FP = 2)
+class_id = 171, name = custardtart, ap = 100.00%         (TP = 9, FP = 2)
+class_id = 172, name = beefnoodlesoup, ap = 64.70%       (TP = 8, FP = 9)
+class_id = 173, name = porkcutlet, ap = 56.81%           (TP = 5, FP = 5)
+class_id = 174, name = mincedporkrice, ap = 93.27%       (TP = 11, FP = 5)
+class_id = 175, name = fishballsoup, ap = 82.58%         (TP = 10, FP = 2)
+class_id = 176, name = oysteromelette, ap = 79.90%       (TP = 7, FP = 4)
+class_id = 177, name = glutinousoilrice, ap = 80.80%     (TP = 9, FP = 4)
+class_id = 178, name = trunippudding, ap = 80.52%        (TP = 8, FP = 7)
+class_id = 179, name = stinkytofu, ap = 60.56%           (TP = 7, FP = 9)
+class_id = 180, name = lemonfigjelly, ap = 81.89%        (TP = 9, FP = 5)
+class_id = 181, name = khaosoi, ap = 61.34%      (TP = 8, FP = 11)
+class_id = 182, name = Sourprawnsoup, ap = 62.83%        (TP = 5, FP = 4)
+class_id = 183, name = Thaipapayasalad, ap = 81.48%      (TP = 10, FP = 5)
+class_id = 184, name = boned,slicedHainan-stylechickenwithmarinatedrice, ap = 63.69%     (TP = 7, FP = 5)
+class_id = 185, name = hotandsour,fishandvegetableragout, ap = 70.32%            (TP = 7, FP = 5)
+class_id = 186, name = stir-friedmixedvegetables, ap = 35.32%            (TP = 5, FP = 10)
+class_id = 187, name = beefinoystersauce, ap = 32.40%            (TP = 4, FP = 7)
+class_id = 188, name = porksatay, ap = 74.93%            (TP = 8, FP = 6)
+class_id = 189, name = spicychickensalad, ap = 39.99%            (TP = 3, FP = 1)
+class_id = 190, name = noodleswithfishcurry, ap = 12.65%         (TP = 1, FP = 4)
+class_id = 191, name = PorkStickyNoodles, ap = 73.14%            (TP = 8, FP = 7)
+class_id = 192, name = Porkwithlemon, ap = 22.49%        (TP = 2, FP = 6)
+class_id = 193, name = stewedporkleg, ap = 30.61%        (TP = 3, FP = 8)
+class_id = 194, name = charcoal-boiledporkneck, ap = 68.78%      (TP = 7, FP = 4)
+class_id = 195, name = friedmusselpancakes, ap = 78.44%          (TP = 7, FP = 1)
+class_id = 196, name = DeepFriedChickenWing, ap = 51.06%         (TP = 7, FP = 7)
+class_id = 197, name = Barbecuedredporkinsaucewithrice, ap = 67.64%      (TP = 10, FP = 5)
+class_id = 198, name = Ricewithroastduck, ap = 65.87%            (TP = 7, FP = 3)
+class_id = 199, name = Ricecrispypork, ap = 7.65%        (TP = 1, FP = 7)
+class_id = 200, name = Wontonsoup, ap = 51.17%           (TP = 8, FP = 8)
+class_id = 201, name = ChickenRiceCurryWithCoconut, ap = 68.40%          (TP = 5, FP = 3)
+class_id = 202, name = CrispyNoodles, ap = 68.41%        (TP = 5, FP = 3)
+class_id = 203, name = EggNoodleInChickenYellowCurry, ap = 43.00%        (TP = 6, FP = 8)
+class_id = 204, name = coconutmilksoup, ap = 53.35%      (TP = 6, FP = 6)
+class_id = 205, name = pho, ap = 58.37%          (TP = 8, FP = 5)
+class_id = 206, name = Huebeefricevermicellisoup, ap = 71.73%            (TP = 7, FP = 3)
+class_id = 207, name = Vermicellinoodleswithsnails, ap = 71.16%          (TP = 6, FP = 3)
+class_id = 208, name = Friedspringrolls, ap = 57.77%     (TP = 7, FP = 11)
+class_id = 209, name = Steamedriceroll, ap = 91.03%      (TP = 8, FP = 5)
+class_id = 210, name = Shrimppatties, ap = 41.53%        (TP = 4, FP = 1)
+class_id = 211, name = ballshapedbunwithpork, ap = 46.85%        (TP = 6, FP = 5)
+class_id = 212, name = Coconutmilk-flavoredcrepeswithshrimpandbeef, ap = 24.26%          (TP = 3, FP = 8)
+class_id = 213, name = Smallsteamedsavoryricepancake, ap = 96.69%        (TP = 9, FP = 3)
+class_id = 214, name = GlutinousRiceBalls, ap = 84.27%           (TP = 9, FP = 2)
+class_id = 215, name = locomoco, ap = 54.39%     (TP = 7, FP = 4)
+class_id = 216, name = haupia, ap = 64.43%       (TP = 6, FP = 4)
+class_id = 217, name = malasada, ap = 74.44%     (TP = 10, FP = 8)
+class_id = 218, name = laulau, ap = 79.89%       (TP = 8, FP = 6)
+class_id = 219, name = spammusubi, ap = 76.12%           (TP = 9, FP = 2)
+class_id = 220, name = oxtailsoup, ap = 27.08%           (TP = 3, FP = 5)
+class_id = 221, name = adobo, ap = 60.77%        (TP = 7, FP = 9)
+class_id = 222, name = lumpia, ap = 63.98%       (TP = 8, FP = 6)
+class_id = 223, name = brownie, ap = 70.46%      (TP = 7, FP = 6)
+class_id = 224, name = churro, ap = 69.11%       (TP = 5, FP = 8)
+class_id = 225, name = jambalaya, ap = 69.22%            (TP = 7, FP = 7)
+class_id = 226, name = nasigoreng, ap = 65.31%           (TP = 7, FP = 5)
+class_id = 227, name = ayamgoreng, ap = 35.75%           (TP = 5, FP = 12)
+class_id = 228, name = ayambakar, ap = 62.23%            (TP = 6, FP = 3)
+class_id = 229, name = buburayam, ap = 70.36%            (TP = 6, FP = 2)
+class_id = 230, name = gulai, ap = 31.39%        (TP = 5, FP = 7)
+class_id = 231, name = laksa, ap = 31.95%        (TP = 4, FP = 10)
+class_id = 232, name = mieayam, ap = 47.80%      (TP = 5, FP = 6)
+class_id = 233, name = miegoreng, ap = 70.08%            (TP = 7, FP = 5)
+class_id = 234, name = nasicampur, ap = 19.43%           (TP = 5, FP = 14)
+class_id = 235, name = nasipadang, ap = 56.17%           (TP = 5, FP = 5)
+class_id = 236, name = nasiuduk, ap = 45.20%     (TP = 6, FP = 7)
+class_id = 237, name = babiguling, ap = 62.07%           (TP = 7, FP = 4)
+class_id = 238, name = kayatoast, ap = 59.65%            (TP = 8, FP = 9)
+class_id = 239, name = bakkutteh, ap = 64.92%            (TP = 8, FP = 6)
+class_id = 240, name = currypuff, ap = 50.69%            (TP = 7, FP = 11)
+class_id = 241, name = chowmein, ap = 60.40%     (TP = 6, FP = 4)
+class_id = 242, name = zhajiangmian, ap = 73.81%         (TP = 9, FP = 7)
+class_id = 243, name = kungpaochicken, ap = 90.44%       (TP = 10, FP = 4)
+class_id = 244, name = crullers, ap = 76.40%     (TP = 8, FP = 6)
+class_id = 245, name = eggplantwithgarlicsauce, ap = 78.94%      (TP = 8, FP = 5)
+class_id = 246, name = threecupchicken, ap = 80.87%      (TP = 11, FP = 9)
+class_id = 247, name = beancurdfamilystyle, ap = 53.88%          (TP = 5, FP = 7)
+class_id = 248, name = salt&pepperfriedshrimpwithshell, ap = 60.27%      (TP = 7, FP = 5)
+class_id = 249, name = bakedsalmon, ap = 20.56%          (TP = 1, FP = 3)
+class_id = 250, name = braisedporkmeatballwithnapacabbage, ap = 75.43%           (TP = 8, FP = 1)
+class_id = 251, name = wintermelonsoup, ap = 89.10%      (TP = 9, FP = 0)
+class_id = 252, name = steamedspareribs, ap = 80.45%     (TP = 10, FP = 4)
+class_id = 253, name = chinesepumpkinpie, ap = 64.42%            (TP = 7, FP = 3)
+class_id = 254, name = eighttreasurerice, ap = 59.14%            (TP = 7, FP = 4)
+class_id = 255, name = hot&soursoup, ap = 51.55%         (TP = 5, FP = 7)
+
+ for conf_thresh = 0.25, precision = 0.53, recall = 0.57, F1-score = 0.55
+ for conf_thresh = 0.25, TP = 1780, FP = 1586, FN = 1359, average IoU = 40.98 %
+
+ IoU threshold = 50 %, used Area-Under-Curve for each unique Recall
+ mean average precision (mAP@0.50) = 0.592926, or 59.29 %
+Total Detection Time: 61 Seconds
+
+Set -points flag:
+ `-points 101` for MS COCO
+ `-points 11` for PascalVOC 2007 (uncomment `difficult` in voc.data)
+ `-points 0` (AUC) for ImageNet, PascalVOC 2010-2012, your custom dataset
+
+C:\Users\sy\darknet-master\build\darknet\x64>darknet.exe detector map food/food256.data cfg/yolov3-tiny-food.cfg food/backup/yolov3-tiny-food_460000.weights
+ CUDA-version: 10000 (11030), cuDNN: 7.6.5, CUDNN_HALF=1, GPU count: 1
+ CUDNN_HALF=1
+ OpenCV version: 3.4.0
+ 0 : compute_capability = 750, cudnn_half = 1, GPU: NVIDIA GeForce GTX 1660 SUPER
+net.optimized_memory = 0
+mini_batch = 1, batch = 8, time_steps = 1, train = 0
+   layer   filters  size/strd(dil)      input                output
+   0 Create CUDA-stream - 0
+ Create cudnn-handle 0
+conv     16       3 x 3/ 1    416 x 416 x   3 ->  416 x 416 x  16 0.150 BF
+   1 max                2x 2/ 2    416 x 416 x  16 ->  208 x 208 x  16 0.003 BF
+   2 conv     32       3 x 3/ 1    208 x 208 x  16 ->  208 x 208 x  32 0.399 BF
+   3 max                2x 2/ 2    208 x 208 x  32 ->  104 x 104 x  32 0.001 BF
+   4 conv     64       3 x 3/ 1    104 x 104 x  32 ->  104 x 104 x  64 0.399 BF
+   5 max                2x 2/ 2    104 x 104 x  64 ->   52 x  52 x  64 0.001 BF
+   6 conv    128       3 x 3/ 1     52 x  52 x  64 ->   52 x  52 x 128 0.399 BF
+   7 max                2x 2/ 2     52 x  52 x 128 ->   26 x  26 x 128 0.000 BF
+   8 conv    256       3 x 3/ 1     26 x  26 x 128 ->   26 x  26 x 256 0.399 BF
+   9 max                2x 2/ 2     26 x  26 x 256 ->   13 x  13 x 256 0.000 BF
+  10 conv    512       3 x 3/ 1     13 x  13 x 256 ->   13 x  13 x 512 0.399 BF
+  11 max                2x 2/ 1     13 x  13 x 512 ->   13 x  13 x 512 0.000 BF
+  12 conv   1024       3 x 3/ 1     13 x  13 x 512 ->   13 x  13 x1024 1.595 BF
+  13 conv    256       1 x 1/ 1     13 x  13 x1024 ->   13 x  13 x 256 0.089 BF
+  14 conv    512       3 x 3/ 1     13 x  13 x 256 ->   13 x  13 x 512 0.399 BF
+  15 conv    783       1 x 1/ 1     13 x  13 x 512 ->   13 x  13 x 783 0.136 BF
+  16 yolo
+[yolo] params: iou loss: mse (2), iou_norm: 0.75, obj_norm: 1.00, cls_norm: 1.00, delta_norm: 1.00, scale_x_y: 1.00
+  17 route  13                                     ->   13 x  13 x 256
+  18 conv    128       1 x 1/ 1     13 x  13 x 256 ->   13 x  13 x 128 0.011 BF
+  19 upsample                 2x    13 x  13 x 128 ->   26 x  26 x 128
+  20 route  19 8                                   ->   26 x  26 x 384
+  21 conv    256       3 x 3/ 1     26 x  26 x 384 ->   26 x  26 x 256 1.196 BF
+  22 conv    783       1 x 1/ 1     26 x  26 x 256 ->   26 x  26 x 783 0.271 BF
+  23 yolo
+[yolo] params: iou loss: mse (2), iou_norm: 0.75, obj_norm: 1.00, cls_norm: 1.00, delta_norm: 1.00, scale_x_y: 1.00
+Total BFLOPS 5.845
+avg_outputs = 378714
+ Allocate additional workspace_size = 52.43 MB
+Loading weights from food/backup/yolov3-tiny-food_460000.weights...
+ seen 64, trained: 29440 K-images (460 Kilo-batches_64)
+Done! Loaded 24 layers from weights-file
+
+ calculation mAP (mean average precision)...
+ Detection layer: 16 - type = 28
+ Detection layer: 23 - type = 28
+3140
+ detections_count = 13781, unique_truth_count = 3139
+class_id = 0, name = rice, ap = 34.58%           (TP = 27, FP = 81)
+class_id = 1, name = eelsonrice, ap = 97.07%     (TP = 12, FP = 3)
+class_id = 2, name = pilaf, ap = 82.51%          (TP = 11, FP = 9)
+class_id = 3, name = chicken-'n'-eggonrice, ap = 50.73%          (TP = 5, FP = 7)
+class_id = 4, name = porkcutletonrice, ap = 73.35%       (TP = 12, FP = 9)
+class_id = 5, name = beefcurry, ap = 76.69%      (TP = 20, FP = 11)
+class_id = 6, name = sushi, ap = 60.08%          (TP = 7, FP = 1)
+class_id = 7, name = chickenrice, ap = 65.88%            (TP = 7, FP = 6)
+class_id = 8, name = friedrice, ap = 75.14%      (TP = 12, FP = 8)
+class_id = 9, name = tempurabowl, ap = 81.52%            (TP = 10, FP = 6)
+class_id = 10, name = bibimbap, ap = 92.38%      (TP = 10, FP = 4)
+class_id = 11, name = toast, ap = 58.06%         (TP = 15, FP = 7)
+class_id = 12, name = croissant, ap = 59.39%     (TP = 7, FP = 9)
+class_id = 13, name = rollbread, ap = 59.67%     (TP = 5, FP = 5)
+class_id = 14, name = raisinbread, ap = 65.35%           (TP = 7, FP = 8)
+class_id = 15, name = chipbutty, ap = 27.29%     (TP = 4, FP = 5)
+class_id = 16, name = hamburger, ap = 68.13%     (TP = 17, FP = 12)
+class_id = 17, name = pizza, ap = 66.04%         (TP = 11, FP = 11)
+class_id = 18, name = sandwiches, ap = 64.81%            (TP = 10, FP = 7)
+class_id = 19, name = udonnoodle, ap = 66.76%            (TP = 11, FP = 11)
+class_id = 20, name = tempuraudon, ap = 81.77%           (TP = 8, FP = 4)
+class_id = 21, name = sobanoodle, ap = 79.86%            (TP = 14, FP = 7)
+class_id = 22, name = ramennoodle, ap = 79.80%           (TP = 26, FP = 18)
+class_id = 23, name = beefnoodle, ap = 40.62%            (TP = 5, FP = 8)
+class_id = 24, name = tensinnoodle, ap = 76.85%          (TP = 9, FP = 2)
+class_id = 25, name = friednoodle, ap = 53.77%           (TP = 6, FP = 7)
+class_id = 26, name = spaghetti, ap = 70.72%     (TP = 11, FP = 10)
+class_id = 27, name = Japanese-stylepancake, ap = 78.83%         (TP = 10, FP = 11)
+class_id = 28, name = takoyaki, ap = 72.07%      (TP = 8, FP = 8)
+class_id = 29, name = gratin, ap = 74.68%        (TP = 9, FP = 8)
+class_id = 30, name = sauteedvegetables, ap = 15.32%     (TP = 2, FP = 5)
+class_id = 31, name = croquette, ap = 63.05%     (TP = 7, FP = 9)
+class_id = 32, name = grilledeggplant, ap = 20.00%       (TP = 1, FP = 2)
+class_id = 33, name = sauteedspinach, ap = 55.45%        (TP = 6, FP = 5)
+class_id = 34, name = vegetabletempura, ap = 47.52%      (TP = 5, FP = 6)
+class_id = 35, name = misosoup, ap = 42.14%      (TP = 32, FP = 99)
+class_id = 36, name = potage, ap = 78.14%        (TP = 6, FP = 1)
+class_id = 37, name = sausage, ap = 21.74%       (TP = 2, FP = 4)
+class_id = 38, name = oden, ap = 13.29%          (TP = 1, FP = 6)
+class_id = 39, name = omelet, ap = 6.78%         (TP = 1, FP = 11)
+class_id = 40, name = ganmodoki, ap = 23.64%     (TP = 3, FP = 2)
+class_id = 41, name = jiaozi, ap = 65.54%        (TP = 10, FP = 5)
+class_id = 42, name = stew, ap = 59.17%          (TP = 7, FP = 5)
+class_id = 43, name = teriyakigrilledfish, ap = 42.71%           (TP = 5, FP = 3)
+class_id = 44, name = friedfish, ap = 27.12%     (TP = 4, FP = 6)
+class_id = 45, name = grilledsalmon, ap = 49.65%         (TP = 6, FP = 6)
+class_id = 46, name = salmonmeuniere, ap = 35.80%        (TP = 3, FP = 5)
+class_id = 47, name = sashimi, ap = 52.86%       (TP = 6, FP = 8)
+class_id = 48, name = grilledpacificsaury, ap = 59.42%           (TP = 10, FP = 13)
+class_id = 49, name = sukiyaki, ap = 36.93%      (TP = 4, FP = 9)
+class_id = 50, name = sweetandsourpork, ap = 61.33%      (TP = 5, FP = 7)
+class_id = 51, name = lightlyroastedfish, ap = 43.11%            (TP = 3, FP = 7)
+class_id = 52, name = steamedegghotchpotch, ap = 59.68%          (TP = 5, FP = 6)
+class_id = 53, name = tempura, ap = 65.39%       (TP = 6, FP = 8)
+class_id = 54, name = friedchicken, ap = 29.70%          (TP = 5, FP = 17)
+class_id = 55, name = sirloincutlet, ap = 40.85%         (TP = 4, FP = 7)
+class_id = 56, name = nanbanzuke, ap = 38.77%            (TP = 2, FP = 6)
+class_id = 57, name = boiledfish, ap = 65.55%            (TP = 4, FP = 2)
+class_id = 58, name = seasonedbeefwithpotatoes, ap = 87.67%      (TP = 10, FP = 3)
+class_id = 59, name = hambargsteak, ap = 23.83%          (TP = 3, FP = 10)
+class_id = 60, name = steak, ap = 42.57%         (TP = 3, FP = 2)
+class_id = 61, name = driedfish, ap = 88.81%     (TP = 10, FP = 4)
+class_id = 62, name = gingerporksaute, ap = 39.62%       (TP = 6, FP = 7)
+class_id = 63, name = spicychili-flavoredtofu, ap = 75.65%       (TP = 10, FP = 6)
+class_id = 64, name = yakitori, ap = 39.85%      (TP = 4, FP = 2)
+class_id = 65, name = cabbageroll, ap = 55.83%           (TP = 5, FP = 7)
+class_id = 66, name = omelet, ap = 51.78%        (TP = 4, FP = 5)
+class_id = 67, name = eggsunny-sideup, ap = 40.03%       (TP = 8, FP = 11)
+class_id = 68, name = natto, ap = 55.47%         (TP = 9, FP = 14)
+class_id = 69, name = coldtofu, ap = 67.88%      (TP = 9, FP = 3)
+class_id = 70, name = eggroll, ap = 62.28%       (TP = 6, FP = 6)
+class_id = 71, name = chillednoodle, ap = 90.08%         (TP = 9, FP = 0)
+class_id = 72, name = stir-friedbeefandpeppers, ap = 72.16%      (TP = 7, FP = 3)
+class_id = 73, name = simmeredpork, ap = 96.46%          (TP = 10, FP = 2)
+class_id = 74, name = boiledchickenandvegetables, ap = 48.28%            (TP = 4, FP = 2)
+class_id = 75, name = sashimibowl, ap = 32.49%           (TP = 5, FP = 8)
+class_id = 76, name = sushibowl, ap = 47.32%     (TP = 5, FP = 3)
+class_id = 77, name = fish-shapedpancakewithbeanjam, ap = 83.97%         (TP = 11, FP = 2)
+class_id = 78, name = shrimpwithchillsource, ap = 72.44%         (TP = 8, FP = 3)
+class_id = 79, name = roastchicken, ap = 72.08%          (TP = 9, FP = 4)
+class_id = 80, name = steamedmeatdumpling, ap = 24.16%           (TP = 4, FP = 5)
+class_id = 81, name = omeletwithfriedrice, ap = 100.00%          (TP = 9, FP = 0)
+class_id = 82, name = cutletcurry, ap = 75.33%           (TP = 13, FP = 7)
+class_id = 83, name = spaghettimeatsauce, ap = 77.87%            (TP = 10, FP = 17)
+class_id = 84, name = friedshrimp, ap = 77.59%           (TP = 11, FP = 7)
+class_id = 85, name = potatosalad, ap = 56.22%           (TP = 6, FP = 6)
+class_id = 86, name = greensalad, ap = 13.22%            (TP = 4, FP = 26)
+class_id = 87, name = macaronisalad, ap = 56.31%         (TP = 6, FP = 8)
+class_id = 88, name = Japanesetofuandvegetablechowder, ap = 21.03%       (TP = 4, FP = 15)
+class_id = 89, name = porkmisosoup, ap = 23.38%          (TP = 3, FP = 12)
+class_id = 90, name = chinesesoup, ap = 20.26%           (TP = 5, FP = 10)
+class_id = 91, name = beefbowl, ap = 34.63%      (TP = 9, FP = 21)
+class_id = 92, name = kinpira-stylesauteedburdock, ap = 78.48%           (TP = 9, FP = 6)
+class_id = 93, name = riceball, ap = 43.03%      (TP = 4, FP = 5)
+class_id = 94, name = pizzatoast, ap = 77.78%            (TP = 8, FP = 5)
+class_id = 95, name = dippingnoodles, ap = 82.15%        (TP = 10, FP = 5)
+class_id = 96, name = hotdog, ap = 58.08%        (TP = 4, FP = 0)
+class_id = 97, name = frenchfries, ap = 42.76%           (TP = 5, FP = 14)
+class_id = 98, name = mixedrice, ap = 52.75%     (TP = 6, FP = 6)
+class_id = 99, name = goyachanpuru, ap = 82.22%          (TP = 8, FP = 4)
+class_id = 100, name = greencurry, ap = 36.80%           (TP = 3, FP = 1)
+class_id = 101, name = okinawasoba, ap = 70.64%          (TP = 7, FP = 8)
+class_id = 102, name = mangopudding, ap = 59.57%         (TP = 5, FP = 4)
+class_id = 103, name = almondjelly, ap = 64.71%          (TP = 7, FP = 8)
+class_id = 104, name = jjigae, ap = 83.20%       (TP = 10, FP = 5)
+class_id = 105, name = dakgalbi, ap = 87.00%     (TP = 9, FP = 3)
+class_id = 106, name = drycurry, ap = 88.56%     (TP = 9, FP = 3)
+class_id = 107, name = kamameshi, ap = 84.43%            (TP = 8, FP = 2)
+class_id = 108, name = ricevermicelli, ap = 86.83%       (TP = 8, FP = 3)
+class_id = 109, name = paella, ap = 72.97%       (TP = 7, FP = 3)
+class_id = 110, name = tanmen, ap = 22.67%       (TP = 4, FP = 16)
+class_id = 111, name = kushikatu, ap = 71.28%            (TP = 6, FP = 6)
+class_id = 112, name = yellowcurry, ap = 29.61%          (TP = 3, FP = 2)
+class_id = 113, name = pancake, ap = 82.25%      (TP = 8, FP = 7)
+class_id = 114, name = champon, ap = 70.21%      (TP = 10, FP = 8)
+class_id = 115, name = crape, ap = 30.14%        (TP = 2, FP = 5)
+class_id = 116, name = tiramisu, ap = 100.00%            (TP = 10, FP = 3)
+class_id = 117, name = waffle, ap = 42.56%       (TP = 4, FP = 3)
+class_id = 118, name = rarecheesecake, ap = 77.30%       (TP = 6, FP = 3)
+class_id = 119, name = shortcake, ap = 95.32%            (TP = 9, FP = 2)
+class_id = 120, name = chopsuey, ap = 45.45%     (TP = 4, FP = 11)
+class_id = 121, name = twicecookedpork, ap = 49.42%      (TP = 6, FP = 15)
+class_id = 122, name = mushroomrisotto, ap = 28.20%      (TP = 3, FP = 5)
+class_id = 123, name = samul, ap = 78.09%        (TP = 8, FP = 10)
+class_id = 124, name = zoni, ap = 59.61%         (TP = 8, FP = 4)
+class_id = 125, name = frenchtoast, ap = 60.50%          (TP = 6, FP = 7)
+class_id = 126, name = finewhitenoodles, ap = 73.66%     (TP = 9, FP = 5)
+class_id = 127, name = minestrone, ap = 82.63%           (TP = 9, FP = 5)
+class_id = 128, name = potaufeu, ap = 56.40%     (TP = 7, FP = 3)
+class_id = 129, name = chickennugget, ap = 64.70%        (TP = 7, FP = 8)
+class_id = 130, name = namero, ap = 66.58%       (TP = 7, FP = 8)
+class_id = 131, name = frenchbread, ap = 84.91%          (TP = 8, FP = 9)
+class_id = 132, name = ricegruel, ap = 73.95%            (TP = 9, FP = 5)
+class_id = 133, name = broiledeelbowl, ap = 65.43%       (TP = 8, FP = 10)
+class_id = 134, name = clearsoup, ap = 30.46%            (TP = 4, FP = 7)
+class_id = 135, name = yudofu, ap = 83.40%       (TP = 8, FP = 4)
+class_id = 136, name = mozuku, ap = 83.29%       (TP = 8, FP = 2)
+class_id = 137, name = inarizushi, ap = 60.20%           (TP = 8, FP = 17)
+class_id = 138, name = porkloincutlet, ap = 47.01%       (TP = 5, FP = 14)
+class_id = 139, name = porkfilletcutlet, ap = 65.06%     (TP = 7, FP = 13)
+class_id = 140, name = chickencutlet, ap = 28.39%        (TP = 3, FP = 6)
+class_id = 141, name = hamcutlet, ap = 52.13%            (TP = 5, FP = 7)
+class_id = 142, name = mincedmeatcutlet, ap = 59.22%     (TP = 6, FP = 8)
+class_id = 143, name = thinlyslicedrawhorsemeat, ap = 60.35%     (TP = 8, FP = 8)
+class_id = 144, name = bagel, ap = 79.28%        (TP = 9, FP = 8)
+class_id = 145, name = scone, ap = 48.99%        (TP = 6, FP = 13)
+class_id = 146, name = tortilla, ap = 19.33%     (TP = 3, FP = 5)
+class_id = 147, name = tacos, ap = 59.29%        (TP = 7, FP = 10)
+class_id = 148, name = nachos, ap = 41.03%       (TP = 4, FP = 4)
+class_id = 149, name = meatloaf, ap = 1.52%      (TP = 0, FP = 1)
+class_id = 150, name = scrambledegg, ap = 79.36%         (TP = 6, FP = 1)
+class_id = 151, name = ricegratin, ap = 80.17%           (TP = 9, FP = 2)
+class_id = 152, name = lasagna, ap = 49.24%      (TP = 6, FP = 6)
+class_id = 153, name = Caesarsalad, ap = 75.01%          (TP = 8, FP = 10)
+class_id = 154, name = oatmeal, ap = 57.69%      (TP = 7, FP = 5)
+class_id = 155, name = friedporkdumplingsservedinsoup, ap = 84.58%       (TP = 9, FP = 6)
+class_id = 156, name = oshiruko, ap = 90.86%     (TP = 10, FP = 7)
+class_id = 157, name = muffin, ap = 64.97%       (TP = 6, FP = 4)
+class_id = 158, name = popcorn, ap = 79.67%      (TP = 10, FP = 12)
+class_id = 159, name = creampuff, ap = 59.48%            (TP = 6, FP = 6)
+class_id = 160, name = doughnut, ap = 45.37%     (TP = 5, FP = 6)
+class_id = 161, name = applepie, ap = 42.19%     (TP = 3, FP = 9)
+class_id = 162, name = parfait, ap = 67.31%      (TP = 8, FP = 7)
+class_id = 163, name = friedporkinscoop, ap = 68.56%     (TP = 7, FP = 14)
+class_id = 164, name = lambkebabs, ap = 71.92%           (TP = 10, FP = 10)
+class_id = 165, name = dishconsistingofstir-friedpotato,eggplantandgreenpepper, ap = 89.35%      (TP = 10, FP = 2)
+class_id = 166, name = roastduck, ap = 65.76%            (TP = 6, FP = 3)
+class_id = 167, name = hotpot, ap = 20.42%       (TP = 1, FP = 6)
+class_id = 168, name = porkbelly, ap = 28.18%            (TP = 4, FP = 7)
+class_id = 169, name = xiaolongbao, ap = 93.79%          (TP = 10, FP = 1)
+class_id = 170, name = mooncake, ap = 76.21%     (TP = 8, FP = 2)
+class_id = 171, name = custardtart, ap = 100.00%         (TP = 10, FP = 2)
+class_id = 172, name = beefnoodlesoup, ap = 62.39%       (TP = 8, FP = 15)
+class_id = 173, name = porkcutlet, ap = 52.94%           (TP = 6, FP = 5)
+class_id = 174, name = mincedporkrice, ap = 91.23%       (TP = 11, FP = 6)
+class_id = 175, name = fishballsoup, ap = 89.63%         (TP = 10, FP = 2)
+class_id = 176, name = oysteromelette, ap = 79.19%       (TP = 7, FP = 3)
+class_id = 177, name = glutinousoilrice, ap = 79.75%     (TP = 8, FP = 6)
+class_id = 178, name = trunippudding, ap = 78.24%        (TP = 7, FP = 8)
+class_id = 179, name = stinkytofu, ap = 66.40%           (TP = 7, FP = 8)
+class_id = 180, name = lemonfigjelly, ap = 78.72%        (TP = 9, FP = 7)
+class_id = 181, name = khaosoi, ap = 64.23%      (TP = 8, FP = 12)
+class_id = 182, name = Sourprawnsoup, ap = 62.57%        (TP = 6, FP = 4)
+class_id = 183, name = Thaipapayasalad, ap = 81.32%      (TP = 10, FP = 5)
+class_id = 184, name = boned,slicedHainan-stylechickenwithmarinatedrice, ap = 66.56%     (TP = 8, FP = 6)
+class_id = 185, name = hotandsour,fishandvegetableragout, ap = 70.09%            (TP = 7, FP = 6)
+class_id = 186, name = stir-friedmixedvegetables, ap = 41.28%            (TP = 5, FP = 12)
+class_id = 187, name = beefinoystersauce, ap = 31.78%            (TP = 3, FP = 11)
+class_id = 188, name = porksatay, ap = 76.96%            (TP = 8, FP = 7)
+class_id = 189, name = spicychickensalad, ap = 41.49%            (TP = 3, FP = 3)
+class_id = 190, name = noodleswithfishcurry, ap = 11.79%         (TP = 1, FP = 5)
+class_id = 191, name = PorkStickyNoodles, ap = 74.72%            (TP = 8, FP = 10)
+class_id = 192, name = Porkwithlemon, ap = 24.24%        (TP = 3, FP = 6)
+class_id = 193, name = stewedporkleg, ap = 31.52%        (TP = 3, FP = 10)
+class_id = 194, name = charcoal-boiledporkneck, ap = 67.60%      (TP = 7, FP = 5)
+class_id = 195, name = friedmusselpancakes, ap = 79.46%          (TP = 7, FP = 1)
+class_id = 196, name = DeepFriedChickenWing, ap = 45.13%         (TP = 8, FP = 8)
+class_id = 197, name = Barbecuedredporkinsaucewithrice, ap = 68.43%      (TP = 10, FP = 5)
+class_id = 198, name = Ricewithroastduck, ap = 67.99%            (TP = 7, FP = 3)
+class_id = 199, name = Ricecrispypork, ap = 6.79%        (TP = 1, FP = 8)
+class_id = 200, name = Wontonsoup, ap = 53.46%           (TP = 8, FP = 12)
+class_id = 201, name = ChickenRiceCurryWithCoconut, ap = 69.67%          (TP = 6, FP = 5)
+class_id = 202, name = CrispyNoodles, ap = 69.58%        (TP = 3, FP = 5)
+class_id = 203, name = EggNoodleInChickenYellowCurry, ap = 41.80%        (TP = 7, FP = 9)
+class_id = 204, name = coconutmilksoup, ap = 55.27%      (TP = 7, FP = 8)
+class_id = 205, name = pho, ap = 56.98%          (TP = 8, FP = 6)
+class_id = 206, name = Huebeefricevermicellisoup, ap = 72.92%            (TP = 7, FP = 2)
+class_id = 207, name = Vermicellinoodleswithsnails, ap = 71.33%          (TP = 6, FP = 5)
+class_id = 208, name = Friedspringrolls, ap = 67.11%     (TP = 9, FP = 14)
+class_id = 209, name = Steamedriceroll, ap = 91.92%      (TP = 9, FP = 5)
+class_id = 210, name = Shrimppatties, ap = 41.08%        (TP = 3, FP = 5)
+class_id = 211, name = ballshapedbunwithpork, ap = 47.64%        (TP = 7, FP = 8)
+class_id = 212, name = Coconutmilk-flavoredcrepeswithshrimpandbeef, ap = 22.36%          (TP = 4, FP = 8)
+class_id = 213, name = Smallsteamedsavoryricepancake, ap = 98.33%        (TP = 10, FP = 2)
+class_id = 214, name = GlutinousRiceBalls, ap = 84.37%           (TP = 10, FP = 3)
+class_id = 215, name = locomoco, ap = 52.46%     (TP = 7, FP = 4)
+class_id = 216, name = haupia, ap = 68.84%       (TP = 7, FP = 4)
+class_id = 217, name = malasada, ap = 71.88%     (TP = 10, FP = 10)
+class_id = 218, name = laulau, ap = 80.39%       (TP = 9, FP = 7)
+class_id = 219, name = spammusubi, ap = 78.13%           (TP = 9, FP = 3)
+class_id = 220, name = oxtailsoup, ap = 28.08%           (TP = 3, FP = 6)
+class_id = 221, name = adobo, ap = 65.59%        (TP = 8, FP = 8)
+class_id = 222, name = lumpia, ap = 65.36%       (TP = 8, FP = 7)
+class_id = 223, name = brownie, ap = 71.17%      (TP = 7, FP = 9)
+class_id = 224, name = churro, ap = 68.63%       (TP = 6, FP = 12)
+class_id = 225, name = jambalaya, ap = 69.18%            (TP = 7, FP = 9)
+class_id = 226, name = nasigoreng, ap = 70.04%           (TP = 8, FP = 5)
+class_id = 227, name = ayamgoreng, ap = 34.63%           (TP = 4, FP = 14)
+class_id = 228, name = ayambakar, ap = 63.39%            (TP = 6, FP = 4)
+class_id = 229, name = buburayam, ap = 70.04%            (TP = 6, FP = 4)
+class_id = 230, name = gulai, ap = 30.70%        (TP = 5, FP = 10)
+class_id = 231, name = laksa, ap = 32.33%        (TP = 4, FP = 9)
+class_id = 232, name = mieayam, ap = 52.59%      (TP = 5, FP = 7)
+class_id = 233, name = miegoreng, ap = 70.28%            (TP = 7, FP = 5)
+class_id = 234, name = nasicampur, ap = 25.31%           (TP = 4, FP = 18)
+class_id = 235, name = nasipadang, ap = 53.83%           (TP = 5, FP = 5)
+class_id = 236, name = nasiuduk, ap = 48.96%     (TP = 6, FP = 8)
+class_id = 237, name = babiguling, ap = 63.30%           (TP = 7, FP = 4)
+class_id = 238, name = kayatoast, ap = 60.97%            (TP = 8, FP = 10)
+class_id = 239, name = bakkutteh, ap = 63.78%            (TP = 8, FP = 8)
+class_id = 240, name = currypuff, ap = 53.37%            (TP = 8, FP = 13)
+class_id = 241, name = chowmein, ap = 55.91%     (TP = 6, FP = 6)
+class_id = 242, name = zhajiangmian, ap = 76.43%         (TP = 10, FP = 8)
+class_id = 243, name = kungpaochicken, ap = 90.84%       (TP = 10, FP = 5)
+class_id = 244, name = crullers, ap = 76.87%     (TP = 8, FP = 8)
+class_id = 245, name = eggplantwithgarlicsauce, ap = 75.30%      (TP = 8, FP = 5)
+class_id = 246, name = threecupchicken, ap = 79.28%      (TP = 11, FP = 9)
+class_id = 247, name = beancurdfamilystyle, ap = 54.82%          (TP = 5, FP = 7)
+class_id = 248, name = salt&pepperfriedshrimpwithshell, ap = 64.10%      (TP = 6, FP = 5)
+class_id = 249, name = bakedsalmon, ap = 23.74%          (TP = 1, FP = 5)
+class_id = 250, name = braisedporkmeatballwithnapacabbage, ap = 79.00%           (TP = 8, FP = 2)
+class_id = 251, name = wintermelonsoup, ap = 88.30%      (TP = 9, FP = 0)
+class_id = 252, name = steamedspareribs, ap = 78.06%     (TP = 10, FP = 8)
+class_id = 253, name = chinesepumpkinpie, ap = 64.09%            (TP = 7, FP = 3)
+class_id = 254, name = eighttreasurerice, ap = 64.22%            (TP = 7, FP = 4)
+class_id = 255, name = hot&soursoup, ap = 53.55%         (TP = 6, FP = 8)
+
+ for conf_thresh = 0.25, precision = 0.49, recall = 0.58, F1-score = 0.53
+ for conf_thresh = 0.25, TP = 1832, FP = 1884, FN = 1307, average IoU = 37.66 %
+
+ IoU threshold = 50 %, used Area-Under-Curve for each unique Recall
+ mean average precision (mAP@0.50) = 0.602639, or 60.26 %
+Total Detection Time: 60 Seconds
+
+Set -points flag:
+ `-points 101` for MS COCO
+ `-points 11` for PascalVOC 2007 (uncomment `difficult` in voc.data)
+ `-points 0` (AUC) for ImageNet, PascalVOC 2010-2012, your custom dataset
+
+C:\Users\sy\darknet-master\build\darknet\x64>darknet.exe detector map food/food256.data cfg/yolov3-tiny-food.cfg food/backup/yolov3-tiny-food_440000.weights
+ CUDA-version: 10000 (11030), cuDNN: 7.6.5, CUDNN_HALF=1, GPU count: 1
+ CUDNN_HALF=1
+ OpenCV version: 3.4.0
+ 0 : compute_capability = 750, cudnn_half = 1, GPU: NVIDIA GeForce GTX 1660 SUPER
+net.optimized_memory = 0
+mini_batch = 1, batch = 8, time_steps = 1, train = 0
+   layer   filters  size/strd(dil)      input                output
+   0 Create CUDA-stream - 0
+ Create cudnn-handle 0
+conv     16       3 x 3/ 1    416 x 416 x   3 ->  416 x 416 x  16 0.150 BF
+   1 max                2x 2/ 2    416 x 416 x  16 ->  208 x 208 x  16 0.003 BF
+   2 conv     32       3 x 3/ 1    208 x 208 x  16 ->  208 x 208 x  32 0.399 BF
+   3 max                2x 2/ 2    208 x 208 x  32 ->  104 x 104 x  32 0.001 BF
+   4 conv     64       3 x 3/ 1    104 x 104 x  32 ->  104 x 104 x  64 0.399 BF
+   5 max                2x 2/ 2    104 x 104 x  64 ->   52 x  52 x  64 0.001 BF
+   6 conv    128       3 x 3/ 1     52 x  52 x  64 ->   52 x  52 x 128 0.399 BF
+   7 max                2x 2/ 2     52 x  52 x 128 ->   26 x  26 x 128 0.000 BF
+   8 conv    256       3 x 3/ 1     26 x  26 x 128 ->   26 x  26 x 256 0.399 BF
+   9 max                2x 2/ 2     26 x  26 x 256 ->   13 x  13 x 256 0.000 BF
+  10 conv    512       3 x 3/ 1     13 x  13 x 256 ->   13 x  13 x 512 0.399 BF
+  11 max                2x 2/ 1     13 x  13 x 512 ->   13 x  13 x 512 0.000 BF
+  12 conv   1024       3 x 3/ 1     13 x  13 x 512 ->   13 x  13 x1024 1.595 BF
+  13 conv    256       1 x 1/ 1     13 x  13 x1024 ->   13 x  13 x 256 0.089 BF
+  14 conv    512       3 x 3/ 1     13 x  13 x 256 ->   13 x  13 x 512 0.399 BF
+  15 conv    783       1 x 1/ 1     13 x  13 x 512 ->   13 x  13 x 783 0.136 BF
+  16 yolo
+[yolo] params: iou loss: mse (2), iou_norm: 0.75, obj_norm: 1.00, cls_norm: 1.00, delta_norm: 1.00, scale_x_y: 1.00
+  17 route  13                                     ->   13 x  13 x 256
+  18 conv    128       1 x 1/ 1     13 x  13 x 256 ->   13 x  13 x 128 0.011 BF
+  19 upsample                 2x    13 x  13 x 128 ->   26 x  26 x 128
+  20 route  19 8                                   ->   26 x  26 x 384
+  21 conv    256       3 x 3/ 1     26 x  26 x 384 ->   26 x  26 x 256 1.196 BF
+  22 conv    783       1 x 1/ 1     26 x  26 x 256 ->   26 x  26 x 783 0.271 BF
+  23 yolo
+[yolo] params: iou loss: mse (2), iou_norm: 0.75, obj_norm: 1.00, cls_norm: 1.00, delta_norm: 1.00, scale_x_y: 1.00
+Total BFLOPS 5.845
+avg_outputs = 378714
+ Allocate additional workspace_size = 52.43 MB
+Loading weights from food/backup/yolov3-tiny-food_440000.weights...
+ seen 64, trained: 28160 K-images (440 Kilo-batches_64)
+Done! Loaded 24 layers from weights-file
+
+ calculation mAP (mean average precision)...
+ Detection layer: 16 - type = 28
+ Detection layer: 23 - type = 28
+3140
+ detections_count = 13757, unique_truth_count = 3139
+class_id = 0, name = rice, ap = 35.16%           (TP = 24, FP = 71)
+class_id = 1, name = eelsonrice, ap = 95.64%     (TP = 12, FP = 2)
+class_id = 2, name = pilaf, ap = 83.23%          (TP = 10, FP = 9)
+class_id = 3, name = chicken-'n'-eggonrice, ap = 47.01%          (TP = 6, FP = 8)
+class_id = 4, name = porkcutletonrice, ap = 74.00%       (TP = 13, FP = 13)
+class_id = 5, name = beefcurry, ap = 76.61%      (TP = 20, FP = 11)
+class_id = 6, name = sushi, ap = 62.13%          (TP = 6, FP = 1)
+class_id = 7, name = chickenrice, ap = 65.77%            (TP = 6, FP = 6)
+class_id = 8, name = friedrice, ap = 72.32%      (TP = 12, FP = 8)
+class_id = 9, name = tempurabowl, ap = 76.22%            (TP = 10, FP = 6)
+class_id = 10, name = bibimbap, ap = 93.60%      (TP = 10, FP = 4)
+class_id = 11, name = toast, ap = 58.28%         (TP = 15, FP = 7)
+class_id = 12, name = croissant, ap = 47.46%     (TP = 6, FP = 8)
+class_id = 13, name = rollbread, ap = 56.36%     (TP = 5, FP = 5)
+class_id = 14, name = raisinbread, ap = 64.03%           (TP = 7, FP = 6)
+class_id = 15, name = chipbutty, ap = 24.67%     (TP = 4, FP = 5)
+class_id = 16, name = hamburger, ap = 68.97%     (TP = 17, FP = 9)
+class_id = 17, name = pizza, ap = 69.07%         (TP = 11, FP = 11)
+class_id = 18, name = sandwiches, ap = 64.51%            (TP = 9, FP = 4)
+class_id = 19, name = udonnoodle, ap = 67.35%            (TP = 11, FP = 11)
+class_id = 20, name = tempuraudon, ap = 82.85%           (TP = 9, FP = 4)
+class_id = 21, name = sobanoodle, ap = 77.66%            (TP = 14, FP = 5)
+class_id = 22, name = ramennoodle, ap = 81.87%           (TP = 27, FP = 19)
+class_id = 23, name = beefnoodle, ap = 39.11%            (TP = 5, FP = 4)
+class_id = 24, name = tensinnoodle, ap = 74.95%          (TP = 8, FP = 3)
+class_id = 25, name = friednoodle, ap = 65.45%           (TP = 7, FP = 7)
+class_id = 26, name = spaghetti, ap = 68.13%     (TP = 10, FP = 6)
+class_id = 27, name = Japanese-stylepancake, ap = 74.99%         (TP = 12, FP = 9)
+class_id = 28, name = takoyaki, ap = 71.00%      (TP = 7, FP = 6)
+class_id = 29, name = gratin, ap = 73.16%        (TP = 9, FP = 10)
+class_id = 30, name = sauteedvegetables, ap = 9.17%      (TP = 2, FP = 4)
+class_id = 31, name = croquette, ap = 62.83%     (TP = 7, FP = 9)
+class_id = 32, name = grilledeggplant, ap = 21.38%       (TP = 1, FP = 1)
+class_id = 33, name = sauteedspinach, ap = 53.79%        (TP = 5, FP = 4)
+class_id = 34, name = vegetabletempura, ap = 47.05%      (TP = 4, FP = 9)
+class_id = 35, name = misosoup, ap = 42.68%      (TP = 36, FP = 95)
+class_id = 36, name = potage, ap = 78.20%        (TP = 7, FP = 1)
+class_id = 37, name = sausage, ap = 23.68%       (TP = 2, FP = 3)
+class_id = 38, name = oden, ap = 12.74%          (TP = 2, FP = 5)
+class_id = 39, name = omelet, ap = 5.72%         (TP = 1, FP = 11)
+class_id = 40, name = ganmodoki, ap = 27.40%     (TP = 3, FP = 2)
+class_id = 41, name = jiaozi, ap = 62.70%        (TP = 9, FP = 6)
+class_id = 42, name = stew, ap = 58.08%          (TP = 6, FP = 5)
+class_id = 43, name = teriyakigrilledfish, ap = 41.29%           (TP = 4, FP = 2)
+class_id = 44, name = friedfish, ap = 31.91%     (TP = 4, FP = 4)
+class_id = 45, name = grilledsalmon, ap = 47.46%         (TP = 6, FP = 5)
+class_id = 46, name = salmonmeuniere, ap = 40.16%        (TP = 3, FP = 5)
+class_id = 47, name = sashimi, ap = 53.74%       (TP = 5, FP = 5)
+class_id = 48, name = grilledpacificsaury, ap = 56.32%           (TP = 11, FP = 12)
+class_id = 49, name = sukiyaki, ap = 35.55%      (TP = 4, FP = 8)
+class_id = 50, name = sweetandsourpork, ap = 63.08%      (TP = 5, FP = 6)
+class_id = 51, name = lightlyroastedfish, ap = 34.81%            (TP = 2, FP = 8)
+class_id = 52, name = steamedegghotchpotch, ap = 59.73%          (TP = 6, FP = 6)
+class_id = 53, name = tempura, ap = 67.07%       (TP = 7, FP = 7)
+class_id = 54, name = friedchicken, ap = 23.84%          (TP = 6, FP = 16)
+class_id = 55, name = sirloincutlet, ap = 41.14%         (TP = 4, FP = 7)
+class_id = 56, name = nanbanzuke, ap = 38.27%            (TP = 2, FP = 7)
+class_id = 57, name = boiledfish, ap = 62.90%            (TP = 4, FP = 2)
+class_id = 58, name = seasonedbeefwithpotatoes, ap = 81.85%      (TP = 10, FP = 3)
+class_id = 59, name = hambargsteak, ap = 28.74%          (TP = 4, FP = 10)
+class_id = 60, name = steak, ap = 44.15%         (TP = 4, FP = 1)
+class_id = 61, name = driedfish, ap = 84.85%     (TP = 10, FP = 6)
+class_id = 62, name = gingerporksaute, ap = 24.29%       (TP = 5, FP = 7)
+class_id = 63, name = spicychili-flavoredtofu, ap = 66.72%       (TP = 8, FP = 7)
+class_id = 64, name = yakitori, ap = 39.46%      (TP = 4, FP = 3)
+class_id = 65, name = cabbageroll, ap = 54.92%           (TP = 5, FP = 8)
+class_id = 66, name = omelet, ap = 50.39%        (TP = 6, FP = 5)
+class_id = 67, name = eggsunny-sideup, ap = 40.95%       (TP = 9, FP = 9)
+class_id = 68, name = natto, ap = 55.38%         (TP = 8, FP = 14)
+class_id = 69, name = coldtofu, ap = 65.52%      (TP = 8, FP = 4)
+class_id = 70, name = eggroll, ap = 61.32%       (TP = 6, FP = 5)
+class_id = 71, name = chillednoodle, ap = 90.08%         (TP = 9, FP = 0)
+class_id = 72, name = stir-friedbeefandpeppers, ap = 70.80%      (TP = 7, FP = 4)
+class_id = 73, name = simmeredpork, ap = 94.31%          (TP = 10, FP = 1)
+class_id = 74, name = boiledchickenandvegetables, ap = 43.63%            (TP = 3, FP = 2)
+class_id = 75, name = sashimibowl, ap = 29.74%           (TP = 5, FP = 7)
+class_id = 76, name = sushibowl, ap = 39.39%     (TP = 5, FP = 6)
+class_id = 77, name = fish-shapedpancakewithbeanjam, ap = 81.31%         (TP = 8, FP = 2)
+class_id = 78, name = shrimpwithchillsource, ap = 72.92%         (TP = 8, FP = 1)
+class_id = 79, name = roastchicken, ap = 72.08%          (TP = 9, FP = 2)
+class_id = 80, name = steamedmeatdumpling, ap = 27.37%           (TP = 2, FP = 6)
+class_id = 81, name = omeletwithfriedrice, ap = 100.00%          (TP = 10, FP = 0)
+class_id = 82, name = cutletcurry, ap = 78.15%           (TP = 13, FP = 5)
+class_id = 83, name = spaghettimeatsauce, ap = 77.38%            (TP = 10, FP = 11)
+class_id = 84, name = friedshrimp, ap = 78.43%           (TP = 11, FP = 7)
+class_id = 85, name = potatosalad, ap = 57.56%           (TP = 6, FP = 8)
+class_id = 86, name = greensalad, ap = 11.30%            (TP = 4, FP = 30)
+class_id = 87, name = macaronisalad, ap = 57.27%         (TP = 6, FP = 6)
+class_id = 88, name = Japanesetofuandvegetablechowder, ap = 19.85%       (TP = 4, FP = 17)
+class_id = 89, name = porkmisosoup, ap = 18.58%          (TP = 1, FP = 9)
+class_id = 90, name = chinesesoup, ap = 19.22%           (TP = 3, FP = 12)
+class_id = 91, name = beefbowl, ap = 36.51%      (TP = 8, FP = 18)
+class_id = 92, name = kinpira-stylesauteedburdock, ap = 79.33%           (TP = 9, FP = 6)
+class_id = 93, name = riceball, ap = 36.61%      (TP = 4, FP = 5)
+class_id = 94, name = pizzatoast, ap = 76.75%            (TP = 8, FP = 6)
+class_id = 95, name = dippingnoodles, ap = 83.86%        (TP = 10, FP = 4)
+class_id = 96, name = hotdog, ap = 61.83%        (TP = 4, FP = 0)
+class_id = 97, name = frenchfries, ap = 36.18%           (TP = 6, FP = 12)
+class_id = 98, name = mixedrice, ap = 54.25%     (TP = 7, FP = 5)
+class_id = 99, name = goyachanpuru, ap = 84.16%          (TP = 8, FP = 2)
+class_id = 100, name = greencurry, ap = 39.97%           (TP = 3, FP = 1)
+class_id = 101, name = okinawasoba, ap = 66.96%          (TP = 6, FP = 7)
+class_id = 102, name = mangopudding, ap = 61.54%         (TP = 6, FP = 4)
+class_id = 103, name = almondjelly, ap = 66.00%          (TP = 7, FP = 8)
+class_id = 104, name = jjigae, ap = 80.36%       (TP = 10, FP = 6)
+class_id = 105, name = dakgalbi, ap = 89.20%     (TP = 9, FP = 5)
+class_id = 106, name = drycurry, ap = 89.26%     (TP = 9, FP = 2)
+class_id = 107, name = kamameshi, ap = 86.39%            (TP = 8, FP = 1)
+class_id = 108, name = ricevermicelli, ap = 86.94%       (TP = 9, FP = 1)
+class_id = 109, name = paella, ap = 71.53%       (TP = 7, FP = 5)
+class_id = 110, name = tanmen, ap = 17.95%       (TP = 3, FP = 17)
+class_id = 111, name = kushikatu, ap = 68.90%            (TP = 7, FP = 6)
+class_id = 112, name = yellowcurry, ap = 30.17%          (TP = 3, FP = 1)
+class_id = 113, name = pancake, ap = 83.20%      (TP = 9, FP = 4)
+class_id = 114, name = champon, ap = 70.96%      (TP = 9, FP = 9)
+class_id = 115, name = crape, ap = 34.07%        (TP = 4, FP = 3)
+class_id = 116, name = tiramisu, ap = 100.00%            (TP = 10, FP = 1)
+class_id = 117, name = waffle, ap = 44.65%       (TP = 2, FP = 5)
+class_id = 118, name = rarecheesecake, ap = 78.61%       (TP = 7, FP = 3)
+class_id = 119, name = shortcake, ap = 97.33%            (TP = 9, FP = 2)
+class_id = 120, name = chopsuey, ap = 44.47%     (TP = 4, FP = 5)
+class_id = 121, name = twicecookedpork, ap = 53.84%      (TP = 6, FP = 15)
+class_id = 122, name = mushroomrisotto, ap = 24.91%      (TP = 3, FP = 6)
+class_id = 123, name = samul, ap = 79.00%        (TP = 8, FP = 7)
+class_id = 124, name = zoni, ap = 59.10%         (TP = 8, FP = 4)
+class_id = 125, name = frenchtoast, ap = 43.81%          (TP = 5, FP = 5)
+class_id = 126, name = finewhitenoodles, ap = 69.75%     (TP = 9, FP = 4)
+class_id = 127, name = minestrone, ap = 78.85%           (TP = 7, FP = 4)
+class_id = 128, name = potaufeu, ap = 52.75%     (TP = 6, FP = 6)
+class_id = 129, name = chickennugget, ap = 49.31%        (TP = 7, FP = 9)
+class_id = 130, name = namero, ap = 61.85%       (TP = 8, FP = 8)
+class_id = 131, name = frenchbread, ap = 82.25%          (TP = 5, FP = 7)
+class_id = 132, name = ricegruel, ap = 72.40%            (TP = 9, FP = 5)
+class_id = 133, name = broiledeelbowl, ap = 67.24%       (TP = 8, FP = 9)
+class_id = 134, name = clearsoup, ap = 28.81%            (TP = 3, FP = 8)
+class_id = 135, name = yudofu, ap = 83.84%       (TP = 9, FP = 3)
+class_id = 136, name = mozuku, ap = 83.00%       (TP = 8, FP = 2)
+class_id = 137, name = inarizushi, ap = 56.15%           (TP = 7, FP = 14)
+class_id = 138, name = porkloincutlet, ap = 44.71%       (TP = 6, FP = 14)
+class_id = 139, name = porkfilletcutlet, ap = 68.09%     (TP = 6, FP = 8)
+class_id = 140, name = chickencutlet, ap = 26.50%        (TP = 4, FP = 6)
+class_id = 141, name = hamcutlet, ap = 43.83%            (TP = 5, FP = 5)
+class_id = 142, name = mincedmeatcutlet, ap = 56.88%     (TP = 6, FP = 10)
+class_id = 143, name = thinlyslicedrawhorsemeat, ap = 51.57%     (TP = 7, FP = 9)
+class_id = 144, name = bagel, ap = 79.41%        (TP = 8, FP = 4)
+class_id = 145, name = scone, ap = 50.77%        (TP = 5, FP = 12)
+class_id = 146, name = tortilla, ap = 20.69%     (TP = 3, FP = 4)
+class_id = 147, name = tacos, ap = 53.88%        (TP = 7, FP = 8)
+class_id = 148, name = nachos, ap = 42.18%       (TP = 3, FP = 7)
+class_id = 149, name = meatloaf, ap = 1.30%      (TP = 0, FP = 0)
+class_id = 150, name = scrambledegg, ap = 68.39%         (TP = 5, FP = 5)
+class_id = 151, name = ricegratin, ap = 80.30%           (TP = 9, FP = 4)
+class_id = 152, name = lasagna, ap = 54.01%      (TP = 6, FP = 5)
+class_id = 153, name = Caesarsalad, ap = 73.99%          (TP = 8, FP = 8)
+class_id = 154, name = oatmeal, ap = 55.93%      (TP = 6, FP = 6)
+class_id = 155, name = friedporkdumplingsservedinsoup, ap = 83.87%       (TP = 10, FP = 4)
+class_id = 156, name = oshiruko, ap = 89.17%     (TP = 10, FP = 7)
+class_id = 157, name = muffin, ap = 65.92%       (TP = 7, FP = 8)
+class_id = 158, name = popcorn, ap = 82.01%      (TP = 10, FP = 10)
+class_id = 159, name = creampuff, ap = 61.01%            (TP = 5, FP = 4)
+class_id = 160, name = doughnut, ap = 37.60%     (TP = 5, FP = 6)
+class_id = 161, name = applepie, ap = 40.83%     (TP = 4, FP = 5)
+class_id = 162, name = parfait, ap = 64.50%      (TP = 7, FP = 6)
+class_id = 163, name = friedporkinscoop, ap = 64.75%     (TP = 5, FP = 13)
+class_id = 164, name = lambkebabs, ap = 75.49%           (TP = 10, FP = 8)
+class_id = 165, name = dishconsistingofstir-friedpotato,eggplantandgreenpepper, ap = 93.41%      (TP = 11, FP = 3)
+class_id = 166, name = roastduck, ap = 60.30%            (TP = 5, FP = 7)
+class_id = 167, name = hotpot, ap = 27.54%       (TP = 2, FP = 3)
+class_id = 168, name = porkbelly, ap = 27.27%            (TP = 4, FP = 7)
+class_id = 169, name = xiaolongbao, ap = 91.52%          (TP = 10, FP = 2)
+class_id = 170, name = mooncake, ap = 74.77%     (TP = 8, FP = 4)
+class_id = 171, name = custardtart, ap = 100.00%         (TP = 10, FP = 3)
+class_id = 172, name = beefnoodlesoup, ap = 61.31%       (TP = 7, FP = 15)
+class_id = 173, name = porkcutlet, ap = 52.14%           (TP = 6, FP = 7)
+class_id = 174, name = mincedporkrice, ap = 91.89%       (TP = 11, FP = 5)
+class_id = 175, name = fishballsoup, ap = 90.38%         (TP = 10, FP = 2)
+class_id = 176, name = oysteromelette, ap = 79.70%       (TP = 7, FP = 4)
+class_id = 177, name = glutinousoilrice, ap = 76.02%     (TP = 9, FP = 5)
+class_id = 178, name = trunippudding, ap = 79.02%        (TP = 6, FP = 9)
+class_id = 179, name = stinkytofu, ap = 63.29%           (TP = 7, FP = 9)
+class_id = 180, name = lemonfigjelly, ap = 80.16%        (TP = 8, FP = 3)
+class_id = 181, name = khaosoi, ap = 65.76%      (TP = 11, FP = 13)
+class_id = 182, name = Sourprawnsoup, ap = 66.19%        (TP = 7, FP = 2)
+class_id = 183, name = Thaipapayasalad, ap = 83.71%      (TP = 10, FP = 7)
+class_id = 184, name = boned,slicedHainan-stylechickenwithmarinatedrice, ap = 67.39%     (TP = 8, FP = 4)
+class_id = 185, name = hotandsour,fishandvegetableragout, ap = 70.69%            (TP = 7, FP = 6)
+class_id = 186, name = stir-friedmixedvegetables, ap = 42.41%            (TP = 5, FP = 9)
+class_id = 187, name = beefinoystersauce, ap = 30.97%            (TP = 3, FP = 9)
+class_id = 188, name = porksatay, ap = 73.27%            (TP = 8, FP = 7)
+class_id = 189, name = spicychickensalad, ap = 38.66%            (TP = 3, FP = 4)
+class_id = 190, name = noodleswithfishcurry, ap = 13.33%         (TP = 1, FP = 5)
+class_id = 191, name = PorkStickyNoodles, ap = 72.89%            (TP = 8, FP = 9)
+class_id = 192, name = Porkwithlemon, ap = 27.49%        (TP = 2, FP = 6)
+class_id = 193, name = stewedporkleg, ap = 31.52%        (TP = 3, FP = 6)
+class_id = 194, name = charcoal-boiledporkneck, ap = 69.36%      (TP = 7, FP = 5)
+class_id = 195, name = friedmusselpancakes, ap = 78.57%          (TP = 7, FP = 1)
+class_id = 196, name = DeepFriedChickenWing, ap = 55.06%         (TP = 5, FP = 8)
+class_id = 197, name = Barbecuedredporkinsaucewithrice, ap = 66.16%      (TP = 10, FP = 7)
+class_id = 198, name = Ricewithroastduck, ap = 66.32%            (TP = 6, FP = 3)
+class_id = 199, name = Ricecrispypork, ap = 7.97%        (TP = 1, FP = 8)
+class_id = 200, name = Wontonsoup, ap = 52.32%           (TP = 8, FP = 9)
+class_id = 201, name = ChickenRiceCurryWithCoconut, ap = 70.02%          (TP = 6, FP = 3)
+class_id = 202, name = CrispyNoodles, ap = 66.77%        (TP = 4, FP = 4)
+class_id = 203, name = EggNoodleInChickenYellowCurry, ap = 37.94%        (TP = 5, FP = 8)
+class_id = 204, name = coconutmilksoup, ap = 55.85%      (TP = 5, FP = 6)
+class_id = 205, name = pho, ap = 53.46%          (TP = 8, FP = 6)
+class_id = 206, name = Huebeefricevermicellisoup, ap = 71.42%            (TP = 7, FP = 3)
+class_id = 207, name = Vermicellinoodleswithsnails, ap = 69.88%          (TP = 6, FP = 6)
+class_id = 208, name = Friedspringrolls, ap = 55.22%     (TP = 7, FP = 11)
+class_id = 209, name = Steamedriceroll, ap = 86.24%      (TP = 6, FP = 4)
+class_id = 210, name = Shrimppatties, ap = 38.40%        (TP = 4, FP = 6)
+class_id = 211, name = ballshapedbunwithpork, ap = 48.65%        (TP = 6, FP = 6)
+class_id = 212, name = Coconutmilk-flavoredcrepeswithshrimpandbeef, ap = 21.21%          (TP = 3, FP = 9)
+class_id = 213, name = Smallsteamedsavoryricepancake, ap = 95.87%        (TP = 10, FP = 3)
+class_id = 214, name = GlutinousRiceBalls, ap = 88.31%           (TP = 9, FP = 4)
+class_id = 215, name = locomoco, ap = 54.00%     (TP = 6, FP = 4)
+class_id = 216, name = haupia, ap = 68.16%       (TP = 7, FP = 5)
+class_id = 217, name = malasada, ap = 73.17%     (TP = 10, FP = 9)
+class_id = 218, name = laulau, ap = 78.83%       (TP = 8, FP = 6)
+class_id = 219, name = spammusubi, ap = 79.35%           (TP = 9, FP = 2)
+class_id = 220, name = oxtailsoup, ap = 25.30%           (TP = 3, FP = 5)
+class_id = 221, name = adobo, ap = 63.80%        (TP = 7, FP = 8)
+class_id = 222, name = lumpia, ap = 54.15%       (TP = 7, FP = 9)
+class_id = 223, name = brownie, ap = 69.61%      (TP = 6, FP = 8)
+class_id = 224, name = churro, ap = 63.90%       (TP = 7, FP = 12)
+class_id = 225, name = jambalaya, ap = 69.02%            (TP = 7, FP = 5)
+class_id = 226, name = nasigoreng, ap = 54.68%           (TP = 6, FP = 5)
+class_id = 227, name = ayamgoreng, ap = 32.20%           (TP = 3, FP = 13)
+class_id = 228, name = ayambakar, ap = 62.20%            (TP = 5, FP = 4)
+class_id = 229, name = buburayam, ap = 70.10%            (TP = 7, FP = 5)
+class_id = 230, name = gulai, ap = 34.67%        (TP = 5, FP = 8)
+class_id = 231, name = laksa, ap = 29.77%        (TP = 4, FP = 8)
+class_id = 232, name = mieayam, ap = 52.99%      (TP = 5, FP = 6)
+class_id = 233, name = miegoreng, ap = 67.79%            (TP = 7, FP = 4)
+class_id = 234, name = nasicampur, ap = 19.66%           (TP = 5, FP = 18)
+class_id = 235, name = nasipadang, ap = 55.93%           (TP = 4, FP = 6)
+class_id = 236, name = nasiuduk, ap = 45.91%     (TP = 7, FP = 9)
+class_id = 237, name = babiguling, ap = 61.77%           (TP = 7, FP = 4)
+class_id = 238, name = kayatoast, ap = 59.43%            (TP = 8, FP = 9)
+class_id = 239, name = bakkutteh, ap = 65.30%            (TP = 8, FP = 8)
+class_id = 240, name = currypuff, ap = 50.65%            (TP = 9, FP = 14)
+class_id = 241, name = chowmein, ap = 59.29%     (TP = 6, FP = 7)
+class_id = 242, name = zhajiangmian, ap = 66.38%         (TP = 9, FP = 9)
+class_id = 243, name = kungpaochicken, ap = 91.75%       (TP = 10, FP = 5)
+class_id = 244, name = crullers, ap = 72.19%     (TP = 8, FP = 7)
+class_id = 245, name = eggplantwithgarlicsauce, ap = 76.36%      (TP = 8, FP = 8)
+class_id = 246, name = threecupchicken, ap = 75.25%      (TP = 10, FP = 9)
+class_id = 247, name = beancurdfamilystyle, ap = 57.75%          (TP = 5, FP = 5)
+class_id = 248, name = salt&pepperfriedshrimpwithshell, ap = 62.97%      (TP = 7, FP = 6)
+class_id = 249, name = bakedsalmon, ap = 24.48%          (TP = 1, FP = 4)
+class_id = 250, name = braisedporkmeatballwithnapacabbage, ap = 76.96%           (TP = 8, FP = 1)
+class_id = 251, name = wintermelonsoup, ap = 85.38%      (TP = 9, FP = 0)
+class_id = 252, name = steamedspareribs, ap = 76.50%     (TP = 10, FP = 9)
+class_id = 253, name = chinesepumpkinpie, ap = 59.72%            (TP = 6, FP = 4)
+class_id = 254, name = eighttreasurerice, ap = 60.38%            (TP = 7, FP = 5)
+class_id = 255, name = hot&soursoup, ap = 51.14%         (TP = 6, FP = 8)
+
+ for conf_thresh = 0.25, precision = 0.50, recall = 0.57, F1-score = 0.53
+ for conf_thresh = 0.25, TP = 1793, FP = 1783, FN = 1346, average IoU = 38.59 %
+
+ IoU threshold = 50 %, used Area-Under-Curve for each unique Recall
+ mean average precision (mAP@0.50) = 0.591463, or 59.15 %
+Total Detection Time: 54 Seconds
+
+Set -points flag:
+ `-points 101` for MS COCO
+ `-points 11` for PascalVOC 2007 (uncomment `difficult` in voc.data)
+ `-points 0` (AUC) for ImageNet, PascalVOC 2010-2012, your custom dataset
+
+C:\Users\sy\darknet-master\build\darknet\x64>darknet.exe detector map food/food256.data cfg/yolov3-tiny-food.cfg food/backup/yolov3-tiny-food_420000.weights
+ CUDA-version: 10000 (11030), cuDNN: 7.6.5, CUDNN_HALF=1, GPU count: 1
+ CUDNN_HALF=1
+ OpenCV version: 3.4.0
+ 0 : compute_capability = 750, cudnn_half = 1, GPU: NVIDIA GeForce GTX 1660 SUPER
+net.optimized_memory = 0
+mini_batch = 1, batch = 8, time_steps = 1, train = 0
+   layer   filters  size/strd(dil)      input                output
+   0 Create CUDA-stream - 0
+ Create cudnn-handle 0
+conv     16       3 x 3/ 1    416 x 416 x   3 ->  416 x 416 x  16 0.150 BF
+   1 max                2x 2/ 2    416 x 416 x  16 ->  208 x 208 x  16 0.003 BF
+   2 conv     32       3 x 3/ 1    208 x 208 x  16 ->  208 x 208 x  32 0.399 BF
+   3 max                2x 2/ 2    208 x 208 x  32 ->  104 x 104 x  32 0.001 BF
+   4 conv     64       3 x 3/ 1    104 x 104 x  32 ->  104 x 104 x  64 0.399 BF
+   5 max                2x 2/ 2    104 x 104 x  64 ->   52 x  52 x  64 0.001 BF
+   6 conv    128       3 x 3/ 1     52 x  52 x  64 ->   52 x  52 x 128 0.399 BF
+   7 max                2x 2/ 2     52 x  52 x 128 ->   26 x  26 x 128 0.000 BF
+   8 conv    256       3 x 3/ 1     26 x  26 x 128 ->   26 x  26 x 256 0.399 BF
+   9 max                2x 2/ 2     26 x  26 x 256 ->   13 x  13 x 256 0.000 BF
+  10 conv    512       3 x 3/ 1     13 x  13 x 256 ->   13 x  13 x 512 0.399 BF
+  11 max                2x 2/ 1     13 x  13 x 512 ->   13 x  13 x 512 0.000 BF
+  12 conv   1024       3 x 3/ 1     13 x  13 x 512 ->   13 x  13 x1024 1.595 BF
+  13 conv    256       1 x 1/ 1     13 x  13 x1024 ->   13 x  13 x 256 0.089 BF
+  14 conv    512       3 x 3/ 1     13 x  13 x 256 ->   13 x  13 x 512 0.399 BF
+  15 conv    783       1 x 1/ 1     13 x  13 x 512 ->   13 x  13 x 783 0.136 BF
+  16 yolo
+[yolo] params: iou loss: mse (2), iou_norm: 0.75, obj_norm: 1.00, cls_norm: 1.00, delta_norm: 1.00, scale_x_y: 1.00
+  17 route  13                                     ->   13 x  13 x 256
+  18 conv    128       1 x 1/ 1     13 x  13 x 256 ->   13 x  13 x 128 0.011 BF
+  19 upsample                 2x    13 x  13 x 128 ->   26 x  26 x 128
+  20 route  19 8                                   ->   26 x  26 x 384
+  21 conv    256       3 x 3/ 1     26 x  26 x 384 ->   26 x  26 x 256 1.196 BF
+  22 conv    783       1 x 1/ 1     26 x  26 x 256 ->   26 x  26 x 783 0.271 BF
+  23 yolo
+[yolo] params: iou loss: mse (2), iou_norm: 0.75, obj_norm: 1.00, cls_norm: 1.00, delta_norm: 1.00, scale_x_y: 1.00
+Total BFLOPS 5.845
+avg_outputs = 378714
+ Allocate additional workspace_size = 52.43 MB
+Loading weights from food/backup/yolov3-tiny-food_420000.weights...
+ seen 64, trained: 26880 K-images (420 Kilo-batches_64)
+Done! Loaded 24 layers from weights-file
+
+ calculation mAP (mean average precision)...
+ Detection layer: 16 - type = 28
+ Detection layer: 23 - type = 28
+3140
+ detections_count = 11410, unique_truth_count = 3139
+class_id = 0, name = rice, ap = 31.68%           (TP = 28, FP = 74)
+class_id = 1, name = eelsonrice, ap = 90.53%     (TP = 12, FP = 2)
+class_id = 2, name = pilaf, ap = 82.36%          (TP = 10, FP = 5)
+class_id = 3, name = chicken-'n'-eggonrice, ap = 42.42%          (TP = 4, FP = 6)
+class_id = 4, name = porkcutletonrice, ap = 66.42%       (TP = 12, FP = 12)
+class_id = 5, name = beefcurry, ap = 74.46%      (TP = 18, FP = 7)
+class_id = 6, name = sushi, ap = 66.87%          (TP = 6, FP = 0)
+class_id = 7, name = chickenrice, ap = 59.04%            (TP = 5, FP = 4)
+class_id = 8, name = friedrice, ap = 66.92%      (TP = 11, FP = 7)
+class_id = 9, name = tempurabowl, ap = 74.28%            (TP = 9, FP = 5)
+class_id = 10, name = bibimbap, ap = 92.98%      (TP = 10, FP = 2)
+class_id = 11, name = toast, ap = 58.42%         (TP = 14, FP = 5)
+class_id = 12, name = croissant, ap = 46.11%     (TP = 3, FP = 7)
+class_id = 13, name = rollbread, ap = 54.48%     (TP = 5, FP = 5)
+class_id = 14, name = raisinbread, ap = 58.18%           (TP = 5, FP = 3)
+class_id = 15, name = chipbutty, ap = 25.62%     (TP = 4, FP = 4)
+class_id = 16, name = hamburger, ap = 63.36%     (TP = 15, FP = 6)
+class_id = 17, name = pizza, ap = 69.92%         (TP = 9, FP = 4)
+class_id = 18, name = sandwiches, ap = 57.29%            (TP = 7, FP = 5)
+class_id = 19, name = udonnoodle, ap = 70.49%            (TP = 12, FP = 10)
+class_id = 20, name = tempuraudon, ap = 77.50%           (TP = 9, FP = 4)
+class_id = 21, name = sobanoodle, ap = 80.47%            (TP = 11, FP = 3)
+class_id = 22, name = ramennoodle, ap = 81.63%           (TP = 24, FP = 10)
+class_id = 23, name = beefnoodle, ap = 36.15%            (TP = 6, FP = 6)
+class_id = 24, name = tensinnoodle, ap = 73.48%          (TP = 8, FP = 0)
+class_id = 25, name = friednoodle, ap = 63.70%           (TP = 8, FP = 4)
+class_id = 26, name = spaghetti, ap = 68.09%     (TP = 11, FP = 7)
+class_id = 27, name = Japanese-stylepancake, ap = 70.63%         (TP = 10, FP = 10)
+class_id = 28, name = takoyaki, ap = 66.69%      (TP = 7, FP = 5)
+class_id = 29, name = gratin, ap = 64.13%        (TP = 8, FP = 6)
+class_id = 30, name = sauteedvegetables, ap = 8.56%      (TP = 0, FP = 3)
+class_id = 31, name = croquette, ap = 62.64%     (TP = 8, FP = 3)
+class_id = 32, name = grilledeggplant, ap = 15.09%       (TP = 0, FP = 3)
+class_id = 33, name = sauteedspinach, ap = 53.81%        (TP = 5, FP = 3)
+class_id = 34, name = vegetabletempura, ap = 50.42%      (TP = 5, FP = 7)
+class_id = 35, name = misosoup, ap = 40.44%      (TP = 33, FP = 92)
+class_id = 36, name = potage, ap = 74.02%        (TP = 6, FP = 0)
+class_id = 37, name = sausage, ap = 21.18%       (TP = 1, FP = 3)
+class_id = 38, name = oden, ap = 9.34%           (TP = 1, FP = 6)
+class_id = 39, name = omelet, ap = 5.68%         (TP = 1, FP = 8)
+class_id = 40, name = ganmodoki, ap = 23.64%     (TP = 3, FP = 2)
+class_id = 41, name = jiaozi, ap = 60.21%        (TP = 8, FP = 4)
+class_id = 42, name = stew, ap = 64.86%          (TP = 6, FP = 2)
+class_id = 43, name = teriyakigrilledfish, ap = 48.41%           (TP = 5, FP = 1)
+class_id = 44, name = friedfish, ap = 32.54%     (TP = 4, FP = 5)
+class_id = 45, name = grilledsalmon, ap = 46.58%         (TP = 7, FP = 6)
+class_id = 46, name = salmonmeuniere, ap = 26.39%        (TP = 3, FP = 5)
+class_id = 47, name = sashimi, ap = 47.16%       (TP = 5, FP = 3)
+class_id = 48, name = grilledpacificsaury, ap = 56.65%           (TP = 10, FP = 6)
+class_id = 49, name = sukiyaki, ap = 35.16%      (TP = 4, FP = 5)
+class_id = 50, name = sweetandsourpork, ap = 63.37%      (TP = 5, FP = 1)
+class_id = 51, name = lightlyroastedfish, ap = 33.58%            (TP = 1, FP = 2)
+class_id = 52, name = steamedegghotchpotch, ap = 58.52%          (TP = 6, FP = 6)
+class_id = 53, name = tempura, ap = 60.49%       (TP = 7, FP = 5)
+class_id = 54, name = friedchicken, ap = 29.81%          (TP = 5, FP = 14)
+class_id = 55, name = sirloincutlet, ap = 42.43%         (TP = 4, FP = 7)
+class_id = 56, name = nanbanzuke, ap = 36.06%            (TP = 2, FP = 6)
+class_id = 57, name = boiledfish, ap = 68.97%            (TP = 3, FP = 3)
+class_id = 58, name = seasonedbeefwithpotatoes, ap = 76.11%      (TP = 9, FP = 2)
+class_id = 59, name = hambargsteak, ap = 23.72%          (TP = 4, FP = 9)
+class_id = 60, name = steak, ap = 44.35%         (TP = 3, FP = 1)
+class_id = 61, name = driedfish, ap = 87.90%     (TP = 9, FP = 3)
+class_id = 62, name = gingerporksaute, ap = 24.36%       (TP = 3, FP = 5)
+class_id = 63, name = spicychili-flavoredtofu, ap = 66.22%       (TP = 8, FP = 5)
+class_id = 64, name = yakitori, ap = 42.77%      (TP = 3, FP = 1)
+class_id = 65, name = cabbageroll, ap = 52.23%           (TP = 5, FP = 2)
+class_id = 66, name = omelet, ap = 53.52%        (TP = 5, FP = 3)
+class_id = 67, name = eggsunny-sideup, ap = 38.94%       (TP = 9, FP = 9)
+class_id = 68, name = natto, ap = 52.45%         (TP = 7, FP = 10)
+class_id = 69, name = coldtofu, ap = 67.00%      (TP = 10, FP = 4)
+class_id = 70, name = eggroll, ap = 60.02%       (TP = 5, FP = 3)
+class_id = 71, name = chillednoodle, ap = 90.91%         (TP = 8, FP = 0)
+class_id = 72, name = stir-friedbeefandpeppers, ap = 68.97%      (TP = 7, FP = 2)
+class_id = 73, name = simmeredpork, ap = 95.67%          (TP = 6, FP = 0)
+class_id = 74, name = boiledchickenandvegetables, ap = 33.33%            (TP = 2, FP = 0)
+class_id = 75, name = sashimibowl, ap = 31.25%           (TP = 4, FP = 5)
+class_id = 76, name = sushibowl, ap = 43.64%     (TP = 4, FP = 4)
+class_id = 77, name = fish-shapedpancakewithbeanjam, ap = 82.11%         (TP = 7, FP = 2)
+class_id = 78, name = shrimpwithchillsource, ap = 73.48%         (TP = 8, FP = 0)
+class_id = 79, name = roastchicken, ap = 56.07%          (TP = 8, FP = 4)
+class_id = 80, name = steamedmeatdumpling, ap = 29.81%           (TP = 3, FP = 4)
+class_id = 81, name = omeletwithfriedrice, ap = 90.97%           (TP = 10, FP = 0)
+class_id = 82, name = cutletcurry, ap = 74.52%           (TP = 11, FP = 6)
+class_id = 83, name = spaghettimeatsauce, ap = 71.55%            (TP = 9, FP = 9)
+class_id = 84, name = friedshrimp, ap = 73.78%           (TP = 10, FP = 6)
+class_id = 85, name = potatosalad, ap = 53.16%           (TP = 6, FP = 3)
+class_id = 86, name = greensalad, ap = 8.18%     (TP = 4, FP = 31)
+class_id = 87, name = macaronisalad, ap = 54.76%         (TP = 5, FP = 4)
+class_id = 88, name = Japanesetofuandvegetablechowder, ap = 20.61%       (TP = 3, FP = 10)
+class_id = 89, name = porkmisosoup, ap = 19.27%          (TP = 1, FP = 9)
+class_id = 90, name = chinesesoup, ap = 16.94%           (TP = 3, FP = 10)
+class_id = 91, name = beefbowl, ap = 31.40%      (TP = 8, FP = 20)
+class_id = 92, name = kinpira-stylesauteedburdock, ap = 71.75%           (TP = 9, FP = 5)
+class_id = 93, name = riceball, ap = 35.66%      (TP = 4, FP = 5)
+class_id = 94, name = pizzatoast, ap = 76.67%            (TP = 8, FP = 1)
+class_id = 95, name = dippingnoodles, ap = 79.91%        (TP = 7, FP = 2)
+class_id = 96, name = hotdog, ap = 50.00%        (TP = 2, FP = 0)
+class_id = 97, name = frenchfries, ap = 31.64%           (TP = 7, FP = 9)
+class_id = 98, name = mixedrice, ap = 56.77%     (TP = 6, FP = 3)
+class_id = 99, name = goyachanpuru, ap = 81.82%          (TP = 9, FP = 2)
+class_id = 100, name = greencurry, ap = 39.05%           (TP = 2, FP = 0)
+class_id = 101, name = okinawasoba, ap = 65.59%          (TP = 6, FP = 5)
+class_id = 102, name = mangopudding, ap = 63.75%         (TP = 6, FP = 1)
+class_id = 103, name = almondjelly, ap = 66.95%          (TP = 6, FP = 8)
+class_id = 104, name = jjigae, ap = 78.51%       (TP = 8, FP = 3)
+class_id = 105, name = dakgalbi, ap = 87.50%     (TP = 8, FP = 2)
+class_id = 106, name = drycurry, ap = 86.85%     (TP = 9, FP = 1)
+class_id = 107, name = kamameshi, ap = 84.89%            (TP = 7, FP = 0)
+class_id = 108, name = ricevermicelli, ap = 85.67%       (TP = 8, FP = 0)
+class_id = 109, name = paella, ap = 73.33%       (TP = 6, FP = 0)
+class_id = 110, name = tanmen, ap = 31.25%       (TP = 5, FP = 6)
+class_id = 111, name = kushikatu, ap = 73.47%            (TP = 7, FP = 2)
+class_id = 112, name = yellowcurry, ap = 30.83%          (TP = 2, FP = 1)
+class_id = 113, name = pancake, ap = 83.74%      (TP = 9, FP = 2)
+class_id = 114, name = champon, ap = 61.57%      (TP = 9, FP = 6)
+class_id = 115, name = crape, ap = 26.61%        (TP = 0, FP = 1)
+class_id = 116, name = tiramisu, ap = 96.14%     (TP = 9, FP = 1)
+class_id = 117, name = waffle, ap = 43.99%       (TP = 4, FP = 1)
+class_id = 118, name = rarecheesecake, ap = 82.48%       (TP = 5, FP = 1)
+class_id = 119, name = shortcake, ap = 95.67%            (TP = 8, FP = 0)
+class_id = 120, name = chopsuey, ap = 38.57%     (TP = 4, FP = 2)
+class_id = 121, name = twicecookedpork, ap = 54.09%      (TP = 7, FP = 12)
+class_id = 122, name = mushroomrisotto, ap = 26.44%      (TP = 0, FP = 2)
+class_id = 123, name = samul, ap = 75.62%        (TP = 8, FP = 4)
+class_id = 124, name = zoni, ap = 59.78%         (TP = 6, FP = 4)
+class_id = 125, name = frenchtoast, ap = 53.26%          (TP = 4, FP = 3)
+class_id = 126, name = finewhitenoodles, ap = 72.77%     (TP = 8, FP = 1)
+class_id = 127, name = minestrone, ap = 78.12%           (TP = 7, FP = 3)
+class_id = 128, name = potaufeu, ap = 54.32%     (TP = 5, FP = 3)
+class_id = 129, name = chickennugget, ap = 49.98%        (TP = 4, FP = 6)
+class_id = 130, name = namero, ap = 62.88%       (TP = 8, FP = 5)
+class_id = 131, name = frenchbread, ap = 86.36%          (TP = 7, FP = 5)
+class_id = 132, name = ricegruel, ap = 77.53%            (TP = 9, FP = 4)
+class_id = 133, name = broiledeelbowl, ap = 67.36%       (TP = 7, FP = 6)
+class_id = 134, name = clearsoup, ap = 29.90%            (TP = 4, FP = 3)
+class_id = 135, name = yudofu, ap = 79.43%       (TP = 9, FP = 5)
+class_id = 136, name = mozuku, ap = 88.00%       (TP = 8, FP = 1)
+class_id = 137, name = inarizushi, ap = 52.74%           (TP = 6, FP = 8)
+class_id = 138, name = porkloincutlet, ap = 39.93%       (TP = 5, FP = 12)
+class_id = 139, name = porkfilletcutlet, ap = 67.79%     (TP = 7, FP = 7)
+class_id = 140, name = chickencutlet, ap = 30.72%        (TP = 4, FP = 5)
+class_id = 141, name = hamcutlet, ap = 48.28%            (TP = 5, FP = 4)
+class_id = 142, name = mincedmeatcutlet, ap = 56.70%     (TP = 7, FP = 7)
+class_id = 143, name = thinlyslicedrawhorsemeat, ap = 56.54%     (TP = 7, FP = 7)
+class_id = 144, name = bagel, ap = 77.88%        (TP = 8, FP = 2)
+class_id = 145, name = scone, ap = 48.71%        (TP = 4, FP = 7)
+class_id = 146, name = tortilla, ap = 19.31%     (TP = 2, FP = 2)
+class_id = 147, name = tacos, ap = 50.76%        (TP = 4, FP = 3)
+class_id = 148, name = nachos, ap = 38.77%       (TP = 3, FP = 3)
+class_id = 149, name = meatloaf, ap = 3.03%      (TP = 0, FP = 1)
+class_id = 150, name = scrambledegg, ap = 67.10%         (TP = 5, FP = 1)
+class_id = 151, name = ricegratin, ap = 75.56%           (TP = 6, FP = 2)
+class_id = 152, name = lasagna, ap = 39.01%      (TP = 3, FP = 4)
+class_id = 153, name = Caesarsalad, ap = 77.52%          (TP = 8, FP = 6)
+class_id = 154, name = oatmeal, ap = 44.25%      (TP = 6, FP = 4)
+class_id = 155, name = friedporkdumplingsservedinsoup, ap = 81.11%       (TP = 9, FP = 5)
+class_id = 156, name = oshiruko, ap = 90.44%     (TP = 9, FP = 6)
+class_id = 157, name = muffin, ap = 59.57%       (TP = 6, FP = 2)
+class_id = 158, name = popcorn, ap = 81.49%      (TP = 10, FP = 7)
+class_id = 159, name = creampuff, ap = 51.20%            (TP = 5, FP = 3)
+class_id = 160, name = doughnut, ap = 35.80%     (TP = 4, FP = 5)
+class_id = 161, name = applepie, ap = 28.33%     (TP = 1, FP = 7)
+class_id = 162, name = parfait, ap = 58.54%      (TP = 6, FP = 5)
+class_id = 163, name = friedporkinscoop, ap = 58.84%     (TP = 6, FP = 6)
+class_id = 164, name = lambkebabs, ap = 62.14%           (TP = 9, FP = 6)
+class_id = 165, name = dishconsistingofstir-friedpotato,eggplantandgreenpepper, ap = 86.82%      (TP = 8, FP = 2)
+class_id = 166, name = roastduck, ap = 66.09%            (TP = 6, FP = 1)
+class_id = 167, name = hotpot, ap = 16.28%       (TP = 1, FP = 3)
+class_id = 168, name = porkbelly, ap = 26.75%            (TP = 4, FP = 8)
+class_id = 169, name = xiaolongbao, ap = 83.00%          (TP = 10, FP = 1)
+class_id = 170, name = mooncake, ap = 76.14%     (TP = 5, FP = 1)
+class_id = 171, name = custardtart, ap = 100.00%         (TP = 10, FP = 4)
+class_id = 172, name = beefnoodlesoup, ap = 55.91%       (TP = 6, FP = 6)
+class_id = 173, name = porkcutlet, ap = 56.97%           (TP = 5, FP = 4)
+class_id = 174, name = mincedporkrice, ap = 92.34%       (TP = 11, FP = 3)
+class_id = 175, name = fishballsoup, ap = 82.58%         (TP = 10, FP = 1)
+class_id = 176, name = oysteromelette, ap = 76.67%       (TP = 7, FP = 3)
+class_id = 177, name = glutinousoilrice, ap = 81.46%     (TP = 10, FP = 3)
+class_id = 178, name = trunippudding, ap = 80.42%        (TP = 8, FP = 6)
+class_id = 179, name = stinkytofu, ap = 65.57%           (TP = 7, FP = 6)
+class_id = 180, name = lemonfigjelly, ap = 79.14%        (TP = 9, FP = 4)
+class_id = 181, name = khaosoi, ap = 58.99%      (TP = 7, FP = 9)
+class_id = 182, name = Sourprawnsoup, ap = 57.08%        (TP = 6, FP = 2)
+class_id = 183, name = Thaipapayasalad, ap = 79.44%      (TP = 10, FP = 2)
+class_id = 184, name = boned,slicedHainan-stylechickenwithmarinatedrice, ap = 68.22%     (TP = 7, FP = 3)
+class_id = 185, name = hotandsour,fishandvegetableragout, ap = 67.45%            (TP = 6, FP = 3)
+class_id = 186, name = stir-friedmixedvegetables, ap = 27.07%            (TP = 4, FP = 9)
+class_id = 187, name = beefinoystersauce, ap = 34.50%            (TP = 4, FP = 4)
+class_id = 188, name = porksatay, ap = 71.61%            (TP = 8, FP = 4)
+class_id = 189, name = spicychickensalad, ap = 37.59%            (TP = 3, FP = 1)
+class_id = 190, name = noodleswithfishcurry, ap = 16.67%         (TP = 1, FP = 3)
+class_id = 191, name = PorkStickyNoodles, ap = 71.89%            (TP = 8, FP = 6)
+class_id = 192, name = Porkwithlemon, ap = 29.00%        (TP = 2, FP = 3)
+class_id = 193, name = stewedporkleg, ap = 33.78%        (TP = 4, FP = 8)
+class_id = 194, name = charcoal-boiledporkneck, ap = 72.13%      (TP = 7, FP = 4)
+class_id = 195, name = friedmusselpancakes, ap = 77.32%          (TP = 7, FP = 1)
+class_id = 196, name = DeepFriedChickenWing, ap = 45.16%         (TP = 4, FP = 5)
+class_id = 197, name = Barbecuedredporkinsaucewithrice, ap = 76.18%      (TP = 10, FP = 5)
+class_id = 198, name = Ricewithroastduck, ap = 60.65%            (TP = 6, FP = 3)
+class_id = 199, name = Ricecrispypork, ap = 7.18%        (TP = 1, FP = 6)
+class_id = 200, name = Wontonsoup, ap = 55.37%           (TP = 7, FP = 8)
+class_id = 201, name = ChickenRiceCurryWithCoconut, ap = 57.98%          (TP = 5, FP = 3)
+class_id = 202, name = CrispyNoodles, ap = 67.87%        (TP = 5, FP = 2)
+class_id = 203, name = EggNoodleInChickenYellowCurry, ap = 42.27%        (TP = 5, FP = 8)
+class_id = 204, name = coconutmilksoup, ap = 52.00%      (TP = 5, FP = 4)
+class_id = 205, name = pho, ap = 56.53%          (TP = 7, FP = 5)
+class_id = 206, name = Huebeefricevermicellisoup, ap = 73.90%            (TP = 7, FP = 2)
+class_id = 207, name = Vermicellinoodleswithsnails, ap = 75.09%          (TP = 6, FP = 0)
+class_id = 208, name = Friedspringrolls, ap = 64.65%     (TP = 6, FP = 8)
+class_id = 209, name = Steamedriceroll, ap = 87.63%      (TP = 7, FP = 3)
+class_id = 210, name = Shrimppatties, ap = 40.61%        (TP = 3, FP = 1)
+class_id = 211, name = ballshapedbunwithpork, ap = 60.55%        (TP = 7, FP = 2)
+class_id = 212, name = Coconutmilk-flavoredcrepeswithshrimpandbeef, ap = 25.12%          (TP = 3, FP = 6)
+class_id = 213, name = Smallsteamedsavoryricepancake, ap = 95.87%        (TP = 10, FP = 3)
+class_id = 214, name = GlutinousRiceBalls, ap = 86.97%           (TP = 8, FP = 1)
+class_id = 215, name = locomoco, ap = 52.70%     (TP = 6, FP = 3)
+class_id = 216, name = haupia, ap = 62.92%       (TP = 6, FP = 3)
+class_id = 217, name = malasada, ap = 73.62%     (TP = 9, FP = 8)
+class_id = 218, name = laulau, ap = 81.01%       (TP = 7, FP = 3)
+class_id = 219, name = spammusubi, ap = 78.18%           (TP = 7, FP = 2)
+class_id = 220, name = oxtailsoup, ap = 25.92%           (TP = 3, FP = 5)
+class_id = 221, name = adobo, ap = 56.07%        (TP = 5, FP = 4)
+class_id = 222, name = lumpia, ap = 57.38%       (TP = 4, FP = 4)
+class_id = 223, name = brownie, ap = 62.77%      (TP = 6, FP = 3)
+class_id = 224, name = churro, ap = 66.41%       (TP = 6, FP = 5)
+class_id = 225, name = jambalaya, ap = 69.04%            (TP = 7, FP = 6)
+class_id = 226, name = nasigoreng, ap = 51.45%           (TP = 5, FP = 4)
+class_id = 227, name = ayamgoreng, ap = 32.58%           (TP = 2, FP = 5)
+class_id = 228, name = ayambakar, ap = 59.15%            (TP = 5, FP = 2)
+class_id = 229, name = buburayam, ap = 75.41%            (TP = 7, FP = 3)
+class_id = 230, name = gulai, ap = 30.77%        (TP = 4, FP = 5)
+class_id = 231, name = laksa, ap = 32.46%        (TP = 4, FP = 7)
+class_id = 232, name = mieayam, ap = 53.22%      (TP = 6, FP = 7)
+class_id = 233, name = miegoreng, ap = 65.26%            (TP = 5, FP = 4)
+class_id = 234, name = nasicampur, ap = 20.09%           (TP = 5, FP = 17)
+class_id = 235, name = nasipadang, ap = 55.51%           (TP = 4, FP = 5)
+class_id = 236, name = nasiuduk, ap = 48.30%     (TP = 5, FP = 5)
+class_id = 237, name = babiguling, ap = 64.30%           (TP = 7, FP = 5)
+class_id = 238, name = kayatoast, ap = 58.68%            (TP = 7, FP = 8)
+class_id = 239, name = bakkutteh, ap = 67.35%            (TP = 8, FP = 7)
+class_id = 240, name = currypuff, ap = 47.80%            (TP = 5, FP = 7)
+class_id = 241, name = chowmein, ap = 55.59%     (TP = 6, FP = 5)
+class_id = 242, name = zhajiangmian, ap = 77.38%         (TP = 9, FP = 7)
+class_id = 243, name = kungpaochicken, ap = 89.48%       (TP = 9, FP = 3)
+class_id = 244, name = crullers, ap = 69.44%     (TP = 8, FP = 3)
+class_id = 245, name = eggplantwithgarlicsauce, ap = 79.63%      (TP = 8, FP = 4)
+class_id = 246, name = threecupchicken, ap = 76.71%      (TP = 10, FP = 7)
+class_id = 247, name = beancurdfamilystyle, ap = 48.37%          (TP = 5, FP = 4)
+class_id = 248, name = salt&pepperfriedshrimpwithshell, ap = 59.59%      (TP = 7, FP = 2)
+class_id = 249, name = bakedsalmon, ap = 35.83%          (TP = 2, FP = 1)
+class_id = 250, name = braisedporkmeatballwithnapacabbage, ap = 73.33%           (TP = 9, FP = 1)
+class_id = 251, name = wintermelonsoup, ap = 87.32%      (TP = 8, FP = 0)
+class_id = 252, name = steamedspareribs, ap = 82.02%     (TP = 10, FP = 3)
+class_id = 253, name = chinesepumpkinpie, ap = 62.66%            (TP = 5, FP = 1)
+class_id = 254, name = eighttreasurerice, ap = 63.05%            (TP = 6, FP = 3)
+class_id = 255, name = hot&soursoup, ap = 49.62%         (TP = 5, FP = 4)
+
+ for conf_thresh = 0.25, precision = 0.56, recall = 0.53, F1-score = 0.55
+ for conf_thresh = 0.25, TP = 1657, FP = 1277, FN = 1482, average IoU = 44.31 %
+
+ IoU threshold = 50 %, used Area-Under-Curve for each unique Recall
+ mean average precision (mAP@0.50) = 0.579594, or 57.96 %
+Total Detection Time: 54 Seconds
+
+Set -points flag:
+ `-points 101` for MS COCO
+ `-points 11` for PascalVOC 2007 (uncomment `difficult` in voc.data)
+ `-points 0` (AUC) for ImageNet, PascalVOC 2010-2012, your custom dataset
+
+C:\Users\sy\darknet-master\build\darknet\x64>
