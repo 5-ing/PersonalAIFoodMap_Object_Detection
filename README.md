@@ -36,3 +36,5 @@ Train from checkpoint
 ```
 darknet.exe detector train food/food256.data cfg/yolov3-tiny-food.cfg food/backup/yolov3-tiny-food_last.weights
 ```
+*Raw data 파일은 UEC-FOOD256 웹사이트에서 다운로드.* <br>
+> [다운로드 링크](http://foodcam.mobi/dataset256.html)
